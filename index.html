@@ -11,16 +11,40 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
         header {
-            padding: 40px 20px;
-            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: #1f1f1f;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-title {
             font-size: 1.5em;
             font-weight: bold;
             color: #76c7c0;
+        }
+        .nav {
+            display: flex;
+            gap: 15px;
+        }
+        .nav a {
+            text-decoration: none;
+            color: #f1f1f1;
+            font-size: 1em;
+            padding: 8px 16px;
+            border: 2px solid transparent;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        .nav a:hover {
+            color: #121212;
+            background-color: #76c7c0;
+            border: 2px solid #76c7c0;
         }
         .main {
             display: flex;
@@ -28,6 +52,7 @@
             align-items: center;
             max-width: 1200px;
             padding: 40px 20px;
+            margin: 0 auto;
             width: 100%;
         }
         .slogan {
@@ -94,7 +119,13 @@
 </head>
 <body>
     <header>
-        Slangify — Открой мир сленга
+        <div class="header-title">Slangify — Открой мир сленга</div>
+        <nav class="nav">
+            <a href="index.html">Главная</a>
+            <a href="slang.html">Сленг</a>
+            <a href="examples.html">Примеры</a>
+            <a href="context.html">Контекст</a>
+        </nav>
     </header>
 
     <div class="main">
