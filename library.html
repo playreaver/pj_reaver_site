@@ -13,29 +13,67 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
-        header, footer {
-            background-color: #1f1f1f;
-            color: #f1f1f1;
-            padding: 20px 40px;
+
+        /* Светлая тема */
+        body.light-mode {
+            background-color: #ffffff;
+            color: #121212;
         }
+
+        /* Хедер */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 20px 40px;
+            background-color: #1f1f1f;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
-        nav a {
-            text-decoration: none;
-            color: #f1f1f1;
-            margin: 0 15px;
-            padding: 8px 16px;
-            border-radius: 4px;
-            transition: background-color 0.3s ease, color 0.3s ease;
+
+        /* Кнопка для переключения темы */
+        .theme-toggle {
+            cursor: pointer;
+            color: #76c7c0;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
         }
-        nav a:hover {
+        .theme-toggle:hover {
             color: #121212;
             background-color: #76c7c0;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        .header-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #76c7c0;
+        }
+
+        .nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #f1f1f1;
+            font-size: 1em;
+            padding: 8px 16px;
+            border: 2px solid transparent;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .nav a:hover {
+            color: #121212;
+            background-color: #76c7c0;
+            border: 2px solid #76c7c0;
         }
 
         .main-container {
@@ -154,5 +192,12 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+        }
+    </script>
 </body>
 </html>
+
