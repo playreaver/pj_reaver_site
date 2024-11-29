@@ -334,6 +334,21 @@
     color: #888888; /* Цвет для копирайта */
     margin-top: 10px;
 }
+
+.social-icons a {
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.social-icons img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s ease;
+}
+
+.social-icons img:hover {
+    transform: scale(1.1);
+}
     </style>
 </head>
 <body>
@@ -418,10 +433,18 @@
         Slangify
     </div>
     <div class="footer-right">
-        <a href="#">О нас</a>
-        <a href="#">Политика конфиденциальности</a>
+        <a href="#">О сайте и разработчике</a>
+        <a href="#">Условия использования</a>
         <a href="#">Контакты</a>
-        <div class="copyright">© 2024 Slangify. Все права защищены.</div>
+        <a href="#">Подписка на новости</a>
+        <div class="social-icons">
+            <a href="#" target="_blank"><img src="facebook-icon.png" alt="Facebook"></a>
+            <a href="#" target="_blank"><img src="twitter-icon.png" alt="Twitter"></a>
+            <a href="#" target="_blank"><img src="instagram-icon.png" alt="Instagram"></a>
+        </div>
+        <div class="copyright">
+            &copy; 2024 Slangify. Все права защищены.
+        </div>
     </div>
 </div>
 
