@@ -282,12 +282,13 @@
     padding: 40px 80px; /* Увеличены отступы по бокам */
     display: flex;
     justify-content: space-between; /* Разделяем элементы на две стороны */
-    align-items: center;
+    align-items: flex-start;
     font-size: 1em;
     margin-top: 30px;
     flex-wrap: wrap; /* Позволяет элементам переноситься на новую строку */
 }
 
+/* Левый блок */
 .footer .footer-left {
     color: #76c7c0; /* Зеленый акцентный цвет */
     font-size: 1.5em;
@@ -295,17 +296,19 @@
     margin-bottom: 20px; /* Добавляем отступ снизу */
 }
 
+/* Правый блок */
 .footer .footer-right {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: flex-start;
+    gap: 8px; /* Уменьшаем промежутки между ссылками */
     margin-bottom: 20px; /* Добавляем отступ снизу */
 }
 
+/* Стили ссылок */
 .footer .footer-right a {
     color: #cccccc; /* Цвет ссылок */
     text-decoration: none;
-    margin-bottom: 8px;
     font-size: 1em;
     transition: color 0.3s ease;
 }
@@ -314,6 +317,7 @@
     color: #76c7c0; /* Цвет при наведении */
 }
 
+/* Стили для копирайта (ссылка) */
 .footer .copyright {
     font-size: 0.9em;
     color: #888888; /* Цвет для копирайта */
@@ -322,6 +326,16 @@
     width: 100%;
 }
 
+.footer .copyright a {
+    color: #888888; /* Цвет ссылки */
+    text-decoration: none; /* Без подчеркивания */
+}
+
+.footer .copyright a:hover {
+    color: #76c7c0; /* Цвет при наведении */
+}
+
+/* Иконки соцсетей */
 .social-icons a {
     margin: 0 10px;
     display: inline-block;
@@ -362,6 +376,7 @@
         margin: 0 12px;
     }
 }
+
     </style>
 </head>
 <body>
@@ -433,17 +448,26 @@
         Slangify
     </div>
     <div class="footer-right">
-        <a href="#">О сайте и разработчике</a>
-        <a href="#">Условия использования</a>
-        <a href="#">Контакты</a>
-        <a href="#">Подписка на новости</a>
+        <!-- Разделение ссылок на два столбика -->
+        <div class="footer-links">
+            <a href="#">О сайте и разработчике</a>
+            <a href="#">Условия использования</a>
+        </div>
+        <div class="footer-links">
+            <a href="#">Контакты</a>
+            <a href="#">Подписка на новости</a>
+        </div>
+        
+        <!-- Социальные иконки -->
         <div class="social-icons">
             <a href="#" target="_blank"><img src="facebook-icon.png" alt="Facebook"></a>
             <a href="#" target="_blank"><img src="twitter-icon.png" alt="Twitter"></a>
             <a href="#" target="_blank"><img src="instagram-icon.png" alt="Instagram"></a>
         </div>
+        
+        <!-- Копирайт как ссылка -->
         <div class="copyright">
-            &copy; 2024 Slangify. Все права защищены.
+            <a href="#">© 2024 Slangify. Все права защищены.</a>
         </div>
     </div>
 </div>
