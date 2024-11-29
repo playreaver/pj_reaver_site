@@ -182,68 +182,78 @@
             }
         }
 
-                /* Форма */
-        .form-container {
-            background-color: #1f1f1f;
-            color: #f1f1f1;
-            padding: 30px;
-            border-radius: 10px;
-            margin-top: 40px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+   /* Форма */
+.form-container {
+    background-color: #1f1f1f;
+    color: #f1f1f1;
+    padding: 30px;
+    border-radius: 10px;
+    margin-top: 40px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
 
-        .form-container h3 {
-            font-size: 1.8em;
-            color: #76c7c0;
-            margin-bottom: 15px;
-        }
+.form-container h3 {
+    font-size: 1.8em;
+    color: #76c7c0;
+    margin-bottom: 15px;
+}
 
-        .form-container p {
-            font-size: 1.1em;
-            color: #cccccc;
-            margin-bottom: 20px;
-        }
+.form-container p {
+    font-size: 1.1em;
+    color: #cccccc;
+    margin-bottom: 20px;
+}
 
-        .form-container label {
-            display: block;
-            font-size: 1.1em;
-            margin-bottom: 10px;
-        }
+.form-container label {
+    display: block;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
 
-        .form-container input, .form-container textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 2px solid #76c7c0;
-            border-radius: 5px;
-            background-color: #2a2a2a;
-            color: #f1f1f1;
-            font-size: 1em;
-        }
+.form-container input, .form-container textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 2px solid #76c7c0;
+    border-radius: 5px;
+    background-color: #2a2a2a;
+    color: #f1f1f1;
+    font-size: 1em;
+    box-sizing: border-box; /* Чтобы поля не выходили за пределы контейнера */
+}
 
-        .form-container textarea {
-            resize: vertical;
-            height: 120px;
-        }
+.form-container input:focus, .form-container textarea:focus {
+    outline: none;
+    border-color: #a3d3d2;
+}
 
-        .form-container button.submit-btn {
-            background-color: #76c7c0;
-            color: #121212;
-            font-size: 1.2em;
-            padding: 12px 20px;
-            border-radius: 5px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
+.form-container textarea {
+    resize: vertical;
+    height: 120px;
+}
 
-        .form-container button.submit-btn:hover {
-            background-color: #121212;
-            color: #76c7c0;
-        }
+.form-container button.submit-btn {
+    background-color: #76c7c0;
+    color: #121212;
+    font-size: 1.2em;
+    padding: 12px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: center; /* Центрирование кнопки */
+}
+
+.form-container button.submit-btn:hover {
+    background-color: #121212;
+    color: #76c7c0;
+}
 
 .cookie-popup {
     position: fixed;
