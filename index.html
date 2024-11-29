@@ -48,7 +48,6 @@
             padding: 5px;
         }
 
-        /* Оставшиеся стили... */
         .header-title {
             font-size: 1.5em;
             font-weight: bold;
@@ -76,17 +75,14 @@
             border: 2px solid #76c7c0;
         }
 
-        /* Для анимаций и описания */
         .main { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; padding: 40px 20px; margin: 0 auto; width: 100%; }
         .slogan { font-size: 2.5em; font-weight: bold; line-height: 1.2; max-width: 50%; opacity: 0; transform: translateY(30px); animation: fadeInUp 1.5s ease-out forwards; animation-delay: 0.5s; }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        
-        /* Старая анимация для описания */
+
         .image-container { max-width: 50%; text-align: right; }
         .image-container img { max-width: 100%; border-radius: 12px; transform: scale(0.8); opacity: 0; animation: scaleUp 1.5s ease-out forwards; animation-delay: 0.5s; }
         @keyframes scaleUp { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
-        /* Плавное появление для описания */
         .description {
             text-align: center;
             max-width: 800px;
@@ -100,12 +96,40 @@
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Блоки с заголовками и описаниями */
+        .blocks-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+
+        .block {
+            background-color: #1f1f1f;
+            color: #f1f1f1;
+            padding: 20px;
+            border-radius: 10px;
+            width: 22%;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .block:hover {
+            transform: translateY(-10px);
+        }
+
+        .block h3 {
+            font-size: 1.5em;
+            color: #76c7c0;
+        }
+
+        .block p {
+            font-size: 1em;
+            color: #cccccc;
         }
 
         /* Кнопка для викторины */
@@ -160,9 +184,8 @@
             <a href="slang.html">Сленг</a>
             <a href="examples.html">Примеры</a>
             <a href="context.html">Контекст</a>
-            <a href="victorina.html">Викторина</a> <!-- Кнопка для викторины в хедере -->
+            <a href="victorina.html">Викторина</a>
         </nav>
-        <!-- Кнопка для переключения темы -->
         <span class="theme-toggle" onclick="toggleTheme()">🌙 / 🌞</span>
     </header>
 
@@ -180,12 +203,31 @@
         Исследуй популярные слова и фразы из современного сленга. Узнай их значения, примеры использования и культурный контекст. Погружайся в мир неформального языка вместе с Slangify!
     </div>
 
+    <!-- Блоки с заголовками и описаниями -->
+    <div class="blocks-container">
+        <div class="block">
+            <h3>Что такое сленг?</h3>
+            <p>Сленг — это язык, который используется в определённых социальных группах и отличается от обычного языка. Узнай, как он зарождается!</p>
+        </div>
+        <div class="block">
+            <h3>Популярные фразы</h3>
+            <p>Многие фразы в сленге становятся популярными, а потом уходят в небытие. Мы расскажем, какие фразы актуальны сегодня.</p>
+        </div>
+        <div class="block">
+            <h3>Контекст использования</h3>
+            <p>Сленг всегда зависит от контекста. Мы объясним, как правильно использовать слова и фразы в разных ситуациях.</p>
+        </div>
+        <div class="block">
+            <h3>История сленга</h3>
+            <p>Каждый сленг имеет свою историю. Погрузись в исследование самых популярных фраз и их происхождения!</p>
+        </div>
+    </div>
+
     <script>
         // Функция для переключения темы
         function toggleTheme() {
             const body = document.body;
             body.classList.toggle('light-mode');
-            // Сохраняем выбранную тему в localStorage
             if (body.classList.contains('light-mode')) {
                 localStorage.setItem('theme', 'light');
             } else {
@@ -193,7 +235,6 @@
             }
         }
 
-        // При загрузке страницы проверяем, есть ли сохранённая тема
         window.onload = () => {
             const savedTheme = localStorage.getItem('theme');
             if (savedTheme === 'light') {
