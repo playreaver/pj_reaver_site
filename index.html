@@ -284,18 +284,21 @@
     align-items: center;
     font-size: 1em;
     margin-top: 30px;
+    flex-wrap: wrap; /* Позволяет элементам переноситься на новую строку */
 }
 
 .footer .footer-left {
     color: #76c7c0; /* Зеленый акцентный цвет */
     font-size: 1.5em;
     font-weight: bold;
+    margin-bottom: 20px; /* Добавляем отступ снизу */
 }
 
 .footer .footer-right {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    margin-bottom: 20px; /* Добавляем отступ снизу */
 }
 
 .footer .footer-right a {
@@ -314,6 +317,8 @@
     font-size: 0.9em;
     color: #888888; /* Цвет для копирайта */
     margin-top: 10px;
+    text-align: center;
+    width: 100%;
 }
 
 .social-icons a {
@@ -329,6 +334,32 @@
 
 .social-icons img:hover {
     transform: scale(1.1);
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    .footer {
+        flex-direction: column; /* Стили для мобильных устройств */
+        align-items: center;
+        text-align: center;
+        padding: 20px; /* Уменьшаем отступы */
+    }
+
+    .footer .footer-left {
+        margin-bottom: 20px; /* Отступ снизу для левого блока */
+    }
+
+    .footer .footer-right {
+        align-items: center; /* Выравниваем элементы по центру */
+    }
+
+    .social-icons {
+        margin-top: 20px; /* Отступ для иконок соцсетей */
+    }
+
+    .social-icons a {
+        margin: 0 12px;
+    }
 }
     </style>
 </head>
