@@ -296,13 +296,18 @@
     margin-bottom: 20px; /* Добавляем отступ снизу */
 }
 
-/* Правый блок */
+/* Правый блок (ссылки и соцсети) */
 .footer .footer-right {
     display: flex;
+    flex-wrap: wrap; /* Разрешаем перенос элементов на новую строку */
+    gap: 20px; /* Увеличиваем промежутки между элементами */
+}
+
+/* Стиль для блока с ссылками */
+.footer .footer-links {
+    display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 8px; /* Уменьшаем промежутки между ссылками */
-    margin-bottom: 20px; /* Добавляем отступ снизу */
+    gap: 8px; /* Между ссылками */
 }
 
 /* Стили ссылок */
@@ -442,7 +447,6 @@
         </div>
     </div>
 
-
 <div class="footer">
     <div class="footer-left">
         Slangify
@@ -471,7 +475,6 @@
         </div>
     </div>
 </div>
-
 
 <div id="cookie-popup" class="cookie-popup">
     <div class="cookie-popup-content">
