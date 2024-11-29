@@ -183,6 +183,7 @@
         }
 
    /* Форма */
+/* Форма */
 .form-container {
     background-color: #1f1f1f;
     color: #f1f1f1;
@@ -195,7 +196,8 @@
     margin-right: auto;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center; /* Центрируем элементы внутри контейнера */
+    text-align: center; /* Тексты тоже выровнены по центру */
 }
 
 .form-container h3 {
@@ -217,7 +219,7 @@
 }
 
 .form-container input, .form-container textarea {
-    width: 100%;
+    width: 80%; /* Сделаем поля ввода шире */
     padding: 12px;
     margin-bottom: 20px;
     border: 2px solid #76c7c0;
@@ -226,6 +228,7 @@
     color: #f1f1f1;
     font-size: 1em;
     box-sizing: border-box; /* Чтобы поля не выходили за пределы контейнера */
+    text-align: center; /* Текст внутри поля по центру */
 }
 
 .form-container input:focus, .form-container textarea:focus {
@@ -247,7 +250,7 @@
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
-    align-self: center; /* Центрирование кнопки */
+    align-self: center; /* Центрируем кнопку */
 }
 
 .form-container button.submit-btn:hover {
