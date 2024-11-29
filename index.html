@@ -115,9 +115,30 @@
                 opacity: 1;
             }
         }
+        /* Сообщение для мобильных устройств */
+        .mobile-message {
+            display: none;
+            text-align: center;
+            font-size: 1.5em;
+            padding: 20px;
+            color: #76c7c0;
+        }
+        @media (max-width: 768px) {
+            body > *:not(.mobile-message) {
+                display: none;
+            }
+            .mobile-message {
+                display: block;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Сообщение для мобильных -->
+    <div class="mobile-message">
+        404 Упс! Сайт временно недоступен хихихихи
+    </div>
+
     <header>
         <div class="header-title">Slangify — Открой мир сленга</div>
         <nav class="nav">
