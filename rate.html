@@ -1,1 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оставить отзыв</title>
+    <style>
+        /* Общие стили для страницы */
+        body {
+            background-color: #121212;
+            font-family: Arial, sans-serif;
+            color: #f1f1f1;
+            margin: 0;
+            padding: 0;
+        }
 
+        .header {
+            background-color: #1f1f1f;
+            color: #76c7c0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        /* Контейнер формы */
+        .form-container {
+            background-color: #1f1f1f;
+            color: #f1f1f1;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            margin: 40px auto;
+            max-width: 700px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .form-container h3 {
+            font-size: 1.8em;
+            color: #76c7c0;
+            margin-bottom: 15px;
+        }
+
+        .form-container p {
+            font-size: 1.1em;
+            color: #cccccc;
+            margin-bottom: 20px;
+        }
+
+        .form-container label {
+            display: block;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        .form-container input, .form-container textarea {
+            width: 80%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 2px solid #76c7c0;
+            border-radius: 5px;
+            background-color: #2a2a2a;
+            color: #f1f1f1;
+            font-size: 1em;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .form-container input:focus, .form-container textarea:focus {
+            outline: none;
+            border-color: #a3d3d2;
+        }
+
+        .form-container textarea {
+            resize: vertical;
+            height: 120px;
+        }
+
+        .form-container button.submit-btn {
+            background-color: #76c7c0;
+            color: #121212;
+            font-size: 1.2em;
+            padding: 12px 20px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            align-self: center;
+        }
+
+        .form-container button.submit-btn:hover {
+            background-color: #121212;
+            color: #76c7c0;
+        }
+
+        /* Подвал */
+        .footer {
+            background-color: #181818;
+            color: #cccccc;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .footer p {
+            margin: 10px 0;
+        }
+
+        .footer a {
+            color: #76c7c0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: #a3d3d2;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Заголовок страницы -->
+    <div class="header">
+        <h1>Оставить отзыв</h1>
+    </div>
+
+    <!-- Форма отзыва -->
+    <div class="form-container">
+        <h3>Оставь свой отзыв!</h3>
+        <p>Поделись своим мнением о сайте или предложи идеи для улучшений.</p>
+        <form action="https://formspree.io/f/xgvepoyb" method="POST">
+            <label for="name">Имя:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Отзыв:</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="submit" class="submit-btn">Отправить</button>
+        </form>
+    </div>
+
+    <!-- Подвал -->
+    <div class="footer">
+        <p>&copy; 2024 Slangify. Все права защищены.</p>
+        <p>Перейди к <a href="index.html">главной странице</a>.</p>
+    </div>
+
+</body>
+</html>
