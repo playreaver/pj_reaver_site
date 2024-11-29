@@ -1,1 +1,155 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slangify Library</title>
+    <link rel="icon" href="logo/1sitelogo.png" type="image/png">
+    <style>
+        /* Общие стили */
+        body {
+            background-color: #121212;
+            color: #f1f1f1;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header, footer {
+            background-color: #1f1f1f;
+            color: #f1f1f1;
+            padding: 20px 40px;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        nav a {
+            text-decoration: none;
+            color: #f1f1f1;
+            margin: 0 15px;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        nav a:hover {
+            color: #121212;
+            background-color: #76c7c0;
+        }
 
+        .main-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        /* Список сленгов */
+        .slang-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .slang-item {
+            background-color: #1f1f1f;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+        .slang-item:hover {
+            transform: scale(1.05);
+        }
+        .slang-title {
+            font-size: 1.5em;
+            color: #76c7c0;
+            margin-bottom: 10px;
+        }
+        .slang-description {
+            font-size: 1em;
+            color: #cccccc;
+        }
+
+        /* Примеры и контексты */
+        .examples, .context {
+            margin-top: 40px;
+        }
+        .section-title {
+            font-size: 2em;
+            color: #76c7c0;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .example-item, .context-item {
+            background-color: #1f1f1f;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        .example-item:hover, .context-item:hover {
+            background-color: #76c7c0;
+            color: #121212;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-title">Slangify — Словарь сленга</div>
+        <nav class="nav">
+            <a href="index.html">Главная</a>
+            <a href="library.html">Словарь</a>
+            <a href="rate.html">Оценка</a>
+        </nav>
+    </header>
+
+    <main class="main-container">
+        <section class="slang">
+            <h2 class="section-title">Список сленгов</h2>
+            <div class="slang-list">
+                <div class="slang-item">
+                    <h3 class="slang-title">Чилл</h3>
+                    <p class="slang-description">Означает расслабиться или успокоиться.</p>
+                </div>
+                <div class="slang-item">
+                    <h3 class="slang-title">Хайп</h3>
+                    <p class="slang-description">Что-то популярное, трендовое.</p>
+                </div>
+                <!-- Добавь больше сленгов сюда -->
+            </div>
+        </section>
+
+        <section class="examples">
+            <h2 class="section-title">Примеры использования</h2>
+            <div class="example-item">
+                <p><strong>Чилл:</strong> "После работы я решил чиллить дома и смотреть сериалы."</p>
+            </div>
+            <div class="example-item">
+                <p><strong>Хайп:</strong> "Этот трек собрал весь хайп в соцсетях!"</p>
+            </div>
+            <!-- Добавь больше примеров -->
+        </section>
+
+        <section class="context">
+            <h2 class="section-title">Контексты</h2>
+            <div class="context-item">
+                <p><strong>Чилл:</strong> Используется, когда кто-то предлагает отдохнуть или снять напряжение.</p>
+            </div>
+            <div class="context-item">
+                <p><strong>Хайп:</strong> Обычно описывает что-то, что становится популярным или вирусным.</p>
+            </div>
+            <!-- Добавь больше контекстов -->
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-left">© 2024 Slangify</div>
+        <div class="footer-right">
+            <div class="footer-links">
+                <a href="index.html">Главная</a>
+                <a href="rate.html">Оценить нас</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
