@@ -165,21 +165,67 @@
             color: #76c7c0;
         }
 
-        /* Сообщение для мобильных */
-        .mobile-message {
-            display: none;
-            text-align: center;
-            font-size: 1.5em;
-            padding: 20px;
-            color: #76c7c0;
+        /* Форма */
+        .form-container {
+            background-color: #1f1f1f;
+            color: #f1f1f1;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 40px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
-        @media (max-width: 768px) {
-            body > *:not(.mobile-message) {
-                display: none;
-            }
-            .mobile-message {
-                display: block;
-            }
+
+        .form-container h3 {
+            font-size: 1.8em;
+            color: #76c7c0;
+            margin-bottom: 15px;
+        }
+
+        .form-container p {
+            font-size: 1.1em;
+            color: #cccccc;
+            margin-bottom: 20px;
+        }
+
+        .form-container label {
+            display: block;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        .form-container input, .form-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #76c7c0;
+            border-radius: 5px;
+            background-color: #2a2a2a;
+            color: #f1f1f1;
+            font-size: 1em;
+        }
+
+        .form-container textarea {
+            resize: vertical;
+            height: 120px;
+        }
+
+        .form-container button.submit-btn {
+            background-color: #76c7c0;
+            color: #121212;
+            font-size: 1.2em;
+            padding: 12px 20px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .form-container button.submit-btn:hover {
+            background-color: #121212;
+            color: #76c7c0;
         }
     </style>
 </head>
@@ -204,43 +250,61 @@
     <div class="main">
         <div class="slogan">
             Говори <span style="color: #76c7c0;">на стиле</span>,  
-            <br> Понимай <span style="color: #76c7c0;">контекст.</span>
+            <br> Понимай сленг без труда!
         </div>
         <div class="image-container">
-            <img src="https://via.placeholder.com/500x300" alt="Картинка">
+            <img src="your-image.jpg" alt="Slangify Image">
         </div>
     </div>
 
     <div class="description">
-        Исследуй популярные слова и фразы из современного сленга. Узнай их значения, примеры использования и культурный контекст. Погружайся в мир неформального языка вместе с Slangify!
+        Добро пожаловать на Slangify — портал, который откроет тебе мир английского сленга и поможет разобраться в его контексте. Узнай, как правильно использовать сленговые выражения и будь в курсе актуальных трендов!
     </div>
 
-    <!-- Блоки с заголовками и описаниями -->
     <div class="blocks-container">
         <div class="block">
             <h3>Что такое сленг?</h3>
-            <p>Сленг — это язык, который используется в определённых социальных группах и отличается от обычного языка. Узнай, как он зарождается!</p>
+            <p>Погрузись в мир сленга, его историю и особенности.</p>
         </div>
         <div class="block">
-            <h3>Популярные фразы</h3>
-            <p>Многие фразы в сленге становятся популярными, а потом уходят в небытие. Мы расскажем, какие фразы актуальны сегодня.</p>
+            <h3>Как использовать?</h3>
+            <p>Изучи, когда и как использовать сленговые выражения.</p>
         </div>
         <div class="block">
-            <h3>Контекст использования</h3>
-            <p>Сленг всегда зависит от контекста. Мы объясним, как правильно использовать слова и фразы в разных ситуациях.</p>
+            <h3>Примеры</h3>
+            <p>Посмотри примеры использования популярных выражений.</p>
         </div>
         <div class="block">
-            <h3>Создай свой стиль</h3>
-            <p>Сленг — это способ выразить себя. Попробуй и ты создать свой уникальный стиль общения.</p>
+            <h3>Контекст</h3>
+            <p>Пойми, в каком контексте лучше использовать сленг.</p>
         </div>
     </div>
 
     <div class="quiz-button">
-        <a href="quiz.html">Узнать больше через викторину!</a>
+        <a href="victorina.html">Пройти викторину</a>
+    </div>
+
+    <!-- Форма -->
+    <div class="form-container">
+        <h3>Оставь свой отзыв!</h3>
+        <p>Поделись своим мнением о сайте или предложи идеи для улучшений.</p>
+        <form>
+            <label for="name">Имя:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Отзыв:</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="submit" class="submit-btn">Отправить</button>
+        </form>
     </div>
 
     <script>
-        function toggleTheme() {
+        // Тема
+        const toggleTheme = () => {
             document.body.classList.toggle('light-mode');
         }
     </script>
