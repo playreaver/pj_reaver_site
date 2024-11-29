@@ -181,6 +181,69 @@
                 display: block;
             }
         }
+
+                /* Форма */
+        .form-container {
+            background-color: #1f1f1f;
+            color: #f1f1f1;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 40px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .form-container h3 {
+            font-size: 1.8em;
+            color: #76c7c0;
+            margin-bottom: 15px;
+        }
+
+        .form-container p {
+            font-size: 1.1em;
+            color: #cccccc;
+            margin-bottom: 20px;
+        }
+
+        .form-container label {
+            display: block;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        .form-container input, .form-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #76c7c0;
+            border-radius: 5px;
+            background-color: #2a2a2a;
+            color: #f1f1f1;
+            font-size: 1em;
+        }
+
+        .form-container textarea {
+            resize: vertical;
+            height: 120px;
+        }
+
+        .form-container button.submit-btn {
+            background-color: #76c7c0;
+            color: #121212;
+            font-size: 1.2em;
+            padding: 12px 20px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .form-container button.submit-btn:hover {
+            background-color: #121212;
+            color: #76c7c0;
+        }
     </style>
 </head>
 <body>
@@ -237,6 +300,24 @@
 
     <div class="quiz-button">
         <a href="quiz.html">Узнать больше через викторину!</a>
+    </div>
+
+        <!-- Форма -->
+    <div class="form-container">
+        <h3>Оставь свой отзыв!</h3>
+        <p>Поделись своим мнением о сайте или предложи идеи для улучшений.</p>
+        <form>
+            <label for="name">Имя:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Отзыв:</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="submit" class="submit-btn">Отправить</button>
+        </form>
     </div>
 
     <script>
