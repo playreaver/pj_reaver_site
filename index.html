@@ -244,20 +244,19 @@
             background-color: #121212;
             color: #76c7c0;
         }
-
-.cookie-popup {
+        .cookie-popup {
     position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+    bottom: 20px; /* Отступ снизу */
+    left: 50%;
+    transform: translateX(-50%); /* Центрирование попапа по горизонтали */
     background-color: #1f1f1f;
     color: #f1f1f1;
-    padding: 20px; /* Увеличены отступы для комфорта */
+    padding: 25px; /* Отступы внутри попапа */
     text-align: center;
     display: none;
     z-index: 1000;
-    border-radius: 12px 12px 0 0; /* Закругленные верхние углы */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Тень для попапа */
+    border-radius: 15px; /* Закругленные углы для фона попапа */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Тень для попапа */
 }
 
 .cookie-popup-content {
@@ -269,7 +268,7 @@
     background-color: #76c7c0;
     color: #121212;
     font-size: 1.2em;
-    padding: 12px 25px; /* Увеличены отступы для кнопки */
+    padding: 12px 25px;
     border: none;
     border-radius: 8px; /* Закругленные углы для кнопки */
     cursor: pointer;
@@ -280,6 +279,7 @@
     background-color: #121212;
     color: #76c7c0;
 }
+    
     </style>
 </head>
 <body>
