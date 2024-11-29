@@ -8,67 +8,69 @@
         body {
             background-color: #121212;
             color: #f1f1f1;
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         header {
-            background-color: #1e1e1e;
-            padding: 20px;
+            padding: 40px 20px;
             text-align: center;
-        }
-        nav a {
-            color: #76c7c0;
-            margin: 0 15px;
-            text-decoration: none;
+            font-size: 1.5em;
             font-weight: bold;
+            color: #76c7c0;
         }
-        .container {
-            padding: 20px;
+        .main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            padding: 40px 20px;
+            width: 100%;
+        }
+        .slogan {
+            font-size: 2.5em;
+            font-weight: bold;
+            line-height: 1.2;
+            max-width: 50%;
+        }
+        .image-container {
+            max-width: 50%;
+            text-align: right;
+        }
+        .image-container img {
+            max-width: 100%;
+            border-radius: 12px;
+        }
+        .description {
             text-align: center;
-        }
-        .card {
-            background-color: #1e1e1e;
-            margin: 20px auto;
+            max-width: 800px;
             padding: 20px;
-            border-radius: 8px;
-            max-width: 400px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #cccccc;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Slang Guide</h1>
-        <nav>
-            <a href="#slang">Сленг</a>
-            <a href="#examples">Примеры</a>
-            <a href="#context">Контекст</a>
-        </nav>
+        Slang Guide - Explore the Language of Cool
     </header>
 
-    <div class="container">
-        <section id="slang">
-            <h2>Сленг</h2>
-            <div class="card">
-                <h3>"Flex"</h3>
-                <p>Показуха, демонстрация своих достижений.</p>
-            </div>
-        </section>
+    <div class="main">
+        <div class="slogan">
+            Speak <span style="color: #76c7c0;">the lingo</span>,  
+            <br> Understand <span style="color: #76c7c0;">the culture.</span>
+        </div>
+        <div class="image-container">
+            <img src="https://via.placeholder.com/500x300" alt="Placeholder image">
+        </div>
+    </div>
 
-        <section id="examples">
-            <h2>Примеры</h2>
-            <div class="card">
-                <p>"Look at him flexing his new car!"</p>
-            </div>
-        </section>
-
-        <section id="context">
-            <h2>Контекст</h2>
-            <div class="card">
-                <p>Слово "flex" стало популярным благодаря хип-хоп культуре.</p>
-            </div>
-        </section>
+    <div class="description">
+        Discover the most popular slang expressions, their meanings, and how to use them in real conversations. Dive into the fascinating world of informal language and cultural context.  
     </div>
 </body>
 </html>
