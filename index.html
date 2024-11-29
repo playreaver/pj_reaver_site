@@ -5,13 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slangify</title>
     <style>
+        /* Базовые стили */
         body {
             background-color: #121212;
             color: #f1f1f1;
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
+
+        /* Светлая тема */
+        body.light-mode {
+            background-color: #ffffff;
+            color: #121212;
+        }
+
+        /* Хедер */
         header {
             display: flex;
             justify-content: space-between;
@@ -23,15 +33,33 @@
             top: 0;
             z-index: 1000;
         }
+
+        /* Кнопка для переключения темы */
+        .theme-toggle {
+            cursor: pointer;
+            color: #76c7c0;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+        }
+        .theme-toggle:hover {
+            color: #121212;
+            background-color: #76c7c0;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        /* Оставшиеся стили... */
         .header-title {
             font-size: 1.5em;
             font-weight: bold;
             color: #76c7c0;
         }
+
         .nav {
             display: flex;
             gap: 15px;
         }
+
         .nav a {
             text-decoration: none;
             color: #f1f1f1;
@@ -41,96 +69,25 @@
             border-radius: 4px;
             transition: all 0.3s ease;
         }
+
         .nav a:hover {
             color: #121212;
             background-color: #76c7c0;
             border: 2px solid #76c7c0;
         }
-        .main {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            padding: 40px 20px;
-            margin: 0 auto;
-            width: 100%;
-        }
-        .slogan {
-            font-size: 2.5em;
-            font-weight: bold;
-            line-height: 1.2;
-            max-width: 50%;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1.5s ease-out forwards;
-        }
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .image-container {
-            max-width: 50%;
-            text-align: right;
-        }
-        .image-container img {
-            max-width: 100%;
-            border-radius: 12px;
-            transform: scale(0.8);
-            opacity: 0;
-            animation: scaleUp 1.5s ease-out forwards;
-            animation-delay: 0.5s;
-        }
-        @keyframes scaleUp {
-            from {
-                transform: scale(0.8);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-        .description {
-            text-align: center;
-            max-width: 800px;
-            padding: 20px;
-            font-size: 1.1em;
-            line-height: 1.6;
-            color: #cccccc;
-            opacity: 0;
-            animation: fadeIn 2s ease-out forwards;
-            animation-delay: 1s;
-        }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-        /* Сообщение для мобильных устройств */
-        .mobile-message {
-            display: none;
-            text-align: center;
-            font-size: 1.5em;
-            padding: 20px;
-            color: #76c7c0;
-        }
-        @media (max-width: 768px) {
-            body > *:not(.mobile-message) {
-                display: none;
-            }
-            .mobile-message {
-                display: block;
-            }
-        }
+
+        /* Для анимаций и описания */
+        .main { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; padding: 40px 20px; margin: 0 auto; width: 100%; }
+        .slogan { font-size: 2.5em; font-weight: bold; line-height: 1.2; max-width: 50%; opacity: 0; transform: translateY(30px); animation: fadeInUp 1.5s ease-out forwards; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .image-container { max-width: 50%; text-align: right; }
+        .image-container img { max-width: 100%; border-radius: 12px; transform: scale(0.8); opacity: 0; animation: scaleUp 1.5s ease-out forwards; animation-delay: 0.5s; }
+        @keyframes scaleUp { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+        /* Сообщение для мобильных */
+        .mobile-message { display: none; text-align: center; font-size: 1.5em; padding: 20px; color: #76c7c0; }
+        @media (max-width: 768px) { body > *:not(.mobile-message) { display: none; } .mobile-message { display: block; } }
+
     </style>
 </head>
 <body>
@@ -147,6 +104,8 @@
             <a href="examples.html">Примеры</a>
             <a href="context.html">Контекст</a>
         </nav>
+        <!-- Кнопка для переключения темы -->
+        <span class="theme-toggle" onclick="toggleTheme()">🌙 / 🌞</span>
     </header>
 
     <div class="main">
@@ -162,5 +121,27 @@
     <div class="description">
         Исследуй популярные слова и фразы из современного сленга. Узнай их значения, примеры использования и культурный контекст. Погружайся в мир неформального языка вместе с Slangify!
     </div>
+
+    <script>
+        // Функция для переключения темы
+        function toggleTheme() {
+            const body = document.body;
+            body.classList.toggle('light-mode');
+            // Сохраняем выбранную тему в localStorage
+            if (body.classList.contains('light-mode')) {
+                localStorage.setItem('theme', 'light');
+            } else {
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // При загрузке страницы проверяем, есть ли сохранённая тема
+        window.onload = () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.body.classList.add('light-mode');
+            }
+        };
+    </script>
 </body>
 </html>
