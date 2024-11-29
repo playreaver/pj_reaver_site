@@ -170,6 +170,9 @@
     transform: translateY(30px);
     animation: fadeInUp 1.5s ease-out forwards;
     animation-delay: 0.5s;
+    white-space: nowrap; /* Запрещаем перенос текста на следующую строку */
+    overflow: hidden; /* Обрезаем все, что не помещается */
+    text-overflow: ellipsis; /* Показываем троеточие, если текст выходит за пределы */
 }
 
 @keyframes fadeInUp {
