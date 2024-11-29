@@ -1,1 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Викторина | Slangify</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #f1f1f1;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
 
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: #1f1f1f;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .header-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #76c7c0;
+        }
+
+        .nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #f1f1f1;
+            font-size: 1em;
+            padding: 8px 16px;
+            border: 2px solid transparent;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .nav a:hover {
+            color: #121212;
+            background-color: #76c7c0;
+            border: 2px solid #76c7c0;
+        }
+
+        .quiz-container {
+            padding: 40px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .quiz-question {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .quiz-options {
+            margin: 20px 0;
+        }
+
+        .quiz-option {
+            background-color: #76c7c0;
+            color: #121212;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            margin: 10px 0;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-option:hover {
+            background-color: #5fa79b;
+        }
+
+        .quiz-result {
+            font-size: 1.5em;
+            color: #76c7c0;
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-title">Slangify — Викторина</div>
+    <nav class="nav">
+        <a href="index.html">Главная</a>
+        <a href="slang.html">Сленг</a>
+        <a href="examples.html">Примеры</a>
+        <a href="context.html">Контекст</a>
+    </nav>
+</header>
+
+<div class="quiz-container">
+    <div class="quiz-question">Какое значение у слова "лулз"?</div>
+
+    <div class="quiz-options">
+        <button class="quiz-option" onclick="checkAnswer(1)">Смех или прикол</button>
+        <button class="quiz-option" onclick="checkAnswer(2)">Важная информация</button>
+        <button class="quiz-option" onclick="checkAnswer(3)">Деньги</button>
+    </div>
+
+    <div class="quiz-result" id="result"></div>
+</div>
+
+<script>
+    function checkAnswer(selected) {
+        let result = document.getElementById("result");
+
+        // Проверяем правильность ответа
+        if (selected === 1) {
+            result.innerHTML = "Правильно! 'Лулз' означает смех или прикол.";
+            result.style.color = "green";
+        } else {
+            result.innerHTML = "Неправильно. Попробуйте снова!";
+            result.style.color = "red";
+        }
+
+        result.style.display = "block";
+    }
+</script>
+
+</body>
+</html>
