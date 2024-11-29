@@ -369,19 +369,14 @@
             document.body.classList.toggle('light-mode');
         }
 
-        document.addEventListener("DOMContentLoaded", function() {
-            const cookiePopup = document.getElementById("cookie-popup");
-            const acceptButton = document.getElementById("accept-cookies");
+if (!localStorage.getItem("cookiesAccepted")) {
+    cookiePopup.style.display = "block";
+}
 
-            if (!localStorage.getItem("cookiesAccepted")) {
-                cookiePopup.style.display = "block";
-            }
-
-            acceptButton.addEventListener("click", function() {
-                localStorage.setItem("cookiesAccepted", "true");
-                cookiePopup.style.display = "none";
-            });
-        });
+acceptButton.addEventListener("click", function() {
+    localStorage.setItem("cookiesAccepted", "true");
+    cookiePopup.style.display = "none";
+});
     </script>
 </body>
 </html>
