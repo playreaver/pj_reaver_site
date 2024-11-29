@@ -116,6 +116,8 @@
             text-align: center;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
             transition: transform 0.3s ease;
+            opacity: 0;
+            animation: fadeInBlock 0.8s ease-out forwards;
         }
 
         .block:hover {
@@ -131,6 +133,16 @@
             font-size: 1em;
             color: #cccccc;
         }
+
+        @keyframes fadeInBlock {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .block:nth-child(1) { animation-delay: 0.5s; }
+        .block:nth-child(2) { animation-delay: 0.6s; }
+        .block:nth-child(3) { animation-delay: 0.7s; }
+        .block:nth-child(4) { animation-delay: 0.8s; }
 
         /* Кнопка для викторины */
         .quiz-button {
@@ -218,29 +230,19 @@
             <p>Сленг всегда зависит от контекста. Мы объясним, как правильно использовать слова и фразы в разных ситуациях.</p>
         </div>
         <div class="block">
-            <h3>История сленга</h3>
-            <p>Каждый сленг имеет свою историю. Погрузись в исследование самых популярных фраз и их происхождения!</p>
+            <h3>Создай свой стиль</h3>
+            <p>Сленг — это способ выразить себя. Попробуй и ты создать свой уникальный стиль общения.</p>
         </div>
     </div>
 
-    <script>
-        // Функция для переключения темы
-        function toggleTheme() {
-            const body = document.body;
-            body.classList.toggle('light-mode');
-            if (body.classList.contains('light-mode')) {
-                localStorage.setItem('theme', 'light');
-            } else {
-                localStorage.setItem('theme', 'dark');
-            }
-        }
+    <div class="quiz-button">
+        <a href="quiz.html">Узнать больше через викторину!</a>
+    </div>
 
-        window.onload = () => {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'light') {
-                document.body.classList.add('light-mode');
-            }
-        };
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+        }
     </script>
 </body>
 </html>
