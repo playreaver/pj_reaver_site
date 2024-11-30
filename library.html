@@ -38,63 +38,59 @@
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Тень для iframe */
     }
 
-.slang-beginners {
-    background-color: #090909;
-    padding: 40px 20px;
-    margin-top: 60px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-}
+    .beginner-terms {
+        background-color: #090909;
+        padding: 40px 20px;
+        margin-top: 60px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    }
+    
+    .beginner-terms h2 {
+        color: #76c7c0;
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 2.5em;
+    }
+    
+    .beginner-terms p {
+        color: #bbbbbb;
+        font-size: 1.1em;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    
+    .beginner-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+    
+    .beginner-item {
+        background-color: #1f1f1f;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+    
+    .beginner-item:hover {
+        background-color: #76c7c0;
+        color: #121212;
+        transform: scale(1.05);
+    }
+    
+    .beginner-item h3 {
+        font-size: 1.5em;
+        color: #76c7c0;
+        margin-bottom: 10px;
+    }
+    
+    .beginner-item p {
+        font-size: 1em;
+        color: #bbbbbb;
+    }
 
-.slang-beginners h2 {
-    color: #76c7c0;
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 2.5em;
-}
-
-.slang-beginners p {
-    color: #bbbbbb;
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 1.1em;
-}
-
-.slang-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-}
-
-.slang-card {
-    background-color: #1f1f1f;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-.slang-card:hover {
-    background-color: #76c7c0;
-    color: #121212;
-    transform: scale(1.05);
-}
-
-.slang-card h3 {
-    font-size: 1.4em;
-    color: #76c7c0;
-    margin-bottom: 15px;
-}
-
-.slang-card p {
-    font-size: 1em;
-    color: #bbbbbb;
-    margin-bottom: 10px;
-}
-
-.slang-card strong {
-    font-weight: bold;
-}
 
     .recommendations {
     background-color: #090909;
@@ -366,26 +362,26 @@
             </div>
         </section>
 
-        <section id="slang-for-beginners" class="slang-beginners">
+        <section id="beginner-terms" class="beginner-terms">
             <h2>Изучи сегодня</h2>
-            <p>Если ты только начинаешь погружаться в мир сленга, вот несколько выражений, которые стоит знать, чтобы не отставать от трендов!</p>
-            <div class="slang-list">
-                <div class="slang-card">
+            <p>Если ты только начинаешь, вот несколько выражений, которые стоит знать, чтобы быть в теме и не отставать от трендов!</p>
+            <div class="beginner-list">
+                <div class="beginner-item">
                     <h3>LOL</h3>
                     <p><strong>Что это?</strong> Laughing Out Loud — смеяться вслух.</p>
                     <p><strong>Пример:</strong> "Ты видел его лицо, LOL!"</p>
                 </div>
-                <div class="slang-card">
+                <div class="beginner-item">
                     <h3>OMG</h3>
                     <p><strong>Что это?</strong> Oh My God — о, боже мой!</p>
                     <p><strong>Пример:</strong> "OMG, ты что, серьезно?!"</p>
                 </div>
-                <div class="slang-card">
+                <div class="beginner-item">
                     <h3>BRB</h3>
                     <p><strong>Что это?</strong> Be Right Back — скоро вернусь.</p>
                     <p><strong>Пример:</strong> "Погоди, BRB, сейчас вернусь!"</p>
                 </div>
-                <div class="slang-card">
+                <div class="beginner-item">
                     <h3>FYI</h3>
                     <p><strong>Что это?</strong> For Your Information — к твоему сведению.</p>
                     <p><strong>Пример:</strong> "FYI, я скоро уезжаю." </p>
