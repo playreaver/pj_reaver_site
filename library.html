@@ -205,12 +205,12 @@
 
         <section class="examples">
             <h2>Примеры использования</h2>
-            <div class="examples"></div>
+            <div class="examples-list"></div>
         </section>
-
+        
         <section class="context">
             <h2>Контексты</h2>
-            <div class="context"></div>
+            <div class="context-list"></div>
         </section>
     </main>
 
@@ -238,8 +238,8 @@
         // Отображение данных на странице
         function displayData(data) {
             const slangList = document.querySelector('.slang-list');
-            const examplesList = document.querySelector('.examples');
-            const contextList = document.querySelector('.context');
+            const examplesList = document.querySelector('.examples-list');
+            const contextList = document.querySelector('.context-list');
 
             slangList.innerHTML = '';
             examplesList.innerHTML = '';
