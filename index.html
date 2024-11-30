@@ -618,6 +618,16 @@ acceptButton.addEventListener("click", function() {
     localStorage.setItem("cookiesAccepted", "true");
     cookiePopup.style.display = "none";
 });
-    </script>
+
+    window.onload = function() {
+        var cookiePopup = document.querySelector('.cookie-popup');
+        cookiePopup.style.display = 'block'; // Показываем попап
+    }
+
+    function acceptCookies() {
+        var cookiePopup = document.querySelector('.cookie-popup');
+        cookiePopup.style.display = 'none'; // Скрываем попап при принятии
+        // Здесь можно добавить код для записи в cookie, чтобы не показывать окно при последующих визитах
+    }
 </body>
 </html>
