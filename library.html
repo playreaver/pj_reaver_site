@@ -305,134 +305,129 @@
         <div>© 2024 Slangify</div>
     </footer>
 
-    <script>
-        // Переключение темы
-        function toggleTheme() {
-            document.body.classList.toggle('light-mode');
-        }
+<script>
+    // Переключение темы
+    function toggleTheme() {
+        document.body.classList.toggle('light-mode');
+    }
 
-        let slangData = []; // Массив для хранения данных из JSON
-        let categories = []; // Массив для категорий
+    let slangData = []; // Массив для хранения данных из JSON
+    let categories = []; // Массив для категорий
 
-        // Загрузка данных из JSON
-        fetch('slangData.json')
-            .then(response => response.json())
-            .then(data => {
-                slangData = data; // Сохраняем данные
-                categories = [...new Set(data.map(item => item.category))]; // Извлекаем уникальные категории
-                createCategoryButtons(categories); // Создаем кнопки категорий
-                displayData(data); // Показываем данные на странице
-            })
-            .catch(error => console.error('Ошибка загрузки данных:', error));
+    // Загрузка данных из JSON
+    fetch('slangData.json')
+        .then(response => response.json())
+        .then(data => {
+            slangData = data; // Сохраняем данные
+            categories = [...new Set(data.map(item => item.category))]; // Извлекаем уникальные категории
+            createCategoryButtons(categories); // Создаем кнопки категорий
+            displayData(data); // Показываем данные на странице
 
-            // Создание кнопок для категорий
-        function createCategoryButtons(categories) {
-            const categoryButtonsContainer = document.querySelector('.category-buttons');
-            categoryButtonsContainer.innerHTML = ''; // Очищаем контейнер перед добавлением кнопок
-        
-            // Добавляем кнопку "Все"
-            const allButton = document.createElement('button');
-            allButton.classList.add('category-button');
-            allButton.innerText = 'Все';
-            allButton.onclick = () => displayData(slangData); // Показывает все сленги
-            categoryButtonsContainer.appendChild(allButton);
-        
-            // Добавляем кнопки для каждой категории
-            categories.forEach(category => {
-                const button = document.createElement('button');
-                button.classList.add('category-button');
-                button.innerText = category;
-                button.onclick = () => filterByCategory(category); // Добавляем обработчик для фильтрации
-                categoryButtonsContainer.appendChild(button);
-            });
-        }
+            // Вызов функции для генерации рекомендаций
+            generateRecommendations(); 
+        })
+        .catch(error => console.error('Ошибка загрузки данных:', error));
 
-        function filterByCategory(category) {
-            const filteredData = slangData.filter(item => item.category === category);
-            displayData(filteredData);
-        }
+    // Создание кнопок для категорий
+    function createCategoryButtons(categories) {
+        const categoryButtonsContainer = document.querySelector('.category-buttons');
+        categoryButtonsContainer.innerHTML = ''; // Очищаем контейнер перед добавлением кнопок
+    
+        // Добавляем кнопку "Все"
+        const allButton = document.createElement('button');
+        allButton.classList.add('category-button');
+        allButton.innerText = 'Все';
+        allButton.onclick = () => displayData(slangData); // Показывает все сленги
+        categoryButtonsContainer.appendChild(allButton);
+    
+        // Добавляем кнопки для каждой категории
+        categories.forEach(category => {
+            const button = document.createElement('button');
+            button.classList.add('category-button');
+            button.innerText = category;
+            button.onclick = () => filterByCategory(category); // Добавляем обработчик для фильтрации
+            categoryButtonsContainer.appendChild(button);
+        });
+    }
 
-        // Фильтрация данных по категории
-        function filterByCategory(category) {
-            const filteredData = slangData.filter(item => item.category === category);
-            displayData(filteredData);
-        }
+    // Фильтрация данных по категории
+    function filterByCategory(category) {
+        const filteredData = slangData.filter(item => item.category === category);
+        displayData(filteredData);
+    }
 
-        // Отображение данных на странице
-        function displayData(data) {
-            const slangList = document.querySelector('.slang-list');
-            const examplesList = document.querySelector('.examples-list');
-            const contextList = document.querySelector('.context-list');
+    // Отображение данных на странице
+    function displayData(data) {
+        const slangList = document.querySelector('.slang-list');
+        const examplesList = document.querySelector('.examples-list');
+        const contextList = document.querySelector('.context-list');
 
-            slangList.innerHTML = '';
+        slangList.innerHTML = '';
+        examplesList.innerHTML = '';
+        contextList.innerHTML = '';
+
+        if (data.length === 0) {
+            slangList.innerHTML = '<p class="no-results">Ничего не найдено!</p>';
             examplesList.innerHTML = '';
             contextList.innerHTML = '';
-
-            if (data.length === 0) {
-                slangList.innerHTML = '<p class="no-results">Ничего не найдено!</p>';
-                examplesList.innerHTML = '';
-                contextList.innerHTML = '';
-                return;
-            }
-
-            data.forEach(item => {
-                // Сленги
-                slangList.innerHTML += `
-                    <div class="slang-item">
-                        <h3>${item.title}</h3>
-                        <p>${item.description}</p>
-                    </div>
-                `;
-                // Примеры
-                examplesList.innerHTML += `
-                    <div class="example-item">
-                        <p><strong>${item.title}:</strong> "${item.example}"</p>
-                    </div>
-                `;
-                // Контексты
-                contextList.innerHTML += `
-                    <div class="context-item">
-                        <p><strong>${item.title}:</strong> ${item.context}</p>
-                    </div>
-                `;
-            });
+            return;
         }
 
-        function generateRecommendations() {
-            const recommendationList = document.querySelector('.recommendation-list');
-        
-            // Предположим, что мы выбираем случайные 5 элементов из базы данных
-            const recommendedItems = slangData.sort(() => 0.5 - Math.random()).slice(0, 5); // случайные 5 элементов
-        
-            // Добавляем элементы в DOM
-            recommendedItems.forEach(item => {
-                recommendationList.innerHTML += `
-                    <div class="recommendation-item">
-                        <h3>${item.title}</h3>
-                        <p>${item.description}</p>
-                    </div>
-                `;
-            });
-        }
-        
-        // Вызов функции для генерации рекомендаций
-        generateRecommendations();
-        
-        // Поиск по данным
-        function performSearch() {
-            const searchQuery = document.getElementById('search-input').value.toLowerCase();
+        data.forEach(item => {
+            // Сленги
+            slangList.innerHTML += `
+                <div class="slang-item">
+                    <h3>${item.title}</h3>
+                    <p>${item.description}</p>
+                </div>
+            `;
+            // Примеры
+            examplesList.innerHTML += `
+                <div class="example-item">
+                    <p><strong>${item.title}:</strong> "${item.example}"</p>
+                </div>
+            `;
+            // Контексты
+            contextList.innerHTML += `
+                <div class="context-item">
+                    <p><strong>${item.title}:</strong> ${item.context}</p>
+                </div>
+            `;
+        });
+    }
 
-            // Фильтрация данных
-            const filteredData = slangData.filter(item =>
-                item.title.toLowerCase().includes(searchQuery) || 
-                item.description.toLowerCase().includes(searchQuery) ||
-                item.example.toLowerCase().includes(searchQuery) || 
-                item.context.toLowerCase().includes(searchQuery)
-            );
+    function generateRecommendations() {
+        const recommendationList = document.querySelector('.recommendation-list');
+    
+        // Предположим, что мы выбираем случайные 5 элементов из базы данных
+        const recommendedItems = slangData.sort(() => 0.5 - Math.random()).slice(0, 5); // случайные 5 элементов
+    
+        // Добавляем элементы в DOM
+        recommendedItems.forEach(item => {
+            recommendationList.innerHTML += `
+                <div class="recommendation-item">
+                    <h3>${item.title}</h3>
+                    <p>${item.description}</p>
+                </div>
+            `;
+        });
+    }
 
-            // Обновляем данные на странице
-            displayData(filteredData);
-        }
-    </script>
+    // Поиск по данным
+    function performSearch() {
+        const searchQuery = document.getElementById('search-input').value.toLowerCase();
+
+        // Фильтрация данных
+        const filteredData = slangData.filter(item =>
+            item.title.toLowerCase().includes(searchQuery) || 
+            item.description.toLowerCase().includes(searchQuery) ||
+            item.example.toLowerCase().includes(searchQuery) || 
+            item.context.toLowerCase().includes(searchQuery)
+        );
+
+        // Обновляем данные на странице
+        displayData(filteredData);
+    }
+</script>
 </body>
 </html>
