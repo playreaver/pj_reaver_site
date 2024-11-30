@@ -38,6 +38,59 @@
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Тень для iframe */
     }
 
+        .radar-trends {
+    background-color: #090909;
+    padding: 40px 20px;
+    margin-top: 60px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.radar-trends h2 {
+    color: #76c7c0;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+}
+
+.radar-trends p {
+    color: #bbbbbb;
+    font-size: 1.1em;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.radar-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.radar-item {
+    background-color: #1f1f1f;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.radar-item:hover {
+    background-color: #76c7c0;
+    color: #121212;
+    transform: scale(1.05);
+}
+
+.radar-item h3 {
+    font-size: 1.5em;
+    color: #76c7c0;
+    margin-bottom: 10px;
+}
+
+.radar-item p {
+    font-size: 1em;
+    color: #bbbbbb;
+}
+
     .beginner-terms {
         background-color: #090909;
         padding: 40px 20px;
@@ -388,6 +441,32 @@
                 </div>
             </div>
         </section>
+
+        <section id="radar-trends" class="radar-trends">
+        <h2>Радар новинок</h2>
+        <p>В мире постоянно появляются новые выражения и фразы. Следи за актуальными трендами и будь в теме!</p>
+        <div class="radar-list">
+            <div class="radar-item">
+                <h3>Touch grass</h3>
+                <p><strong>Что это?</strong> Напоминание выйти на улицу и отвлечься от интернета.</p>
+                <p><strong>Пример:</strong> "You should touch grass, you're spending too much time online." — Тебе нужно выйти на улицу, ты слишком много сидишь в интернете.</p>
+                <p><strong>Контекст:</strong> Намекает на необходимость отдохнуть от социальных сетей и технологий.</p>
+            </div>
+            <div class="radar-item">
+                <h3>Main character energy</h3>
+                <p><strong>Что это?</strong> Энергия человека, который ведет себя как главный герой своего фильма.</p>
+                <p><strong>Пример:</strong> "She walked into that party with so much main character energy." — Она вошла на вечеринку, как настоящая главная героиня.</p>
+                <p><strong>Контекст:</strong> Используется для описания уверенных в себе людей, которые ведут себя как звезды.</p>
+            </div>
+            <div class="radar-item">
+                <h3>Goblin mode</h3>
+                <p><strong>Что это?</strong> Поведение, когда человек ленится и ведет себя без стыда.</p>
+                <p><strong>Пример:</strong> "I’ve been in full goblin mode this weekend, just binge-watching TV." — Я провел эти выходные в полном гоблинском режиме, просто смотрел сериалы без перерыва.</p>
+                <p><strong>Контекст:</strong> Часто используется для описания тех, кто действует небрежно и лениво.</p>
+            </div>
+            <!-- Добавь остальные элементы по аналогии -->
+        </div>
+    </section>
 
         <div class="modern-listening">
             <h2>Послушаем современное?</h2>
