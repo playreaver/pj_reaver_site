@@ -7,6 +7,30 @@
     <link rel="icon" href="logo/1sitelogo.png" type="image/png">
     <style>
 
+            /* Стили для кнопок фильтра */
+        .category-buttons {
+            display: flex;
+            overflow-x: auto;
+            gap: 15px;
+            padding: 10px 0;
+        }
+
+        .category-button {
+            background-color: #76c7c0;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .category-button:hover {
+            background-color: #64b4b0;
+        }
+
+
     /* Стили поиска */
     .search-container {
         display: flex;
@@ -188,6 +212,11 @@
     </header>
 
     <main class="main-container">
+        <!-- Кнопки для фильтрации по категориям -->
+        <div class="category-buttons">
+            <!-- Кнопки будут добавляться динамически -->
+        </div>
+
         <!-- Поисковое поле -->
         <div class="search-container">
             <input 
@@ -225,22 +254,44 @@
         }
 
         let slangData = []; // Массив для хранения данных из JSON
+        let categories = []; // Массив для категорий
 
         // Загрузка данных из JSON
         fetch('slangData.json')
             .then(response => response.json())
             .then(data => {
                 slangData = data; // Сохраняем данные
+                categories = [...new Set(data.map(item => item.category))]; // Извлекаем уникальные категории
+                createCategoryButtons(categories); // Создаем кнопки категорий
                 displayData(data); // Показываем данные на странице
             })
             .catch(error => console.error('Ошибка загрузки данных:', error));
+
+        // Создание кнопок для категорий
+        function createCategoryButtons(categories) {
+            const categoryButtonsContainer = document.querySelector('.category-buttons');
+            categoryButtonsContainer.innerHTML = ''; // Очищаем контейнер перед добавлением кнопок
+
+            categories.forEach(category => {
+                const button = document.createElement('button');
+                button.classList.add('category-button');
+                button.innerText = category;
+                button.onclick = () => filterByCategory(category); // Добавляем обработчик для фильтрации
+                categoryButtonsContainer.appendChild(button);
+            });
+        }
+
+        // Фильтрация данных по категории
+        function filterByCategory(category) {
+            const filteredData = slangData.filter(item => item.category === category);
+            displayData(filteredData);
+        }
 
         // Отображение данных на странице
         function displayData(data) {
             const slangList = document.querySelector('.slang-list');
             const examplesList = document.querySelector('.examples-list');
             const contextList = document.querySelector('.context-list');
-
 
             slangList.innerHTML = '';
             examplesList.innerHTML = '';
