@@ -36,13 +36,13 @@
             z-index: 1000;
         }
 
+        /* Кнопка для переключения темы */
         .theme-toggle {
             cursor: pointer;
             color: #76c7c0;
             font-size: 1.2em;
             transition: all 0.3s ease;
         }
-
         .theme-toggle:hover {
             color: #121212;
             background-color: #76c7c0;
@@ -56,70 +56,71 @@
             color: #76c7c0;
         }
 
-        /* Скрытое мобильное меню */
-        .mobile-menu {
-            display: none;
-            background-color: #1f1f1f;
-            position: absolute;
-            top: 60px;
-            right: 0;
-            width: 200px;
-            padding: 20px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            /* Скрытое мобильное меню */
+    .mobile-menu {
+        display: none;
+        background-color: #1f1f1f;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        padding: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .mobile-menu .nav a {
+        display: block;
+        padding: 10px;
+        color: #f1f1f1;
+        text-decoration: none;
+        font-size: 1.2em;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+    }
+
+    .mobile-menu .nav a:hover {
+        background-color: #76c7c0;
+    }
+
+    /* Кнопка гамбургера */
+    .hamburger {
+        display: none;
+        cursor: pointer;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .hamburger .bar {
+        width: 25px;
+        height: 4px;
+        background-color: #f1f1f1;
+        border-radius: 2px;
+    }
+
+    /* Стили для мобильных устройств */
+    @media (max-width: 768px) {
+        .nav {
+            display: none; /* Скрываем меню для мобильных устройств */
         }
 
-        .mobile-menu .nav a {
-            display: block;
-            padding: 10px;
-            color: #f1f1f1;
-            text-decoration: none;
-            font-size: 1.2em;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
-        }
-
-        .mobile-menu .nav a:hover {
-            background-color: #76c7c0;
-        }
-
-        /* Кнопка гамбургера */
         .hamburger {
-            display: none;
-            cursor: pointer;
-            flex-direction: column;
-            gap: 4px;
+            display: flex; /* Показываем гамбургер-меню */
         }
 
-        .hamburger .bar {
-            width: 25px;
-            height: 4px;
-            background-color: #f1f1f1;
-            border-radius: 2px;
+        .mobile-menu {
+            display: none; /* По умолчанию скрываем мобильное меню */
         }
 
-        @media (max-width: 768px) {
-            .nav {
-                display: none;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            .mobile-menu {
-                display: none;
-            }
-
-            .mobile-menu.active {
-                display: block;
-            }
-
-            .header-title {
-                font-size: 1.5em;
-            }
+        .mobile-menu.active {
+            display: block; /* Показываем меню при активации */
         }
 
-        /* Навигация */
+        .header-title {
+            font-size: 1.5em; /* Уменьшаем размер заголовка на мобильных устройствах */
+        }
+    }
+
+
         .nav {
             display: flex;
             gap: 15px;
@@ -141,51 +142,13 @@
             border: 2px solid #76c7c0;
         }
 
-        /* Главный блок */
-        .main {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            padding: 40px 20px;
-            margin: 0 auto;
-            width: 100%;
-        }
+        .main { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; padding: 40px 20px; margin: 0 auto; width: 100%; }
+        .slogan { font-size: 2.5em; font-weight: bold; line-height: 1.2; max-width: 50%; opacity: 0; transform: translateY(30px); animation: fadeInUp 1.5s ease-out forwards; animation-delay: 0.5s; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-        .slogan {
-            font-size: 2.5em;
-            font-weight: bold;
-            line-height: 1.2;
-            max-width: 50%;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1.5s ease-out forwards;
-            animation-delay: 0.5s;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .image-container {
-            max-width: 50%;
-            text-align: right;
-        }
-
-        .image-container img {
-            max-width: 100%;
-            border-radius: 12px;
-            transform: scale(0.8);
-            opacity: 0;
-            animation: scaleUp 1.5s ease-out forwards;
-            animation-delay: 0.5s;
-        }
-
-        @keyframes scaleUp {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
+        .image-container { max-width: 50%; text-align: right; }
+        .image-container img { max-width: 100%; border-radius: 12px; transform: scale(0.8); opacity: 0; animation: scaleUp 1.5s ease-out forwards; animation-delay: 0.5s; }
+        @keyframes scaleUp { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
         .description {
             text-align: center;
@@ -247,40 +210,277 @@
         .block:nth-child(3) { animation-delay: 0.7s; }
         .block:nth-child(4) { animation-delay: 0.8s; }
 
-        /* Для мобильных устройств */
+        /* Кнопка для викторины */
+
+.main {
+    display: flex;
+    justify-content: space-between; /* Картинка справа, остальные элементы слева */
+    align-items: flex-start; /* Все элементы по верху */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    width: 100%;
+}
+
+/* Для мобильных устройств */
+@media (max-width: 768px) {
+    .main {
+        flex-direction: column; /* Элементы будут располагаться вертикально */
+        align-items: center;
+        padding: 20px;
+    }
+
+    .slogan {
+        font-size: 1.8em; /* Уменьшаем размер шрифта */
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .image-container {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .image-container img {
+        max-width: 80%; /* Ограничиваем размер изображения */
+    }
+
+    .blocks-container {
+        display: flex;
+        flex-direction: column; /* Блоки будут друг под другом */
+        gap: 20px;
+    }
+
+    .block {
+        width: 100%; /* Блоки занимают всю ширину */
+        text-align: center;
+    }
+}
+
+.content-left {
+    display: flex;
+    flex-direction: column; /* Слоган и кнопки идут друг под другом */
+    max-width: 50%;
+}
+
+.slogan {
+    font-size: 2.5em;
+    font-weight: bold;
+    line-height: 1.2;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1.5s ease-out forwards;
+    animation-delay: 0.5s;
+    white-space: nowrap; /* Запрещаем перенос текста на следующую строку */
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.quiz-button {
+    text-align: left; /* Кнопки будут под слоганом */
+    margin-top: 35px; /* Отступ между слоганом и кнопками */
+    animation: fadeIn 2s ease-out forwards;
+    animation-delay: 1s;
+}
+
+.quiz-button a {
+    text-decoration: none;
+    padding: 15px 30px;
+    background-color: #76c7c0;
+    color: #121212;
+    font-size: 1.2em;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    display: block; /* Кнопки будут под друг другом */
+    margin-bottom: 10px; /* Отступ между кнопками */
+}
+
+.quiz-button a:hover {
+    background-color: #121212;
+    color: #76c7c0;
+}
+
+.image-container {
+    max-width: 50%;
+    text-align: right;
+}
+
+.image-container img {
+    max-width: 100%;
+    border-radius: 12px;
+    transform: scale(0.8);
+    opacity: 0;
+    animation: scaleUp 1.5s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
+@keyframes scaleUp {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.cookie-popup {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #1f1f1f;
+    color: #f1f1f1;
+    padding: 20px; /* Увеличены отступы для комфорта */
+    text-align: center;
+    display: none;
+    z-index: 1000;
+    border-radius: 12px 12px 0 0; /* Закругленные верхние углы */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Тень для попапа */
+}
+
+.cookie-popup-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.cookie-popup button {
+    background-color: #76c7c0;
+    color: #121212;
+    font-size: 1.2em;
+    padding: 12px 25px; /* Увеличены отступы для кнопки */
+    border: none;
+    border-radius: 8px; /* Закругленные углы для кнопки */
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cookie-popup button:hover {
+    background-color: #121212;
+    color: #76c7c0;
+}
+
+/* Подвал */
+.footer {
+    background-color: #0a0a0a; /* Темнее фон подвала */
+    color: #f1f1f1;
+    padding: 40px 80px; /* Увеличены отступы по бокам */
+    display: flex;
+    justify-content: space-between; /* Разделяем элементы на две стороны */
+    align-items: flex-start;
+    font-size: 1em;
+    margin-top: 30px;
+    flex-wrap: wrap; /* Позволяет элементам переноситься на новую строку */
+}
+
+/* Левый блок */
+.footer .footer-left {
+    color: #76c7c0; /* Зеленый акцентный цвет */
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 20px; /* Добавляем отступ снизу */
+}
+
+/* Правый блок (ссылки и соцсети) */
+.footer .footer-right {
+    display: flex;
+    flex-wrap: wrap; /* Разрешаем перенос элементов на новую строку */
+    gap: 20px; /* Увеличиваем промежутки между элементами */
+}
+
+/* Стиль для блока с ссылками */
+.footer .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Между ссылками */
+}
+
+/* Стили ссылок */
+.footer .footer-right a {
+    color: #cccccc; /* Цвет ссылок */
+    text-decoration: none;
+    font-size: 1em;
+    transition: color 0.3s ease;
+}
+
+.footer .footer-right a:hover {
+    color: #76c7c0; /* Цвет при наведении */
+}
+
+/* Стили для копирайта (ссылка) */
+.footer .copyright {
+    font-size: 0.9em;
+    color: #888888; /* Цвет для копирайта */
+    margin-top: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+.footer .copyright a {
+    color: #888888; /* Цвет ссылки */
+    text-decoration: none; /* Без подчеркивания */
+}
+
+.footer .copyright a:hover {
+    color: #76c7c0; /* Цвет при наведении */
+}
+
+/* Иконки соцсетей */
+.social-icons a {
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.social-icons img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s ease;
+}
+
+.social-icons img:hover {
+    transform: scale(1.1);
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    .footer {
+        flex-direction: column; /* Стили для мобильных устройств */
+        align-items: center;
+        text-align: center;
+        padding: 20px; /* Уменьшаем отступы */
+    }
+
+    .footer .footer-left {
+        margin-bottom: 20px; /* Отступ снизу для левого блока */
+    }
+
+    .footer .footer-right {
+        align-items: center; /* Выравниваем элементы по центру */
+    }
+
+    .social-icons {
+        margin-top: 20px; /* Отступ для иконок соцсетей */
+    }
+
+    .social-icons a {
+        margin: 0 12px;
+    }
+}
+
+.mobile-message {
+            display: none;
+            text-align: center;
+            font-size: 1.5em;
+            padding: 20px;
+            color: #76c7c0;
+        }
         @media (max-width: 768px) {
-            .main {
-                flex-direction: column;
-                align-items: center;
-                padding: 20px;
+            body > *:not(.mobile-message) {
+                display: none;
             }
-
-            .slogan {
-                font-size: 1.8em;
-                text-align: center;
-                max-width: 100%;
-            }
-
-            .image-container {
-                max-width: 100%;
-                text-align: center;
-            }
-
-            .image-container img {
-                max-width: 80%;
-            }
-
-            .blocks-container {
-                display: flex;
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .block {
-                width: 100%;
-                text-align: center;
+            .mobile-message {
+                display: block;
             }
         }
+
     </style>
 </head>
 <body>
@@ -330,8 +530,8 @@
 
     <div class="image-container">
         <img src="logo/1artwork.jpg" alt="Картинка">
-        <p class="caption">Сгенерировано ИИ</p>
     </div>
+</div>
 
     <!-- Сообщение для мобильных -->
 <div class="mobile-message">
