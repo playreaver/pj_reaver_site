@@ -38,7 +38,7 @@
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Тень для iframe */
     }
 
-    .slang-beginners {
+.slang-beginners {
     background-color: #090909;
     padding: 40px 20px;
     margin-top: 60px;
@@ -49,8 +49,15 @@
 .slang-beginners h2 {
     color: #76c7c0;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     font-size: 2.5em;
+}
+
+.slang-beginners p {
+    color: #bbbbbb;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.1em;
 }
 
 .slang-list {
@@ -59,29 +66,34 @@
     gap: 20px;
 }
 
-.slang-item {
+.slang-card {
     background-color: #1f1f1f;
-    padding: 15px;
+    padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-.slang-item:hover {
+.slang-card:hover {
     background-color: #76c7c0;
     color: #121212;
     transform: scale(1.05);
 }
 
-.slang-item h3 {
-    font-size: 1.2em;
+.slang-card h3 {
+    font-size: 1.4em;
     color: #76c7c0;
+    margin-bottom: 15px;
+}
+
+.slang-card p {
+    font-size: 1em;
+    color: #bbbbbb;
     margin-bottom: 10px;
 }
 
-.slang-item p {
-    font-size: 1em;
-    color: #bbbbbb;
+.slang-card strong {
+    font-weight: bold;
 }
 
     .recommendations {
@@ -354,32 +366,32 @@
             </div>
         </section>
 
-    <section id="slang-for-beginners" class="slang-beginners">
-        <h2>Изучи сегодня</h2>
-        <p>Если ты только начинаешь погружаться в мир сленга, вот несколько выражений, которые стоит знать, чтобы не отставать от трендов!</p>
-        <div class="slang-list">
-            <div class="slang-item">
-                <h3>LOL</h3>
-                <p><strong>Что это?</strong> Laughing Out Loud — смеяться вслух.</p>
-                <p><strong>Пример:</strong> "Ты видел его лицо, LOL!"</p>
+        <section id="slang-for-beginners" class="slang-beginners">
+            <h2>Изучи сегодня</h2>
+            <p>Если ты только начинаешь погружаться в мир сленга, вот несколько выражений, которые стоит знать, чтобы не отставать от трендов!</p>
+            <div class="slang-list">
+                <div class="slang-card">
+                    <h3>LOL</h3>
+                    <p><strong>Что это?</strong> Laughing Out Loud — смеяться вслух.</p>
+                    <p><strong>Пример:</strong> "Ты видел его лицо, LOL!"</p>
+                </div>
+                <div class="slang-card">
+                    <h3>OMG</h3>
+                    <p><strong>Что это?</strong> Oh My God — о, боже мой!</p>
+                    <p><strong>Пример:</strong> "OMG, ты что, серьезно?!"</p>
+                </div>
+                <div class="slang-card">
+                    <h3>BRB</h3>
+                    <p><strong>Что это?</strong> Be Right Back — скоро вернусь.</p>
+                    <p><strong>Пример:</strong> "Погоди, BRB, сейчас вернусь!"</p>
+                </div>
+                <div class="slang-card">
+                    <h3>FYI</h3>
+                    <p><strong>Что это?</strong> For Your Information — к твоему сведению.</p>
+                    <p><strong>Пример:</strong> "FYI, я скоро уезжаю." </p>
+                </div>
             </div>
-            <div class="slang-item">
-                <h3>OMG</h3>
-                <p><strong>Что это?</strong> Oh My God — о, боже мой!</p>
-                <p><strong>Пример:</strong> "OMG, ты что, серьезно?!</p>
-            </div>
-            <div class="slang-item">
-                <h3>BRB</h3>
-                <p><strong>Что это?</strong> Be Right Back — скоро вернусь.</p>
-                <p><strong>Пример:</strong> "Погоди, BRB, сейчас вернусь!"</p>
-            </div>
-            <div class="slang-item">
-                <h3>FYI</h3>
-                <p><strong>Что это?</strong> For Your Information — к твоему сведению.</p>
-                <p><strong>Пример:</strong> "FYI, я скоро уезжаю." </p>
-            </div>
-        </div>
-    </section>
+        </section>
 
         <div class="modern-listening">
             <h2>Послушаем современное?</h2>
