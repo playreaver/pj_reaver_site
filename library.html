@@ -6,6 +6,34 @@
     <title>Slangify Library</title>
     <link rel="icon" href="logo/1sitelogo.png" type="image/png">
     <style>
+
+            /* Стили поиска */
+    .search-container {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+    }
+
+    .search-container input {
+        width: 50%;
+        padding: 10px;
+        font-size: 1.2em;
+        border: 2px solid #76c7c0;
+        border-radius: 5px;
+        outline: none;
+        transition: border-color 0.3s ease;
+    }
+
+    .search-container input:focus {
+        border-color: #f1f1f1;
+    }
+
+    .no-results {
+        text-align: center;
+        color: #f1f1f1;
+        margin-top: 20px;
+        font-size: 1.2em;
+    }
     /* Общие стили */
     body {
         background-color: #121212;
