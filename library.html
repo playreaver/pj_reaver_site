@@ -188,6 +188,16 @@
     </header>
 
     <main class="main-container">
+        <!-- Поисковое поле -->
+        <div class="search-container">
+            <input 
+                type="text" 
+                id="search-input" 
+                placeholder="Введите название, описание или контекст..."
+                oninput="performSearch()"
+            />
+        </div>
+
         <section class="slang">
             <h2>Список сленгов</h2>
             <div class="slang-list"></div>
@@ -214,40 +224,72 @@
             document.body.classList.toggle('light-mode');
         }
 
+        let slangData = []; // Массив для хранения данных из JSON
+
         // Загрузка данных из JSON
         fetch('slangData.json')
             .then(response => response.json())
             .then(data => {
-                const slangList = document.querySelector('.slang-list');
-                const examplesList = document.querySelector('.examples');
-                const contextList = document.querySelector('.context');
-
-                data.forEach(item => {
-                    // Добавление сленга
-                    slangList.innerHTML += `
-                        <div class="slang-item">
-                            <h3>${item.title}</h3>
-                            <p>${item.description}</p>
-                        </div>
-                    `;
-
-                    // Добавление примера
-                    examplesList.innerHTML += `
-                        <div class="example-item">
-                            <p><strong>${item.title}:</strong> "${item.example}"</p>
-                        </div>
-                    `;
-
-                    // Добавление контекста
-                    contextList.innerHTML += `
-                        <div class="context-item">
-                            <p><strong>${item.title}:</strong> ${item.context}</p>
-                        </div>
-                    `;
-                });
+                slangData = data; // Сохраняем данные
+                displayData(data); // Показываем данные на странице
             })
             .catch(error => console.error('Ошибка загрузки данных:', error));
+
+        // Отображение данных на странице
+        function displayData(data) {
+            const slangList = document.querySelector('.slang-list');
+            const examplesList = document.querySelector('.examples');
+            const contextList = document.querySelector('.context');
+
+            slangList.innerHTML = '';
+            examplesList.innerHTML = '';
+            contextList.innerHTML = '';
+
+            if (data.length === 0) {
+                slangList.innerHTML = '<p class="no-results">Ничего не найдено!</p>';
+                examplesList.innerHTML = '';
+                contextList.innerHTML = '';
+                return;
+            }
+
+            data.forEach(item => {
+                // Сленги
+                slangList.innerHTML += `
+                    <div class="slang-item">
+                        <h3>${item.title}</h3>
+                        <p>${item.description}</p>
+                    </div>
+                `;
+                // Примеры
+                examplesList.innerHTML += `
+                    <div class="example-item">
+                        <p><strong>${item.title}:</strong> "${item.example}"</p>
+                    </div>
+                `;
+                // Контексты
+                contextList.innerHTML += `
+                    <div class="context-item">
+                        <p><strong>${item.title}:</strong> ${item.context}</p>
+                    </div>
+                `;
+            });
+        }
+
+        // Поиск по данным
+        function performSearch() {
+            const searchQuery = document.getElementById('search-input').value.toLowerCase();
+
+            // Фильтрация данных
+            const filteredData = slangData.filter(item =>
+                item.title.toLowerCase().includes(searchQuery) || 
+                item.description.toLowerCase().includes(searchQuery) ||
+                item.example.toLowerCase().includes(searchQuery) || 
+                item.context.toLowerCase().includes(searchQuery)
+            );
+
+            // Обновляем данные на странице
+            displayData(filteredData);
+        }
     </script>
 </body>
 </html>
-
