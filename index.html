@@ -581,6 +581,11 @@
         function toggleTheme() {
             document.body.classList.toggle('light-mode');
         }
+        // Функция для переключения меню
+    function toggleMenu() {
+        const menu = document.querySelector(".mobile-menu");
+        menu.classList.toggle("active");
+    }
 
 if (!localStorage.getItem("cookiesAccepted")) {
     cookiePopup.style.display = "block";
