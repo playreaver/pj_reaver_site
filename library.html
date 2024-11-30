@@ -5,87 +5,119 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slangify Library</title>
     <link rel="icon" href="logo/1sitelogo.png" type="image/png">
-    <style>
-        /* Общие стили */
-        body {
-            background-color: #121212;
-            color: #f1f1f1;
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
+<style>
+    /* Общие стили */
+    body {
+        background-color: #121212;
+        color: #f1f1f1;
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
 
-        /* Светлая тема */
-        body.light-mode {
-            background-color: #ffffff;
-            color: #121212;
-        }
+    /* Светлая тема */
+    body.light-mode {
+        background-color: #ffffff;
+        color: #121212;
+    }
 
-        /* Хедер */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px;
-            background-color: #1f1f1f;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+    /* Хедер */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
+        background-color: #1f1f1f;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
 
-        .theme-toggle {
-            cursor: pointer;
-            color: #76c7c0;
-            font-size: 1.2em;
-            transition: all 0.3s ease;
-        }
+    .theme-toggle {
+        cursor: pointer;
+        color: #76c7c0;
+        font-size: 1.2em;
+        transition: all 0.3s ease;
+    }
 
-        .header-title {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: #76c7c0;
-        }
+    .header-title {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #76c7c0;
+    }
 
-        .nav {
-            display: flex;
-            gap: 15px;
-        }
+    .nav {
+        display: flex;
+        gap: 15px;
+    }
 
-        .nav a {
-            text-decoration: none;
-            color: #f1f1f1;
-            font-size: 1em;
-            padding: 8px 16px;
-            border: 2px solid transparent;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
+    .nav a {
+        text-decoration: none;
+        color: #f1f1f1;
+        font-size: 1em;
+        padding: 8px 16px;
+        border: 2px solid transparent;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+    }
 
-        .main-container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-        }
+    .main-container {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
 
-        .slang-list, .examples, .context {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
+    /* Список сленгов */
+    .slang-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
 
-        .slang-item, .example-item, .context-item {
-            background-color: #1f1f1f;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-        }
+    .slang-item, .example-item, .context-item {
+        background-color: #1f1f1f;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        transition: transform 0.3s ease, background-color 0.3s ease;
+    }
 
-        h2 {
-            color: #76c7c0;
-        }
-    </style>
+    .slang-item:hover, .example-item:hover, .context-item:hover {
+        background-color: #76c7c0;
+        color: #121212;
+        transform: scale(1.05);
+    }
+
+    .slang-item h3, .example-item strong, .context-item strong {
+        font-size: 1.2em;
+        color: #76c7c0;
+    }
+
+    /* Примеры и контексты */
+    .examples, .context {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+
+    h2 {
+        color: #76c7c0;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #1f1f1f;
+        color: #f1f1f1;
+    }
+</style>
 </head>
 <body>
     <header>
