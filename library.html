@@ -16,6 +16,34 @@
         padding: 10px 0;
     }
 
+    .modern-listening {
+    background-color: #090909; /* Темный фон */
+    padding: 40px 20px;
+    margin-top: 60px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    }
+    
+    .modern-listening h2 {
+        color: #76c7c0; /* Акцентный цвет */
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 2.5em; /* Увеличиваем размер шрифта */
+        font-weight: bold; /* Полужирный шрифт */
+        text-transform: uppercase; /* Преобразуем в верхний регистр для акцента */
+    }
+    
+    .modern-listening iframe {
+        width: 100%;
+        border-radius: 12px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Тень для iframe */
+    }
+    
+    .modern-listening:hover {
+        background-color: #121212; /* Цвет фона при наведении */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7); /* Более глубокая тень при наведении */
+    }
+
     .recommendations {
     background-color: #090909;
     padding: 40px 20px;
@@ -286,7 +314,10 @@
             </div>
         </section>
 
-        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2qG3yoLJ86Fjv4yWT9riki?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <div class="modern-listening">
+            <h2>Послушаем современное?</h2>
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2qG3yoLJ86Fjv4yWT9riki?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
         <section class="slang">
             <h2>Список сленгов</h2>
             <div class="slang-list"></div>
