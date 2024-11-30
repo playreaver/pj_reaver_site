@@ -7,7 +7,7 @@
     <link rel="icon" href="logo/1sitelogo.png" type="image/png">
     <style>
 
-            /* Стили поиска */
+    /* Стили поиска */
     .search-container {
         display: flex;
         justify-content: center;
@@ -241,6 +241,7 @@
             const examplesList = document.querySelector('.examples-list');
             const contextList = document.querySelector('.context-list');
 
+
             slangList.innerHTML = '';
             examplesList.innerHTML = '';
             contextList.innerHTML = '';
@@ -254,24 +255,24 @@
 
             data.forEach(item => {
                 // Сленги
-                slangList.innerHTML += 
+                slangList.innerHTML += `
                     <div class="slang-item">
                         <h3>${item.title}</h3>
                         <p>${item.description}</p>
                     </div>
-                ;
+                `;
                 // Примеры
-                examplesList.innerHTML += 
+                examplesList.innerHTML += `
                     <div class="example-item">
                         <p><strong>${item.title}:</strong> "${item.example}"</p>
                     </div>
-                ;
+                `;
                 // Контексты
-                contextList.innerHTML += 
+                contextList.innerHTML += `
                     <div class="context-item">
                         <p><strong>${item.title}:</strong> ${item.context}</p>
                     </div>
-                ;
+                `;
             });
         }
 
