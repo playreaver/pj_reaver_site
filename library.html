@@ -16,6 +16,52 @@
         padding: 10px 0;
     }
 
+    .recommendations {
+    background-color: #1f1f1f;
+    padding: 40px 20px;
+    margin-top: 60px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    }
+    
+    .recommendations h2 {
+        color: #76c7c0;
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 2.5em;
+    }
+    
+    .recommendation-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+    
+    .recommendation-item {
+        background-color: #1f1f1f;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+    
+    .recommendation-item:hover {
+        background-color: #76c7c0;
+        color: #121212;
+        transform: scale(1.05);
+    }
+    
+    .recommendation-item h3 {
+        font-size: 1.2em;
+        color: #76c7c0;
+        margin-bottom: 10px;
+    }
+    
+    .recommendation-item p {
+        font-size: 1em;
+        color: #bbbbbb;
+    }
+        
     .category-button {
         background-color: #76c7c0;
         padding: 8px 16px;
@@ -247,6 +293,12 @@
             <h2>Контексты</h2>
             <div class="context-list"></div>
         </section>
+            <!-- Подборка рекомендаций -->
+        <section class="recommendations">
+            <h2>Подборка специально для тебя</h2>
+            <div class="recommendation-list">
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -346,6 +398,26 @@
             });
         }
 
+        function generateRecommendations() {
+            const recommendationList = document.querySelector('.recommendation-list');
+        
+            // Предположим, что мы выбираем случайные 5 элементов из базы данных
+            const recommendedItems = slangData.sort(() => 0.5 - Math.random()).slice(0, 5); // случайные 5 элементов
+        
+            // Добавляем элементы в DOM
+            recommendedItems.forEach(item => {
+                recommendationList.innerHTML += `
+                    <div class="recommendation-item">
+                        <h3>${item.title}</h3>
+                        <p>${item.description}</p>
+                    </div>
+                `;
+            });
+        }
+        
+        // Вызов функции для генерации рекомендаций
+        generateRecommendations();
+        
         // Поиск по данным
         function performSearch() {
             const searchQuery = document.getElementById('search-input').value.toLowerCase();
