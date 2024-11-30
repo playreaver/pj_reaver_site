@@ -619,15 +619,36 @@ acceptButton.addEventListener("click", function() {
     cookiePopup.style.display = "none";
 });
 
-    window.onload = function() {
-        var cookiePopup = document.querySelector('.cookie-popup');
-        cookiePopup.style.display = 'block'; // Показываем попап
+    // Проверка наличия куки
+    function checkCookies() {
+        const cookieConsent = getCookie("cookieConsent");
+        if (!cookieConsent) {
+            document.getElementById("cookie-popup").style.display = "block"; // Показываем попап
+        }
     }
 
-    function acceptCookies() {
-        var cookiePopup = document.querySelector('.cookie-popup');
-        cookiePopup.style.display = 'none'; // Скрываем попап при принятии
-        // Здесь можно добавить код для записи в cookie, чтобы не показывать окно при последующих визитах
+    // Функция для получения куки
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(";").shift();
     }
+
+    // Функция для установки куки
+    function setCookie(name, value, days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        const expires = `expires=${date.toUTCString()}`;
+        document.cookie = `${name}=${value}; ${expires}; path=/`;
+    }
+
+    // Обработчик кнопки принятия куки
+    document.getElementById("accept-cookies").addEventListener("click", function() {
+        setCookie("cookieConsent", "true", 365); // Устанавливаем куки на 1 год
+        document.getElementById("cookie-popup").style.display = "none"; // Скрываем попап
+    });
+
+    // Проверка и отображение попапа при загрузке страницы
+    window.onload = checkCookies;
 </body>
 </html>
