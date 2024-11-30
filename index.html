@@ -157,6 +157,41 @@
     width: 100%;
 }
 
+/* Для мобильных устройств */
+@media (max-width: 768px) {
+    .main {
+        flex-direction: column; /* Элементы будут располагаться вертикально */
+        align-items: center;
+        padding: 20px;
+    }
+
+    .slogan {
+        font-size: 1.8em; /* Уменьшаем размер шрифта */
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .image-container {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .image-container img {
+        max-width: 80%; /* Ограничиваем размер изображения */
+    }
+
+    .blocks-container {
+        display: flex;
+        flex-direction: column; /* Блоки будут друг под другом */
+        gap: 20px;
+    }
+
+    .block {
+        width: 100%; /* Блоки занимают всю ширину */
+        text-align: center;
+    }
+}
+
 .content-left {
     display: flex;
     flex-direction: column; /* Слоган и кнопки идут друг под другом */
@@ -385,13 +420,7 @@
     </style>
 </head>
 <body>
-    <!-- Сообщение для мобильных -->
-<div class="mobile-message">
-    <h2>404</h2>
-    <p>Похоже, эта страница растворилась в тумане...<br>Что-то не так... Следы ведут в никуда.</p>
-    <p>Попробуй вернуться позже, может, она вернется из этой пустоты.</p>
-    <p><a href="/" style="color: #76c7c0;">Вернуться домой</a></p>
-</div>
+
 
     <header>
         <div class="header-title">Slangify — Открой мир сленга</div>
