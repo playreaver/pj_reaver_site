@@ -7,6 +7,59 @@
     <link rel="icon" href="logo/1sitelogo.png" type="image/png">
     <style>
 
+    .trending-terms {
+    background-color: #0a0a0a;
+    padding: 40px 20px;
+    margin-top: 60px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.trending-terms h2 {
+    color: #76c7c0;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+}
+
+.trending-terms p {
+    color: #bbbbbb;
+    font-size: 1.1em;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.trending-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.trending-item {
+    background-color: #1f1f1f;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.trending-item:hover {
+    background-color: #2d5b59;
+    color: #121212;
+    transform: scale(1.05);
+}
+
+.trending-item h3 {
+    font-size: 1.5em;
+    color: #76c7c0;
+    margin-bottom: 10px;
+}
+
+.trending-item p {
+    font-size: 1em;
+    color: #bbbbbb;
+}
+
             /* Стили для кнопок фильтра */
     /* Стили для кнопок фильтра */
     .category-buttons {
@@ -442,6 +495,33 @@
             </div>
         </section>
 
+        <section id="trending-terms" class="trending-terms">
+            <h2>На волне трендов</h2>
+            <p>Словечки, которые захватили соцсети и стали частью повседневного общения. Хочешь быть в теме? Лови трендовые слова!</p>
+            <div class="trending-list">
+                <div class="trending-item">
+                    <h3>Кринж</h3>
+                    <p><strong>Что это?</strong> Ситуация, которая вызывает чувство неловкости или стыда.</p>
+                    <p><strong>Пример:</strong> "Этот момент в фильме — просто кринж!"</p>
+                </div>
+                <div class="trending-item">
+                    <h3>Флексить</h3>
+                    <p><strong>Что это?</strong> Хвастаться или демонстрировать свои достижения.</p>
+                    <p><strong>Пример:</strong> "Он опять флексит своим новым айфоном."</p>
+                </div>
+                <div class="trending-item">
+                    <h3>Пикми</h3>
+                    <p><strong>Что это?</strong> Человек, который пытается привлечь внимание, играя на чувствах или стараясь выделиться.</p>
+                    <p><strong>Пример:</strong> "Она ведет себя как настоящая пикми на вечеринке."</p>
+                </div>
+                <div class="trending-item">
+                    <h3>Тильт</h3>
+                    <p><strong>Что это?</strong> Состояние раздражения или эмоциональной подавленности.</p>
+                    <p><strong>Пример:</strong> "После поражения он ушел в жуткий тильт."</p>
+                </div>
+            </div>
+        </section>
+        
         <section id="radar-trends" class="radar-trends">
         <h2>Радар новинок</h2>
         <p>В мире постоянно появляются новые выражения и фразы. Следи за актуальными трендами и будь в теме!</p>
