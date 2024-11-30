@@ -27,6 +27,10 @@
         transition: background-color 0.3s ease, transform 0.3s ease;
     }
 
+    .category-button:first-child {
+        background-color: #f1c40f; /* Жёлтый цвет для кнопки "Все" */
+    }
+
     .category-button:hover {
         background-color: #64b4b0;
         transform: scale(1.2); /* Добавляем анимацию при наведении */
@@ -269,11 +273,19 @@
             })
             .catch(error => console.error('Ошибка загрузки данных:', error));
 
-        // Создание кнопок для категорий
+            // Создание кнопок для категорий
         function createCategoryButtons(categories) {
             const categoryButtonsContainer = document.querySelector('.category-buttons');
             categoryButtonsContainer.innerHTML = ''; // Очищаем контейнер перед добавлением кнопок
-
+        
+            // Добавляем кнопку "Все"
+            const allButton = document.createElement('button');
+            allButton.classList.add('category-button');
+            allButton.innerText = 'Все';
+            allButton.onclick = () => displayData(slangData); // Показывает все сленги
+            categoryButtonsContainer.appendChild(allButton);
+        
+            // Добавляем кнопки для каждой категории
             categories.forEach(category => {
                 const button = document.createElement('button');
                 button.classList.add('category-button');
@@ -281,6 +293,11 @@
                 button.onclick = () => filterByCategory(category); // Добавляем обработчик для фильтрации
                 categoryButtonsContainer.appendChild(button);
             });
+        }
+
+        function filterByCategory(category) {
+            const filteredData = slangData.filter(item => item.category === category);
+            displayData(filteredData);
         }
 
         // Фильтрация данных по категории
