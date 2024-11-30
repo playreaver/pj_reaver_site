@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slangify Library</title>
     <link rel="icon" href="logo/1sitelogo.png" type="image/png">
-<style>
+    <style>
     /* Общие стили */
     body {
         background-color: #121212;
@@ -69,7 +69,15 @@
         padding: 20px;
         display: flex;
         flex-direction: column;
-        gap: 40px;
+        gap: 60px;
+    }
+
+    /* Центрирование заголовков */
+    h2 {
+        color: #76c7c0;
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 2.5em;
     }
 
     /* Список сленгов */
@@ -79,7 +87,7 @@
         gap: 20px;
     }
 
-    .slang-item, .example-item, .context-item {
+    .slang-item {
         background-color: #1f1f1f;
         padding: 15px;
         border-radius: 8px;
@@ -87,30 +95,48 @@
         transition: transform 0.3s ease, background-color 0.3s ease;
     }
 
-    .slang-item:hover, .example-item:hover, .context-item:hover {
+    .slang-item:hover {
         background-color: #76c7c0;
         color: #121212;
         transform: scale(1.05);
     }
 
-    .slang-item h3, .example-item strong, .context-item strong {
+    .slang-item h3 {
         font-size: 1.2em;
         color: #76c7c0;
+        margin-bottom: 10px;
     }
 
     /* Примеры и контексты */
     .examples, .context {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
-    h2 {
+    .example-item, .context-item {
+        background-color: #1f1f1f;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        width: 100%;
+        max-width: 800px;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .example-item:hover, .context-item:hover {
+        background-color: #76c7c0;
+        color: #121212;
+        transform: scale(1.05);
+    }
+
+    .example-item strong, .context-item strong {
+        font-size: 1.2em;
         color: #76c7c0;
-        text-align: center;
-        margin-bottom: 20px;
     }
 
+    /* Футер */
     footer {
         text-align: center;
         padding: 20px;
@@ -118,6 +144,7 @@
         color: #f1f1f1;
     }
 </style>
+
 </head>
 <body>
     <header>
