@@ -528,7 +528,11 @@ function createCategoryButtons(categories) {
     const allButton = document.createElement('button');
     allButton.classList.add('category-button');
     allButton.innerText = 'Все';
-    allButton.onclick = () => displayData(slangData); // Показывает все сленги
+    allButton.onclick = () => {
+        displayData(slangData);  // Показывает все сленги
+        const categoryTitle = document.getElementById('category-title');
+        categoryTitle.innerText = 'Категория: Все';  // Обновляем текст на "Все"
+    };
     categoryButtonsContainer.appendChild(allButton);
 
     // Добавляем кнопки для каждой категории
