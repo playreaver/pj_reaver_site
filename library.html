@@ -393,7 +393,11 @@
     </header>
 
     <main class="main-container">
-        <!-- Кнопки для фильтрации по категориям -->
+
+        <div class="category-header">
+            <h3 id="category-title">Категория: Все</h3> <!-- Заголовок для текущей категории -->
+        </div>
+        
         <div class="category-buttons">
             <!-- Кнопки будут добавляться динамически -->
         </div>
@@ -516,32 +520,37 @@
         .catch(error => console.error('Ошибка загрузки данных:', error));
 
     // Создание кнопок для категорий
-    function createCategoryButtons(categories) {
-        const categoryButtonsContainer = document.querySelector('.category-buttons');
-        categoryButtonsContainer.innerHTML = ''; // Очищаем контейнер перед добавлением кнопок
+function createCategoryButtons(categories) {
+    const categoryButtonsContainer = document.querySelector('.category-buttons');
+    categoryButtonsContainer.innerHTML = ''; // Очищаем контейнер перед добавлением кнопок
     
-        // Добавляем кнопку "Все"
-        const allButton = document.createElement('button');
-        allButton.classList.add('category-button');
-        allButton.innerText = 'Все';
-        allButton.onclick = () => displayData(slangData); // Показывает все сленги
-        categoryButtonsContainer.appendChild(allButton);
-    
-        // Добавляем кнопки для каждой категории
-        categories.forEach(category => {
-            const button = document.createElement('button');
-            button.classList.add('category-button');
-            button.innerText = category;
-            button.onclick = () => filterByCategory(category); // Добавляем обработчик для фильтрации
-            categoryButtonsContainer.appendChild(button);
-        });
-    }
+    // Добавляем кнопку "Все"
+    const allButton = document.createElement('button');
+    allButton.classList.add('category-button');
+    allButton.innerText = 'Все';
+    allButton.onclick = () => displayData(slangData); // Показывает все сленги
+    categoryButtonsContainer.appendChild(allButton);
 
-    // Фильтрация данных по категории
-    function filterByCategory(category) {
-        const filteredData = slangData.filter(item => item.category === category);
-        displayData(filteredData);
-    }
+    // Добавляем кнопки для каждой категории
+    categories.forEach(category => {
+        const button = document.createElement('button');
+        button.classList.add('category-button');
+        button.innerText = category;
+        button.onclick = () => filterByCategory(category); // Добавляем обработчик для фильтрации
+        categoryButtonsContainer.appendChild(button);
+    });
+}
+
+// Фильтрация данных по категории
+function filterByCategory(category) {
+    const filteredData = slangData.filter(item => item.category === category);
+    displayData(filteredData);
+
+    // Обновляем текст заголовка с выбранной категорией
+    const categoryTitle = document.getElementById('category-title');
+    categoryTitle.innerText = `Категория: ${category}`;
+}
+
 
     // Отображение данных на странице
     function displayData(data) {
