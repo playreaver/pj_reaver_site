@@ -6,173 +6,198 @@
     <title>Slangify Library</title>
     <link rel="icon" href="logo/1sitelogo.png" type="image/png">
     <style>
+        /* Стили поиска */
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
 
-            /* Стили поиска */
-    .search-container {
-        display: flex;
-        justify-content: center;
-        margin: 20px 0;
-    }
+        .search-container input {
+            width: 50%;
+            padding: 10px;
+            font-size: 1.2em;
+            border: 2px solid #76c7c0;
+            border-radius: 5px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
 
-    .search-container input {
-        width: 50%;
-        padding: 10px;
-        font-size: 1.2em;
-        border: 2px solid #76c7c0;
-        border-radius: 5px;
-        outline: none;
-        transition: border-color 0.3s ease;
-    }
+        .search-container input:focus {
+            border-color: #f1f1f1;
+        }
 
-    .search-container input:focus {
-        border-color: #f1f1f1;
-    }
+        /* Стили для категорий */
+        .categories-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
 
-    .no-results {
-        text-align: center;
-        color: #f1f1f1;
-        margin-top: 20px;
-        font-size: 1.2em;
-    }
-    /* Общие стили */
-    body {
-        background-color: #121212;
-        color: #f1f1f1;
-        font-family: 'Arial', sans-serif;
-        margin: 0;
-        padding: 0;
-        transition: background-color 0.3s ease, color 0.3s ease;
-    }
+        .category-button {
+            padding: 10px 20px;
+            background-color: #76c7c0;
+            border: none;
+            border-radius: 5px;
+            color: #121212;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
 
-    /* Светлая тема */
-    body.light-mode {
-        background-color: #ffffff;
-        color: #121212;
-    }
+        .category-button:hover {
+            background-color: #f1f1f1;
+        }
 
-    /* Хедер */
-    header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px 40px;
-        background-color: #1f1f1f;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-    }
+        .category-button.active {
+            background-color: #f1f1f1;
+            color: #76c7c0;
+        }
 
-    .theme-toggle {
-        cursor: pointer;
-        color: #76c7c0;
-        font-size: 1.2em;
-        transition: all 0.3s ease;
-    }
+        .no-results {
+            text-align: center;
+            color: #f1f1f1;
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
 
-    .header-title {
-        font-size: 1.5em;
-        font-weight: bold;
-        color: #76c7c0;
-    }
+        /* Общие стили */
+        body {
+            background-color: #121212;
+            color: #f1f1f1;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
 
-    .nav {
-        display: flex;
-        gap: 15px;
-    }
+        /* Светлая тема */
+        body.light-mode {
+            background-color: #ffffff;
+            color: #121212;
+        }
 
-    .nav a {
-        text-decoration: none;
-        color: #f1f1f1;
-        font-size: 1em;
-        padding: 8px 16px;
-        border: 2px solid transparent;
-        border-radius: 4px;
-        transition: all 0.3s ease;
-    }
+        /* Хедер */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: #1f1f1f;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-    .main-container {
-        max-width: 1200px;
-        margin: 20px auto;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        gap: 60px;
-    }
+        .theme-toggle {
+            cursor: pointer;
+            color: #76c7c0;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+        }
 
-    /* Центрирование заголовков */
-    h2 {
-        color: #76c7c0;
-        text-align: center;
-        margin-bottom: 30px;
-        font-size: 2.5em;
-    }
+        .header-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #76c7c0;
+        }
 
-    /* Список сленгов */
-    .slang-list {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 20px;
-    }
+        .nav {
+            display: flex;
+            gap: 15px;
+        }
 
-    .slang-item {
-        background-color: #1f1f1f;
-        padding: 15px;
-        border-radius: 8px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-        transition: transform 0.3s ease, background-color 0.3s ease;
-    }
+        .nav a {
+            text-decoration: none;
+            color: #f1f1f1;
+            font-size: 1em;
+            padding: 8px 16px;
+            border: 2px solid transparent;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
 
-    .slang-item:hover {
-        background-color: #76c7c0;
-        color: #121212;
-        transform: scale(1.05);
-    }
+        .main-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
 
-    .slang-item h3 {
-        font-size: 1.2em;
-        color: #76c7c0;
-        margin-bottom: 10px;
-    }
+        h2 {
+            color: #76c7c0;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
 
-    /* Примеры и контексты */
-    .examples, .context {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+        /* Список сленгов */
+        .slang-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
 
-    .example-item, .context-item {
-        background-color: #1f1f1f;
-        padding: 20px;
-        border-radius: 8px;
-        margin-bottom: 15px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-        width: 100%;
-        max-width: 800px;
-        transition: transform 0.3s ease, background-color 0.3s ease;
-    }
+        .slang-item {
+            background-color: #1f1f1f;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
 
-    .example-item:hover, .context-item:hover {
-        background-color: #76c7c0;
-        color: #121212;
-        transform: scale(1.05);
-    }
+        .slang-item:hover {
+            background-color: #76c7c0;
+            color: #121212;
+            transform: scale(1.05);
+        }
 
-    .example-item strong, .context-item strong {
-        font-size: 1.2em;
-        color: #76c7c0;
-    }
+        .slang-item h3 {
+            font-size: 1.2em;
+            color: #76c7c0;
+            margin-bottom: 10px;
+        }
 
-    /* Футер */
-    footer {
-        text-align: center;
-        padding: 20px;
-        background-color: #1f1f1f;
-        color: #f1f1f1;
-    }
-</style>
+        /* Примеры и контексты */
+        .examples, .context {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
+        .example-item, .context-item {
+            background-color: #1f1f1f;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 800px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .example-item:hover, .context-item:hover {
+            background-color: #76c7c0;
+            color: #121212;
+            transform: scale(1.05);
+        }
+
+        .example-item strong, .context-item strong {
+            font-size: 1.2em;
+            color: #76c7c0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #1f1f1f;
+            color: #f1f1f1;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -198,6 +223,11 @@
             />
         </div>
 
+        <!-- Категории -->
+        <div class="categories-container" id="categories-container">
+            <!-- Кнопки категорий будут добавляться сюда -->
+        </div>
+
         <section class="slang">
             <h2>Список сленгов</h2>
             <div class="slang-list"></div>
@@ -207,7 +237,7 @@
             <h2>Примеры использования</h2>
             <div class="examples-list"></div>
         </section>
-        
+
         <section class="context">
             <h2>Контексты</h2>
             <div class="context-list"></div>
@@ -225,69 +255,71 @@
         }
 
         let slangData = []; // Массив для хранения данных из JSON
+        let categories = []; // Массив для хранения категорий
 
         // Загрузка данных из JSON
         fetch('slangData.json')
             .then(response => response.json())
             .then(data => {
-                slangData = data; // Сохраняем данные
-                displayData(data); // Показываем данные на странице
+                slangData = data.slang;
+                categories = data.categories; // Предполагаем, что в JSON есть раздел categories
+                displayCategories(categories); // Отображаем категории
+                displayData(slangData); // Показываем данные сленгов
             })
             .catch(error => console.error('Ошибка загрузки данных:', error));
 
-        // Отображение данных на странице
-        function displayData(data) {
-            const slangList = document.querySelector('.slang-list');
-            const examplesList = document.querySelector('.examples-list');
-            const contextList = document.querySelector('.context-list');
+        // Отображение кнопок категорий
+        function displayCategories(categories) {
+            const categoriesContainer = document.getElementById('categories-container');
+            categoriesContainer.innerHTML = '';
 
-            slangList.innerHTML = '';
-            examplesList.innerHTML = '';
-            contextList.innerHTML = '';
-
-            if (data.length === 0) {
-                slangList.innerHTML = '<p class="no-results">Ничего не найдено!</p>';
-                examplesList.innerHTML = '';
-                contextList.innerHTML = '';
-                return;
-            }
-
-            data.forEach(item => {
-                // Сленги
-                slangList.innerHTML += `
-                    <div class="slang-item">
-                        <h3>${item.title}</h3>
-                        <p>${item.description}</p>
-                    </div>
-                `;
-                // Примеры
-                examplesList.innerHTML += `
-                    <div class="example-item">
-                        <p><strong>${item.title}:</strong> "${item.example}"</p>
-                    </div>
-                `;
-                // Контексты
-                contextList.innerHTML += `
-                    <div class="context-item">
-                        <p><strong>${item.title}:</strong> ${item.context}</p>
-                    </div>
+            categories.forEach((category, index) => {
+                categoriesContainer.innerHTML += `
+                    <button class="category-button" onclick="filterByCategory(${index})">${category}</button>
                 `;
             });
         }
 
-        // Поиск по данным
+        // Фильтрация по категориям
+        function filterByCategory(index) {
+            const filteredData = slangData.filter(slang => slang.category === categories[index]);
+            displayData(filteredData);
+            updateActiveCategory(index);
+        }
+
+        // Отображение данных сленгов
+        function displayData(data) {
+            const slangList = document.querySelector('.slang-list');
+            slangList.innerHTML = '';
+
+            if (data.length === 0) {
+                slangList.innerHTML = `<div class="no-results">Не найдено сленгов...</div>`;
+            } else {
+                data.forEach(item => {
+                    slangList.innerHTML += `
+                        <div class="slang-item">
+                            <h3>${item.slang}</h3>
+                            <p>${item.description}</p>
+                        </div>
+                    `;
+                });
+            }
+        }
+
+        // Обновление активной категории
+        function updateActiveCategory(index) {
+            const categoryButtons = document.querySelectorAll('.category-button');
+            categoryButtons.forEach(button => button.classList.remove('active'));
+            categoryButtons[index].classList.add('active');
+        }
+
+        // Поиск по сленгу
         function performSearch() {
-            const searchQuery = document.getElementById('search-input').value.toLowerCase();
-
-            // Фильтрация данных
-            const filteredData = slangData.filter(item =>
-                item.title.toLowerCase().includes(searchQuery) || 
-                item.description.toLowerCase().includes(searchQuery) ||
-                item.example.toLowerCase().includes(searchQuery) || 
-                item.context.toLowerCase().includes(searchQuery)
+            const query = document.getElementById('search-input').value.toLowerCase();
+            const filteredData = slangData.filter(slang =>
+                slang.slang.toLowerCase().includes(query) ||
+                slang.description.toLowerCase().includes(query)
             );
-
-            // Обновляем данные на странице
             displayData(filteredData);
         }
     </script>
