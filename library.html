@@ -813,7 +813,7 @@ button.add-to-favorites:disabled {
 </div>
 
         <section class="favorites">
-            <h2>Избранное</h2>
+            <h2>Тебе понравилось</h2>
             <div class="favorites-list"></div>
         </section>
         
@@ -978,11 +978,14 @@ function addToFavorites(title) {
     }
 }
 
-    // Обновление отображения избранных элементов
-    function updateFavoritesDisplay() {
-        const favoritesList = document.querySelector('.favorites-list');
-        favoritesList.innerHTML = ''; // Очищаем текущий список избранного
+// Обновление отображения избранных элементов
+function updateFavoritesDisplay() {
+    const favoritesList = document.querySelector('.favorites-list');
+    favoritesList.innerHTML = ''; // Очищаем текущий список избранного
 
+    if (favorites.length === 0) {
+        favoritesList.innerHTML = '<p>Тут будут отображаться добавленные тобой элементы в фаворит.</p>';
+    } else {
         favorites.forEach(favorite => {
             favoritesList.innerHTML += `
                 <div class="favorite-item">
@@ -992,6 +995,7 @@ function addToFavorites(title) {
             `;
         });
     }
+}
 
     // Загрузка избранных элементов из localStorage
     function loadFavoritesFromStorage() {
