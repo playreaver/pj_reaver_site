@@ -753,9 +753,9 @@
     </form>
 </div>
 
-        <section class="favorites-section">
+        <section class="favorites">
             <h2>Избранное</h2>
-            <p>Нет избранных элементов</p>
+            <div class="favorites-list"></div>
         </section>
         
         <section class="slang">
@@ -890,26 +890,23 @@ function loadFavorites() {
     return favorites ? JSON.parse(favorites) : [];
 }
 
-// Отображаем избранное
 function displayFavorites() {
     const favorites = loadFavorites();
-    const favoritesSection = document.querySelector('.favorites-section');
+    const favoritesList = document.querySelector('.favorites-list');
 
-    if (favoritesSection) {
-        favoritesSection.innerHTML = ''; // Очищаем старое содержимое
+    favoritesList.innerHTML = ''; // Очищаем старое содержимое
 
-        if (favorites.length === 0) {
-            favoritesSection.innerHTML = '<p>Нет избранных элементов</p>';
-        } else {
-            favorites.forEach(item => {
-                favoritesSection.innerHTML += `
-                    <div class="slang-item">
-                        <h3>${item.title}</h3>
-                        <p>${item.description}</p>
-                    </div>
-                `;
-            });
-        }
+    if (favorites.length === 0) {
+        favoritesList.innerHTML = '<p>Нет избранных элементов</p>';
+    } else {
+        favorites.forEach(item => {
+            favoritesList.innerHTML += `
+                <div class="slang-item">
+                    <h3>${item.title}</h3>
+                    <p>${item.description}</p>
+                </div>
+            `;
+        });
     }
 }
 
