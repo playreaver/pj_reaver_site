@@ -837,13 +837,13 @@
     </footer>
 
 <script>
-    // Переключение темы
-    function toggleTheme() {
-        document.body.classList.toggle('light-mode');
-    }
+// Переключение темы
+function toggleTheme() {
+    document.body.classList.toggle('light-mode');
+}
 
-    let slangData = []; // Массив для хранения данных из JSON
-    let categories = []; // Массив для категорий
+let slangData = []; // Массив для хранения данных из JSON
+let categories = []; // Массив для категорий
 
 fetch('slangData.json')
     .then(response => response.json())
@@ -851,13 +851,13 @@ fetch('slangData.json')
         slangData = data; // Сохраняем данные
         categories = [...new Set(data.map(item => item.category))]; // Извлекаем уникальные категории
         createCategoryButtons(categories); // Создаем кнопки категорий
-        displayData(data); // Показываем данные на странице
+        displayData(slangData); // Показываем данные на странице
         displayFavorites(); // Отображаем избранное
         generateRecommendations(); // Вызов функции для генерации рекомендаций
     })
     .catch(error => console.error('Ошибка загрузки данных:', error));
 
-    // Создание кнопок для категорий
+// Создание кнопок для категорий
 function createCategoryButtons(categories) {
     const categoryButtonsContainer = document.querySelector('.category-buttons');
     categoryButtonsContainer.innerHTML = ''; // Очищаем контейнер перед добавлением кнопок
@@ -934,6 +934,7 @@ function displayData(data) {
 
     setupFavoriteButtons(); // Обновляем обработчики кнопок "В избранное"
 }
+
 function saveFavorites(favorites) {
     localStorage.setItem('favorites', JSON.stringify(favorites));
 }
@@ -1014,48 +1015,48 @@ function removeFromFavorites(slangItem) {
     displayFavorites(); // Обновляем отображение избранного
 }
 
-    
-    function generateRecommendations() {
-        const recommendationList = document.querySelector('.recommendation-list');
-    
-        // Предположим, что мы выбираем случайные 5 элементов из базы данных
-        const recommendedItems = slangData.sort(() => 0.5 - Math.random()).slice(0, 5); // случайные 5 элементов
-    
-        // Добавляем элементы в DOM
-        recommendedItems.forEach(item => {
-            recommendationList.innerHTML += `
-                <div class="recommendation-item">
-                    <h3>${item.title}</h3>
-                    <p>${item.description}</p>
-                </div>
-            `;
-        });
-    }
-    // Открытие попапа
-    document.getElementById('openForm').addEventListener('click', function () {
-        document.getElementById('formPopup').style.display = 'block';
+function generateRecommendations() {
+    const recommendationList = document.querySelector('.recommendation-list');
+
+    // Предположим, что мы выбираем случайные 5 элементов из базы данных
+    const recommendedItems = slangData.sort(() => 0.5 - Math.random()).slice(0, 5); // случайные 5 элементов
+
+    // Добавляем элементы в DOM
+    recommendedItems.forEach(item => {
+        recommendationList.innerHTML += `
+            <div class="recommendation-item">
+                <h3>${item.title}</h3>
+                <p>${item.description}</p>
+            </div>
+        `;
     });
+}
 
-    // Закрытие попапа
-    document.getElementById('closeForm').addEventListener('click', function () {
-        document.getElementById('formPopup').style.display = 'none';
-    });
-    
-    // Поиск по данным
-    function performSearch() {
-        const searchQuery = document.getElementById('search-input').value.toLowerCase();
+// Открытие попапа
+document.getElementById('openForm').addEventListener('click', function () {
+    document.getElementById('formPopup').style.display = 'block';
+});
 
-        // Фильтрация данных
-        const filteredData = slangData.filter(item =>
-            item.title.toLowerCase().includes(searchQuery) || 
-            item.description.toLowerCase().includes(searchQuery) ||
-            item.example.toLowerCase().includes(searchQuery) || 
-            item.context.toLowerCase().includes(searchQuery)
-        );
+// Закрытие попапа
+document.getElementById('closeForm').addEventListener('click', function () {
+    document.getElementById('formPopup').style.display = 'none';
+});
 
-        // Обновляем данные на странице
-        displayData(filteredData);
-    }
+// Поиск по данным
+function performSearch() {
+    const searchQuery = document.getElementById('search-input').value.toLowerCase();
+
+    // Фильтрация данных
+    const filteredData = slangData.filter(item =>
+        item.title.toLowerCase().includes(searchQuery) || 
+        item.description.toLowerCase().includes(searchQuery) ||
+        item.example.toLowerCase().includes(searchQuery) || 
+        item.context.toLowerCase().includes(searchQuery)
+    );
+
+    // Обновляем данные на странице
+    displayData(filteredData);
+}
 </script>
 </body>
 </html>
