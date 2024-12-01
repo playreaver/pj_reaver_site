@@ -7,8 +7,8 @@
     <link rel="icon" href="logo/1sitelogo.png" type="image/png">
     <style>
 
-/* Основной стиль для кнопок */
-.add-to-favorites-btn {
+/* Стиль для кнопки добавления в избранное */
+button.add-to-favorites {
     background-color: #76c7c0;
     color: #121212;
     padding: 10px 20px;
@@ -21,21 +21,22 @@
 }
 
 /* Эффект при наведении на кнопку */
-.add-to-favorites-btn:hover {
+button.add-to-favorites:hover {
     background-color: #2d5b59;
     transform: scale(1.05);
 }
 
 /* Стиль кнопки, если элемент уже в избранном */
-.add-to-favorites-btn.added {
+button.add-to-favorites.added {
     background-color: #2d5b59;
     color: #ffffff;
-    cursor: not-allowed;
+    cursor: not-allowed; /* Делаем курсор "недоступным" */
 }
 
-.add-to-favorites-btn.added:hover {
-    background-color: #2d5b59; /* Оставляем тот же цвет */
-    transform: none; /* Без эффекта увеличения */
+/* Отключенная кнопка */
+button.add-to-favorites:disabled {
+    background-color: #2d5b59;
+    color: #ffffff;
 }
 
 /* Стиль для отображения избранных элементов */
@@ -955,19 +956,27 @@
         });
     }
 
-    // Добавление в избранное
-    function addToFavorites(title) {
-        const selectedItem = slangData.find(item => item.title === title);
+// Добавление в избранное
+function addToFavorites(title) {
+    const selectedItem = slangData.find(item => item.title === title);
+    const button = event.target; // Получаем кнопку, на которую был клик
 
-        if (selectedItem && !favorites.some(item => item.title === title)) {
-            favorites.push(selectedItem); // Добавляем весь объект в избранное
-            localStorage.setItem('favorites', JSON.stringify(favorites)); // Сохраняем в localStorage
-            alert(`${title} добавлено в избранное!`);
-            updateFavoritesDisplay();
-        } else {
-            alert(`${title} уже в избранном.`);
-        }
+    if (selectedItem && !favorites.some(item => item.title === title)) {
+        favorites.push(selectedItem); // Добавляем весь объект в избранное
+        localStorage.setItem('favorites', JSON.stringify(favorites)); // Сохраняем в localStorage
+        alert(`${title} добавлено в избранное!`);
+        
+        // Обновляем отображение избранных элементов
+        updateFavoritesDisplay();
+
+        // Меняем текст и стиль кнопки
+        button.innerText = 'В избранном'; // Изменяем текст
+        button.classList.add('added'); // Добавляем класс, который изменит стиль
+        button.disabled = true; // Делаем кнопку неактивной
+    } else {
+        alert(`${title} уже в избранном.`);
     }
+}
 
     // Обновление отображения избранных элементов
     function updateFavoritesDisplay() {
