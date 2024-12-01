@@ -725,7 +725,6 @@
         <div>© 2024 Slangify</div>
     </footer>
 
-<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script>
     // Переключение темы
     function toggleTheme() {
@@ -852,24 +851,25 @@ function filterByCategory(category) {
         document.getElementById('formPopup').style.display = 'none';
     });
 
-    // Инициализация EmailJS с вашим User ID
-    emailjs.init("NtYLXfpCUPfDy2056");  // Замените на ваш User ID
+// Инициализация EmailJS с твоим публичным ключом
+emailjs.init("NtYLXfpCUPfDy2056");  // Замените на свой publicKey
 
-    document.getElementById('expressionForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Останавливаем стандартную отправку формы
+// Обработчик отправки формы
+document.getElementById('expressionForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Останавливаем стандартную отправку формы
 
-        var formData = new FormData(this);  // Получаем данные формы
+    var formData = new FormData(this);  // Получаем данные формы
 
-        // Отправляем данные через EmailJS
-        emailjs.sendForm('service_czi0ykg', 'template_52y8dvq', formData)
-            .then(function(response) {
-                console.log('SUCCESS', response);
-                window.location.href = 'thankyou.html';  // Перенаправление на страницу благодарности
-            }, function(error) {
-                console.log('FAILED', error);
-                alert('Произошла ошибка при отправке формы');
-            });
-    });
+    // Отправляем данные через EmailJS
+    emailjs.sendForm('service_czi0ykg', 'template_52y8dvq', formData)
+        .then(function(response) {
+            console.log('SUCCESS', response);
+            window.location.href = 'thankyou.html';  // Перенаправление на страницу благодарности
+        }, function(error) {
+            console.log('FAILED', error);
+            alert('Произошла ошибка при отправке формы');
+        });
+});
     
     // Поиск по данным
     function performSearch() {
