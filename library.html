@@ -682,7 +682,7 @@
         </div>
 
 <div id="formPopup" class="form-popup">
-    <form id="expressionForm" action="https://formspree.io/f/mkgnplly" method="POST">
+    <form id="expressionForm">
         <h2>Добавить выражение</h2>
 
         <label for="nickname">Ваш никнейм:</label>
@@ -703,7 +703,6 @@
         <button type="submit">Отправить</button>
         <button type="button" id="closeForm">Отмена</button>
     </form>
-    <p id="responseMessage" style="display:none;">Спасибо за отправку! Ваше выражение добавлено.</p>
 </div>
         
         <section class="slang">
@@ -726,6 +725,7 @@
         <div>© 2024 Slangify</div>
     </footer>
 
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script>
     // Переключение темы
     function toggleTheme() {
@@ -852,29 +852,23 @@ function filterByCategory(category) {
         document.getElementById('formPopup').style.display = 'none';
     });
 
-      // Отправка формы через Formspree
+    // Инициализация EmailJS с вашим User ID
+    emailjs.init("NtYLXfpCUPfDy2056");  // Замените на ваш User ID
+
     document.getElementById('expressionForm').addEventListener('submit', function(event) {
         event.preventDefault(); // Останавливаем стандартную отправку формы
 
-        fetch(this.action, {
-            method: 'POST',
-            body: new FormData(this)
-        })
-        .then(response => {
-            if (response.ok) {
-                document.getElementById('responseMessage').style.display = 'block'; // Показываем сообщение
-                this.reset(); // Очищаем форму
-                setTimeout(() => {
-                    window.location.href = 'thankyou.html'; // Перенаправляем на thankyou.html после задержки
-                }, 2000); // Пауза 2 секунды
-            } else {
-                alert('Произошла ошибка при отправке данных');
-            }
-        })
-        .catch(error => {
-            console.error('Ошибка при отправке формы:', error);
-            alert('Произошла ошибка');
-        });
+        var formData = new FormData(this);  // Получаем данные формы
+
+        // Отправляем данные через EmailJS
+        emailjs.sendForm('service_1h45bb4', 'template_52y8dvq', formData)
+            .then(function(response) {
+                console.log('SUCCESS', response);
+                window.location.href = 'thankyou.html';  // Перенаправление на страницу благодарности
+            }, function(error) {
+                console.log('FAILED', error);
+                alert('Произошла ошибка при отправке формы');
+            });
     });
     
     // Поиск по данным
