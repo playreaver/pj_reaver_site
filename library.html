@@ -844,7 +844,7 @@
 
     let slangData = []; // Массив для хранения данных из JSON
     let categories = []; // Массив для категорий
-    let favorites = []; // Массив для избранных элементов
+    let favorites = []; // Массив для хранения избранных выражений
 
     // Загрузка данных из JSON
     fetch('slangData.json')
@@ -854,7 +854,9 @@
             categories = [...new Set(data.map(item => item.category))]; // Извлекаем уникальные категории
             createCategoryButtons(categories); // Создаем кнопки категорий
             displayData(data); // Показываем данные на странице
-            generateRecommendations(); // Генерация рекомендаций после загрузки данных
+
+            // Вызов функции для генерации рекомендаций
+            generateRecommendations(); 
         })
         .catch(error => console.error('Ошибка загрузки данных:', error));
 
@@ -917,7 +919,7 @@
                 <div class="slang-item">
                     <h3>${item.title}</h3>
                     <p>${item.description}</p>
-                    <button onclick="addToFavorites('${item.title}')">Добавить в избранное</button>
+                    <button class="add-to-favorites" onclick="addToFavorites('${item.title}')">Добавить в избранное</button>
                 </div>
             `;
             // Примеры
@@ -938,7 +940,6 @@
     // Генерация рекомендаций
     function generateRecommendations() {
         const recommendationList = document.querySelector('.recommendation-list');
-        recommendationList.innerHTML = ''; // Очищаем текущие рекомендации
     
         // Предположим, что мы выбираем случайные 5 элементов из базы данных
         const recommendedItems = slangData.sort(() => 0.5 - Math.random()).slice(0, 5); // случайные 5 элементов
@@ -949,7 +950,6 @@
                 <div class="recommendation-item">
                     <h3>${item.title}</h3>
                     <p>${item.description}</p>
-                    <button onclick="addToFavorites('${item.title}')">Добавить в избранное</button>
                 </div>
             `;
         });
@@ -957,9 +957,11 @@
 
     // Добавление в избранное
     function addToFavorites(title) {
-        // Проверяем, не добавлен ли этот элемент уже
-        if (!favorites.includes(title)) {
-            favorites.push(title);
+        const selectedItem = slangData.find(item => item.title === title);
+
+        if (selectedItem && !favorites.some(item => item.title === title)) {
+            favorites.push(selectedItem); // Добавляем весь объект в избранное
+            localStorage.setItem('favorites', JSON.stringify(favorites)); // Сохраняем в localStorage
             alert(`${title} добавлено в избранное!`);
             updateFavoritesDisplay();
         } else {
@@ -975,11 +977,26 @@
         favorites.forEach(favorite => {
             favoritesList.innerHTML += `
                 <div class="favorite-item">
-                    <p>${favorite}</p>
+                    <h3>${favorite.title}</h3>
+                    <p>${favorite.description}</p>
                 </div>
             `;
         });
     }
+
+    // Загрузка избранных элементов из localStorage
+    function loadFavoritesFromStorage() {
+        const storedFavorites = localStorage.getItem('favorites');
+        if (storedFavorites) {
+            favorites = JSON.parse(storedFavorites); // Загружаем данные из localStorage
+            updateFavoritesDisplay(); // Обновляем отображение
+        }
+    }
+
+    // Загружаем избранное при загрузке страницы
+    window.onload = function() {
+        loadFavoritesFromStorage();  // Загружаем избранное
+    };
 
     // Открытие попапа
     document.getElementById('openForm').addEventListener('click', function () {
