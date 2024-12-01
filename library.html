@@ -851,13 +851,12 @@ fetch('slangData.json')
         slangData = data; // Сохраняем данные
         categories = [...new Set(data.map(item => item.category))]; // Извлекаем уникальные категории
         createCategoryButtons(categories); // Создаем кнопки категорий
-        displayData(slangData); // Показываем данные на странице
+        displayData(data); // Показываем данные на странице
         displayFavorites(); // Отображаем избранное
         generateRecommendations(); // Вызов функции для генерации рекомендаций
     })
     .catch(error => console.error('Ошибка загрузки данных:', error));
 
-// Создание кнопок для категорий
 function createCategoryButtons(categories) {
     const categoryButtonsContainer = document.querySelector('.category-buttons');
     categoryButtonsContainer.innerHTML = ''; // Очищаем контейнер перед добавлением кнопок
