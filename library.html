@@ -682,24 +682,24 @@
         </div>
 
 <div id="formPopup" class="form-popup">
-    <form name="expressionForm" method="POST" data-netlify="true" id="netlifyForm">
+    <form name="expressionForm" method="POST" data-netlify="true" action="/thankyou.html" id="netlifyForm">
         <h2>Добавить выражение</h2>
-    
+
         <label for="nickname">Ваш никнейм:</label>
         <input type="text" id="nickname" name="nickname" placeholder="Введите ваш никнейм" required>
-    
+
         <label for="email">Почта:</label>
         <input type="email" id="email" name="email" placeholder="Введите ваш email" required>
-    
+
         <label for="slang">Сленговое выражение:</label>
         <input type="text" id="slang" name="slang" placeholder="Добавьте слово" required>
-    
+
         <label for="example">Пример использования:</label>
         <textarea id="example" name="example" placeholder="Пример, как слово используется" required></textarea>
-    
+
         <label for="context">Контекст:</label>
         <textarea id="context" name="context" placeholder="Объясните, в каком контексте используется слово" required></textarea>
-    
+
         <button type="submit">Отправить</button>
         <button type="button" id="closeForm">Отмена</button>
     </form>
@@ -849,13 +849,6 @@ function filterByCategory(category) {
     // Закрытие попапа
     document.getElementById('closeForm').addEventListener('click', function () {
         document.getElementById('formPopup').style.display = 'none';
-    });
-
-    // Этот скрипт отменяет стандартную отправку формы
-    document.getElementById('netlifyForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Это предотвращает перезагрузку страницы
-        // Переход на страницу благодарности после отправки формы
-        window.location.href = "thankyou.html"; // Перенаправление
     });
     
     // Поиск по данным
