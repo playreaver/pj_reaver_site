@@ -861,7 +861,7 @@ function filterByCategory(category) {
         var formData = new FormData(this);  // Получаем данные формы
 
         // Отправляем данные через EmailJS
-        emailjs.sendForm('service_1h45bb4', 'template_52y8dvq', formData)
+        emailjs.sendForm('service_czi0ykg', 'template_52y8dvq', formData)
             .then(function(response) {
                 console.log('SUCCESS', response);
                 window.location.href = 'thankyou.html';  // Перенаправление на страницу благодарности
