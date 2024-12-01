@@ -835,7 +835,6 @@ function filterByCategory(category) {
     categoryTitle.innerText = `Категория: ${category}`;
 }
 
-// Отображение данных на странице
 function displayData(data) {
     const slangList = document.querySelector('.slang-list');
     const examplesList = document.querySelector('.examples-list');
@@ -875,20 +874,17 @@ function displayData(data) {
         `;
     });
 
-    setupFavoriteButtons(); // Добавляем обработчики для кнопок "В избранное"
+    setupFavoriteButtons(); // Обновляем обработчики кнопок "В избранное"
 }
-// Сохраняем избранное в localStorage
 function saveFavorites(favorites) {
     localStorage.setItem('favorites', JSON.stringify(favorites));
 }
 
-// Загружаем избранное из localStorage
 function loadFavorites() {
     const favorites = localStorage.getItem('favorites');
     return favorites ? JSON.parse(favorites) : [];
 }
 
-// Отображение избранного
 function displayFavorites() {
     const favorites = loadFavorites();
     const favoritesList = document.querySelector('.favorites-list');
@@ -909,7 +905,6 @@ function displayFavorites() {
     }
 }
 
-// Обработчик кнопок "В избранное"
 function setupFavoriteButtons() {
     const favButtons = document.querySelectorAll('.fav-btn');
     favButtons.forEach(button => {
@@ -920,12 +915,12 @@ function setupFavoriteButtons() {
     });
 }
 
-// Добавление сленга в избранное
 function addToFavorites(slangItem) {
     let favorites = loadFavorites();
-    if (!favorites.find(item => item.title === slangItem.title)) { // Если такого сленга нет в избранном
+    if (!favorites.find(item => item.title === slangItem.title)) { // Проверка на дубликаты
         favorites.push(slangItem);
-        saveFavorites(favorites);
+        saveFavorites(favorites); // Сохраняем в localStorage
+        displayFavorites(); // Обновляем отображение избранного
     }
 }
 
