@@ -837,225 +837,176 @@
     </footer>
 
 <script>
-// Переключение темы
-function toggleTheme() {
-    document.body.classList.toggle('light-mode');
-}
-
-let slangData = []; // Массив для хранения данных из JSON
-let categories = []; // Массив для категорий
-
-fetch('slangData.json')
-    .then(response => response.json())
-    .then(data => {
-        slangData = data; // Сохраняем данные
-        categories = [...new Set(data.map(item => item.category))]; // Извлекаем уникальные категории
-        createCategoryButtons(categories); // Создаем кнопки категорий
-        displayData(data); // Показываем данные на странице
-        displayFavorites(); // Отображаем избранное
-        generateRecommendations(); // Вызов функции для генерации рекомендаций
-    })
-    .catch(error => console.error('Ошибка загрузки данных:', error));
-
-function createCategoryButtons(categories) {
-    const categoryButtonsContainer = document.querySelector('.category-buttons');
-    categoryButtonsContainer.innerHTML = ''; // Очищаем контейнер перед добавлением кнопок
-    
-    // Добавляем кнопку "Все"
-    const allButton = document.createElement('button');
-    allButton.classList.add('category-button');
-    allButton.innerText = 'Все';
-    allButton.onclick = () => {
-        displayData(slangData);  // Показывает все сленги
-        const categoryTitle = document.getElementById('category-title');
-        categoryTitle.innerText = 'Категория: Все';  // Обновляем текст на "Все"
-    };
-    categoryButtonsContainer.appendChild(allButton);
-
-    // Добавляем кнопки для каждой категории
-    categories.forEach(category => {
-        const button = document.createElement('button');
-        button.classList.add('category-button');
-        button.innerText = category;
-        button.onclick = () => filterByCategory(category); // Добавляем обработчик для фильтрации
-        categoryButtonsContainer.appendChild(button);
-    });
-}
-
-// Фильтрация данных по категории
-function filterByCategory(category) {
-    const filteredData = slangData.filter(item => item.category === category);
-    displayData(filteredData);
-
-    // Обновляем текст заголовка с выбранной категорией
-    const categoryTitle = document.getElementById('category-title');
-    categoryTitle.innerText = `Категория: ${category}`;
-}
-
-function displayData(data) {
-    const slangList = document.querySelector('.slang-list');
-    const examplesList = document.querySelector('.examples-list');
-    const contextList = document.querySelector('.context-list');
-
-    slangList.innerHTML = '';
-    examplesList.innerHTML = '';
-    contextList.innerHTML = '';
-
-    if (data.length === 0) {
-        slangList.innerHTML = '<p class="no-results">Ничего не найдено!</p>';
-        return;
+    // Переключение темы
+    function toggleTheme() {
+        document.body.classList.toggle('light-mode');
     }
 
-    data.forEach(item => {
-        // Сленги
-        slangList.innerHTML += `
-            <div class="slang-item">
-                <h3>${item.title}</h3>
-                <p>${item.description}</p>
-                <button class="fav-btn" data-slang='${encodeURIComponent(JSON.stringify(item))}'>В избранное</button>
-            </div>
-        `;
+    let slangData = []; // Массив для хранения данных из JSON
+    let categories = []; // Массив для категорий
+    let favorites = []; // Массив для избранных элементов
 
-        // Примеры
-        examplesList.innerHTML += `
-            <div class="example-item">
-                <p><strong>${item.title}:</strong> "${item.example}"</p>
-            </div>
-        `;
+    // Загрузка данных из JSON
+    fetch('slangData.json')
+        .then(response => response.json())
+        .then(data => {
+            slangData = data; // Сохраняем данные
+            categories = [...new Set(data.map(item => item.category))]; // Извлекаем уникальные категории
+            createCategoryButtons(categories); // Создаем кнопки категорий
+            displayData(data); // Показываем данные на странице
+            generateRecommendations(); // Генерация рекомендаций после загрузки данных
+        })
+        .catch(error => console.error('Ошибка загрузки данных:', error));
 
-        // Контексты
-        contextList.innerHTML += `
-            <div class="context-item">
-                <p><strong>${item.title}:</strong> ${item.context}</p>
-            </div>
-        `;
-    });
+    // Создание кнопок для категорий
+    function createCategoryButtons(categories) {
+        const categoryButtonsContainer = document.querySelector('.category-buttons');
+        categoryButtonsContainer.innerHTML = ''; // Очищаем контейнер перед добавлением кнопок
+        
+        // Добавляем кнопку "Все"
+        const allButton = document.createElement('button');
+        allButton.classList.add('category-button');
+        allButton.innerText = 'Все';
+        allButton.onclick = () => {
+            displayData(slangData);  // Показывает все сленги
+            const categoryTitle = document.getElementById('category-title');
+            categoryTitle.innerText = 'Категория: Все';  // Обновляем текст на "Все"
+        };
+        categoryButtonsContainer.appendChild(allButton);
 
-    setupFavoriteButtons(); // Обновляем обработчики кнопок "В избранное"
-}
+        // Добавляем кнопки для каждой категории
+        categories.forEach(category => {
+            const button = document.createElement('button');
+            button.classList.add('category-button');
+            button.innerText = category;
+            button.onclick = () => filterByCategory(category); // Добавляем обработчик для фильтрации
+            categoryButtonsContainer.appendChild(button);
+        });
+    }
 
-function saveFavorites(favorites) {
-    localStorage.setItem('favorites', JSON.stringify(favorites));
-}
+    // Фильтрация данных по категории
+    function filterByCategory(category) {
+        const filteredData = slangData.filter(item => item.category === category);
+        displayData(filteredData);
 
-function loadFavorites() {
-    const favorites = localStorage.getItem('favorites');
-    return favorites ? JSON.parse(favorites) : [];
-}
+        // Обновляем текст заголовка с выбранной категорией
+        const categoryTitle = document.getElementById('category-title');
+        categoryTitle.innerText = `Категория: ${category}`;
+    }
 
-function displayFavorites() {
-    const favorites = loadFavorites();
-    const favoritesList = document.querySelector('.favorites-list');
+    // Отображение данных на странице
+    function displayData(data) {
+        const slangList = document.querySelector('.slang-list');
+        const examplesList = document.querySelector('.examples-list');
+        const contextList = document.querySelector('.context-list');
 
-    favoritesList.innerHTML = ''; // Очищаем старое содержимое
+        slangList.innerHTML = '';
+        examplesList.innerHTML = '';
+        contextList.innerHTML = '';
 
-    if (favorites.length === 0) {
-        favoritesList.innerHTML = '<p>Пока нет избранных элементов.</p>';
-    } else {
-        favorites.forEach(item => {
-            favoritesList.innerHTML += `
-                <div class="favorite-item">
+        if (data.length === 0) {
+            slangList.innerHTML = '<p class="no-results">Ничего не найдено!</p>';
+            examplesList.innerHTML = '';
+            contextList.innerHTML = '';
+            return;
+        }
+
+        data.forEach(item => {
+            // Сленги
+            slangList.innerHTML += `
+                <div class="slang-item">
                     <h3>${item.title}</h3>
                     <p>${item.description}</p>
+                    <button onclick="addToFavorites('${item.title}')">Добавить в избранное</button>
+                </div>
+            `;
+            // Примеры
+            examplesList.innerHTML += `
+                <div class="example-item">
+                    <p><strong>${item.title}:</strong> "${item.example}"</p>
+                </div>
+            `;
+            // Контексты
+            contextList.innerHTML += `
+                <div class="context-item">
+                    <p><strong>${item.title}:</strong> ${item.context}</p>
                 </div>
             `;
         });
     }
-}
 
-function setupFavoriteButtons() {
-    const favButtons = document.querySelectorAll('.fav-btn');
-    favButtons.forEach(button => {
-        const slangItem = JSON.parse(decodeURIComponent(button.getAttribute('data-slang')));
-
-        // Проверяем, добавлен ли сленг в избранное
-        const favorites = loadFavorites();
-        const isFavorite = favorites.some(item => item.title === slangItem.title);
-
-        // Если элемент в избранном, меняем текст кнопки и стиль
-        if (isFavorite) {
-            button.innerText = 'Добавлено';
-            button.classList.add('added'); // Добавляем класс 'added'
-            button.disabled = true; // Блокируем кнопку
-        } else {
-            button.innerText = 'В избранное';
-            button.classList.remove('added'); // Убираем класс 'added'
-            button.disabled = false; // Разблокируем кнопку
-        }
-
-        // Обработчик клика для добавления/удаления из избранного
-        button.addEventListener('click', () => {
-            if (isFavorite) {
-                removeFromFavorites(slangItem); // Удаляем из избранного
-                button.innerText = 'В избранное'; // Меняем текст кнопки
-                button.classList.remove('added'); // Убираем класс 'added'
-            } else {
-                addToFavorites(slangItem); // Добавляем в избранное
-                button.innerText = 'Добавлено'; // Меняем текст кнопки
-                button.classList.add('added'); // Добавляем класс 'added'
-            }
+    // Генерация рекомендаций
+    function generateRecommendations() {
+        const recommendationList = document.querySelector('.recommendation-list');
+        recommendationList.innerHTML = ''; // Очищаем текущие рекомендации
+    
+        // Предположим, что мы выбираем случайные 5 элементов из базы данных
+        const recommendedItems = slangData.sort(() => 0.5 - Math.random()).slice(0, 5); // случайные 5 элементов
+    
+        // Добавляем элементы в DOM
+        recommendedItems.forEach(item => {
+            recommendationList.innerHTML += `
+                <div class="recommendation-item">
+                    <h3>${item.title}</h3>
+                    <p>${item.description}</p>
+                    <button onclick="addToFavorites('${item.title}')">Добавить в избранное</button>
+                </div>
+            `;
         });
-    });
-}
-
-function addToFavorites(slangItem) {
-    let favorites = loadFavorites();
-    if (!favorites.find(item => item.title === slangItem.title)) { // Проверка на дубликаты
-        favorites.push(slangItem);
-        saveFavorites(favorites); // Сохраняем в localStorage
-        displayFavorites(); // Обновляем отображение избранного
     }
-}
 
-function removeFromFavorites(slangItem) {
-    let favorites = loadFavorites();
-    favorites = favorites.filter(item => item.title !== slangItem.title); // Убираем сленг
-    saveFavorites(favorites); // Сохраняем обновленный список
-    displayFavorites(); // Обновляем отображение избранного
-}
+    // Добавление в избранное
+    function addToFavorites(title) {
+        // Проверяем, не добавлен ли этот элемент уже
+        if (!favorites.includes(title)) {
+            favorites.push(title);
+            alert(`${title} добавлено в избранное!`);
+            updateFavoritesDisplay();
+        } else {
+            alert(`${title} уже в избранном.`);
+        }
+    }
 
-function generateRecommendations() {
-    const recommendationList = document.querySelector('.recommendation-list');
+    // Обновление отображения избранных элементов
+    function updateFavoritesDisplay() {
+        const favoritesList = document.querySelector('.favorites-list');
+        favoritesList.innerHTML = ''; // Очищаем текущий список избранного
 
-    // Предположим, что мы выбираем случайные 5 элементов из базы данных
-    const recommendedItems = slangData.sort(() => 0.5 - Math.random()).slice(0, 5); // случайные 5 элементов
+        favorites.forEach(favorite => {
+            favoritesList.innerHTML += `
+                <div class="favorite-item">
+                    <p>${favorite}</p>
+                </div>
+            `;
+        });
+    }
 
-    // Добавляем элементы в DOM
-    recommendedItems.forEach(item => {
-        recommendationList.innerHTML += `
-            <div class="recommendation-item">
-                <h3>${item.title}</h3>
-                <p>${item.description}</p>
-            </div>
-        `;
+    // Открытие попапа
+    document.getElementById('openForm').addEventListener('click', function () {
+        document.getElementById('formPopup').style.display = 'block';
     });
-}
 
-// Открытие попапа
-document.getElementById('openForm').addEventListener('click', function () {
-    document.getElementById('formPopup').style.display = 'block';
-});
+    // Закрытие попапа
+    document.getElementById('closeForm').addEventListener('click', function () {
+        document.getElementById('formPopup').style.display = 'none';
+    });
+    
+    // Поиск по данным
+    function performSearch() {
+        const searchQuery = document.getElementById('search-input').value.toLowerCase();
 
-// Закрытие попапа
-document.getElementById('closeForm').addEventListener('click', function () {
-    document.getElementById('formPopup').style.display = 'none';
-});
+        // Фильтрация данных
+        const filteredData = slangData.filter(item =>
+            item.title.toLowerCase().includes(searchQuery) || 
+            item.description.toLowerCase().includes(searchQuery) ||
+            item.example.toLowerCase().includes(searchQuery) || 
+            item.context.toLowerCase().includes(searchQuery)
+        );
 
-// Поиск по данным
-function performSearch() {
-    const searchQuery = document.getElementById('search-input').value.toLowerCase();
-
-    // Фильтрация данных
-    const filteredData = slangData.filter(item =>
-        item.title.toLowerCase().includes(searchQuery) || 
-        item.description.toLowerCase().includes(searchQuery) ||
-        item.example.toLowerCase().includes(searchQuery) || 
-        item.context.toLowerCase().includes(searchQuery)
-    );
-
-    // Обновляем данные на странице
-    displayData(filteredData);
-}
+        // Обновляем данные на странице
+        displayData(filteredData);
+    }
 </script>
+
 </body>
 </html>
