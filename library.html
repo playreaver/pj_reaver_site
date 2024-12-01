@@ -908,9 +908,30 @@ function displayFavorites() {
 function setupFavoriteButtons() {
     const favButtons = document.querySelectorAll('.fav-btn');
     favButtons.forEach(button => {
+        const slangItem = JSON.parse(decodeURIComponent(button.getAttribute('data-slang')));
+
+        // Проверяем, добавлен ли сленг в избранное
+        const favorites = loadFavorites();
+        const isFavorite = favorites.some(item => item.title === slangItem.title);
+
+        // Если элемент в избранном, меняем текст кнопки
+        if (isFavorite) {
+            button.innerText = 'Добавлено';
+            button.disabled = true; // Можно заблокировать кнопку
+        } else {
+            button.innerText = 'В избранное';
+            button.disabled = false; // Разблокировать кнопку
+        }
+
+        // Обработчик клика для добавления/удаления из избранного
         button.addEventListener('click', () => {
-            const slangItem = JSON.parse(decodeURIComponent(button.getAttribute('data-slang')));
-            addToFavorites(slangItem); // Добавляем в избранное
+            if (isFavorite) {
+                removeFromFavorites(slangItem); // Удаляем из избранного
+                button.innerText = 'В избранное'; // Меняем текст кнопки
+            } else {
+                addToFavorites(slangItem); // Добавляем в избранное
+                button.innerText = 'Добавлено'; // Меняем текст кнопки
+            }
         });
     });
 }
@@ -922,6 +943,13 @@ function addToFavorites(slangItem) {
         saveFavorites(favorites); // Сохраняем в localStorage
         displayFavorites(); // Обновляем отображение избранного
     }
+}
+
+function removeFromFavorites(slangItem) {
+    let favorites = loadFavorites();
+    favorites = favorites.filter(item => item.title !== slangItem.title); // Убираем сленг
+    saveFavorites(favorites); // Сохраняем обновленный список
+    displayFavorites(); // Обновляем отображение избранного
 }
 
     
