@@ -40,6 +40,7 @@
     margin-bottom: 6px; /* Отступ снизу от текста */
 }
         
+/* Общие стили для поп-апа */
 .form-popup {
     display: none;
     background-color: #090909;
@@ -51,13 +52,26 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 10;
+    z-index: 1001; /* Увеличен z-index для того, чтобы поп-ап был наверху */
     width: 100%;
     max-width: 500px;
     box-sizing: border-box;
     overflow: hidden;
 }
 
+/* Слой затемнения фона */
+.form-popup::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Затемнение */
+    z-index: -1; /* Помещаем его за поп-ап */
+}
+
+/* Заголовок */
 .form-popup h2 {
     color: #76c7c0;
     text-align: center;
@@ -66,6 +80,7 @@
     font-weight: bold;
 }
 
+/* Подписи для полей */
 .form-popup label {
     display: block;
     margin-top: 15px;
@@ -74,6 +89,7 @@
     font-weight: bold;
 }
 
+/* Поля ввода и текстовые области */
 .form-popup input,
 .form-popup textarea {
     width: 100%;
@@ -86,9 +102,10 @@
     font-size: 1.1em;
     box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
     transition: background-color 0.3s ease, color 0.3s ease;
-    box-sizing: border-box; /* To ensure padding doesn't affect width */
+    box-sizing: border-box; /* Чтобы padding не влиял на ширину */
 }
 
+/* Фокус на полях ввода */
 .form-popup input:focus,
 .form-popup textarea:focus {
     background-color: #2d5b59;
@@ -96,6 +113,7 @@
     outline: none;
 }
 
+/* Кнопки */
 .form-popup button {
     width: 100%;
     padding: 12px;
@@ -110,12 +128,14 @@
     box-sizing: border-box;
 }
 
+/* Hover-эффект на кнопках */
 .form-popup button:hover {
     background-color: #2d5b59;
     color: #ffffff;
     transform: scale(1.05);
 }
 
+/* Кнопка "Закрыть" */
 .form-popup button#closeForm {
     background-color: #1f1f1f;
     color: #bbbbbb;
@@ -126,10 +146,10 @@
     color: #ffffff;
 }
 
-/* Медиа-запросы для адаптивности */
+/* Адаптивность */
 @media (max-width: 600px) {
     .form-popup {
-        width: 90%; /* Уменьшаем ширину на маленьких экранах */
+        width: 90%;
         padding: 30px 15px;
     }
 
