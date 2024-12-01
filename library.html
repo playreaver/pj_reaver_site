@@ -851,9 +851,11 @@ function filterByCategory(category) {
         document.getElementById('formPopup').style.display = 'none';
     });
 
-    // Когда форма отправляется, происходит редирект
-    document.getElementById('netlifyForm').addEventListener('submit', function() {
-        window.location.href = "thankyou.html";  // Переход на страницу благодарности
+    // Этот скрипт отменяет стандартную отправку формы
+    document.getElementById('netlifyForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Это предотвращает перезагрузку страницы
+        // Переход на страницу благодарности после отправки формы
+        window.location.href = "thankyou.html"; // Перенаправление
     });
     
     // Поиск по данным
