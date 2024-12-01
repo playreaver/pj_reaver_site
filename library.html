@@ -910,26 +910,6 @@ function displayFavorites() {
     }
 }
 
-// Отображение избранного
-function displayFavorites() {
-    const favoritesList = document.querySelector('.favorites-list');
-    const favorites = loadFavorites();
-
-    favoritesList.innerHTML = ''; // Очищаем список
-
-    if (favorites.length === 0) {
-        favoritesList.innerHTML = '<p>Пока нет избранных элементов.</p>';
-    } else {
-        favorites.forEach(item => {
-            favoritesList.innerHTML += `
-                <div class="favorite-item">
-                    <h3>${item.title}</h3>
-                    <p>${item.description}</p>
-                </div>
-            `;
-        });
-    }
-}
     
     function generateRecommendations() {
         const recommendationList = document.querySelector('.recommendation-list');
