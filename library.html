@@ -815,6 +815,7 @@ button.add-to-favorites:disabled {
         <section class="favorites">
             <h2>Тебе понравилось</h2>
             <div class="favorites-list"></div>
+            <p class="favorites-empty">Тут будут отображаться добавленные вами элементы в фаворит.</p>
         </section>
         
         <section class="slang">
@@ -984,8 +985,9 @@ function updateFavoritesDisplay() {
     favoritesList.innerHTML = ''; // Очищаем текущий список избранного
 
     if (favorites.length === 0) {
-        favoritesList.innerHTML = '<p>Тут будут отображаться добавленные тобой элементы в фаворит.</p>';
+        emptyMessage.style.display = 'block'; // Показываем текст, если избранное пустое
     } else {
+        emptyMessage.style.display = 'none'; // Скрываем текст, если есть элементы в избранном
         favorites.forEach(favorite => {
             favoritesList.innerHTML += `
                 <div class="favorite-item">
