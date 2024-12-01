@@ -854,7 +854,8 @@ function filterByCategory(category) {
 
     // Отправка формы через Formspree
     document.getElementById('expressionForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Останавливаем стандартную отправку формы
+        // Убираем предотвращение отправки формы, так как это уже обрабатывается через Formspree.
+        // event.preventDefault(); 
 
         fetch(this.action, {
             method: 'POST',
@@ -876,7 +877,7 @@ function filterByCategory(category) {
             alert('Произошла ошибка');
         });
     });
-
+    
     // Поиск по данным
     function performSearch() {
         const searchQuery = document.getElementById('search-input').value.toLowerCase();
