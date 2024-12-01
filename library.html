@@ -852,10 +852,9 @@ function filterByCategory(category) {
         document.getElementById('formPopup').style.display = 'none';
     });
 
-    // Отправка формы через Formspree
+      // Отправка формы через Formspree
     document.getElementById('expressionForm').addEventListener('submit', function(event) {
-        // Убираем предотвращение отправки формы, так как это уже обрабатывается через Formspree.
-        // event.preventDefault(); 
+        event.preventDefault(); // Останавливаем стандартную отправку формы
 
         fetch(this.action, {
             method: 'POST',
