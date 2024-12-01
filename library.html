@@ -7,6 +7,30 @@
     <link rel="icon" href="logo/1sitelogo.png" type="image/png">
     <style>
 
+.add-expression button {
+    background-color: #76c7c0; /* Ваш акцентный цвет */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    color: #121212; /* Черный текст на кнопке */
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+    margin-top: 10px; /* Отступ сверху для лучшего расположения */
+}
+
+.add-expression button:hover {
+    background-color: #64b4b0; /* Цвет при наведении */
+    transform: scale(1.05); /* Легкое увеличение при наведении */
+}
+
+.add-expression p {
+    color: #bbb; /* Легкий серый цвет для текста */
+    font-size: 1.1em;
+    margin-bottom: 8px; /* Отступ снизу от текста */
+}
+        
         .form-popup {
     display: none;
     background-color: #090909;
@@ -648,8 +672,8 @@
             <button id="openForm">Добавить выражение</button>
         </div>
 
-        <div id="formPopup" class="form-popup">
-    <form id="expressionForm" action="thankyou.html" method="post">
+<div id="formPopup" class="form-popup">
+    <form id="expressionForm" action="https://formspree.io/f/your-form-id" method="POST">
         <h2>Добавить выражение</h2>
 
         <label for="nickname">Ваш никнейм:</label>
@@ -670,6 +694,7 @@
         <button type="submit">Отправить</button>
         <button type="button" id="closeForm">Отмена</button>
     </form>
+    <p id="responseMessage" style="display:none;">Спасибо за отправку! Ваше выражение добавлено.</p>
 </div>
         
         <section class="slang">
@@ -808,12 +833,39 @@ function filterByCategory(category) {
             `;
         });
     }
+    // Открытие попапа
     document.getElementById('openForm').addEventListener('click', function () {
         document.getElementById('formPopup').style.display = 'block';
     });
-    
+
+    // Закрытие попапа
     document.getElementById('closeForm').addEventListener('click', function () {
         document.getElementById('formPopup').style.display = 'none';
+    });
+
+    // Отправка формы через Formspree
+    document.getElementById('expressionForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Останавливаем стандартную отправку формы
+
+        fetch(this.action, {
+            method: 'POST',
+            body: new FormData(this)
+        })
+        .then(response => {
+            if (response.ok) {
+                document.getElementById('responseMessage').style.display = 'block'; // Показываем сообщение
+                this.reset(); // Очищаем форму
+                setTimeout(() => {
+                    window.location.href = 'thankyou.html'; // Перенаправляем на thankyou.html после задержки
+                }, 2000); // Пауза 2 секунды
+            } else {
+                alert('Произошла ошибка при отправке данных');
+            }
+        })
+        .catch(error => {
+            console.error('Ошибка при отправке формы:', error);
+            alert('Произошла ошибка');
+        });
     });
 
     // Поиск по данным
