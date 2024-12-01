@@ -972,13 +972,15 @@ function setupFavoriteButtons() {
         const favorites = loadFavorites();
         const isFavorite = favorites.some(item => item.title === slangItem.title);
 
-        // Если элемент в избранном, меняем текст кнопки
+        // Если элемент в избранном, меняем текст кнопки и стиль
         if (isFavorite) {
             button.innerText = 'Добавлено';
-            button.disabled = true; // Можно заблокировать кнопку
+            button.classList.add('added'); // Добавляем класс 'added'
+            button.disabled = true; // Блокируем кнопку
         } else {
             button.innerText = 'В избранное';
-            button.disabled = false; // Разблокировать кнопку
+            button.classList.remove('added'); // Убираем класс 'added'
+            button.disabled = false; // Разблокируем кнопку
         }
 
         // Обработчик клика для добавления/удаления из избранного
@@ -986,9 +988,11 @@ function setupFavoriteButtons() {
             if (isFavorite) {
                 removeFromFavorites(slangItem); // Удаляем из избранного
                 button.innerText = 'В избранное'; // Меняем текст кнопки
+                button.classList.remove('added'); // Убираем класс 'added'
             } else {
                 addToFavorites(slangItem); // Добавляем в избранное
                 button.innerText = 'Добавлено'; // Меняем текст кнопки
+                button.classList.add('added'); // Добавляем класс 'added'
             }
         });
     });
