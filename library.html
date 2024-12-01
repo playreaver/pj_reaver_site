@@ -7,6 +7,64 @@
     <link rel="icon" href="logo/1sitelogo.png" type="image/png">
     <style>
 
+/* Основной стиль для кнопок */
+.fav-btn {
+    background-color: #76c7c0;
+    color: #121212;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Эффект при наведении на кнопку */
+.fav-btn:hover {
+    background-color: #2d5b59;
+    transform: scale(1.05);
+}
+
+/* Стиль кнопки, если элемент уже в избранном */
+.fav-btn.added {
+    background-color: #2d5b59;
+    color: #ffffff;
+    cursor: not-allowed;
+}
+
+.fav-btn.added:hover {
+    background-color: #2d5b59; /* Оставляем тот же цвет */
+    transform: none; /* Без эффекта увеличения */
+}
+
+/* Стиль для отображения избранных элементов */
+.favorite-item {
+    background-color: #1f1f1f;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Эффект при наведении на избранный элемент */
+.favorite-item:hover {
+    background-color: #2d5b59;
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+.favorite-item h3 {
+    font-size: 1.5em;
+    color: #76c7c0;
+    margin-bottom: 10px;
+}
+
+.favorite-item p {
+    color: #bbbbbb;
+    font-size: 1.1em;
+}
+
 .add-expression {
     display: flex;
     flex-direction: column;
