@@ -812,11 +812,13 @@ button.add-to-favorites:disabled {
     </form>
 </div>
 
-        <section class="favorites">
-            <h2>Тебе понравилось</h2>
-            <div class="favorites-list"></div>
-            <p class="favorites-empty">Тут будут отображаться добавленные вами элементы в фаворит.</p>
-        </section>
+        <div class="favorites">
+            <h2>Избранное</h2>
+            <div class="favorites-list">
+                <!-- Здесь будет отображаться избранное -->
+                <p class="favorites-empty">Тут будут отображаться добавленные вами элементы в фаворит.</p>
+            </div>
+        </div>
         
         <section class="slang">
             <h2>Список сленгов</h2>
@@ -982,6 +984,8 @@ function addToFavorites(title) {
 // Обновление отображения избранных элементов
 function updateFavoritesDisplay() {
     const favoritesList = document.querySelector('.favorites-list');
+    const emptyMessage = document.querySelector('.favorites-empty');
+    
     favoritesList.innerHTML = ''; // Очищаем текущий список избранного
 
     if (favorites.length === 0) {
