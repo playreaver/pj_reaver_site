@@ -926,7 +926,6 @@ function addToFavorites(slangItem) {
     if (!favorites.find(item => item.title === slangItem.title)) { // Если такого сленга нет в избранном
         favorites.push(slangItem);
         saveFavorites(favorites);
-        displayFavorites(); // Обновляем отображение избранного
     }
 }
 
