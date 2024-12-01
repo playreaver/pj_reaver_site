@@ -851,25 +851,25 @@ function filterByCategory(category) {
         document.getElementById('formPopup').style.display = 'none';
     });
 
-// Инициализация EmailJS с твоим публичным ключом
-emailjs.init("NtYLXfpCUPfDy2056");  // Замените на свой publicKey
-
-// Обработчик отправки формы
-document.getElementById('expressionForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Останавливаем стандартную отправку формы
-
-    var formData = new FormData(this);  // Получаем данные формы
-
-    // Отправляем данные через EmailJS
-    emailjs.sendForm('service_czi0ykg', 'template_52y8dvq', formData)
-        .then(function(response) {
-            console.log('SUCCESS', response);
-            window.location.href = 'thankyou.html';  // Перенаправление на страницу благодарности
-        }, function(error) {
-            console.log('FAILED', error);
-            alert('Произошла ошибка при отправке формы');
-        });
-});
+    // Инициализация EmailJS с вашим User ID
+    emailjs.init("NtYLXfpCUPfDy2056");  // Замените на ваш Public Key из EmailJS
+    
+    document.getElementById('expressionForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Останавливаем стандартную отправку формы
+        console.log('Form submission intercepted'); // Добавим лог для проверки
+    
+        var formData = new FormData(this);  // Получаем данные формы
+    
+        // Отправляем данные через EmailJS
+        emailjs.sendForm('service_czi0ykg', 'template_52y8dvq', formData)
+            .then(function(response) {
+                console.log('SUCCESS', response);
+                window.location.href = 'thankyou.html';  // Перенаправление на страницу благодарности
+            }, function(error) {
+                console.log('FAILED', error);
+                alert('Произошла ошибка при отправке формы');
+            });
+    });
     
     // Поиск по данным
     function performSearch() {
