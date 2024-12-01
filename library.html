@@ -7,6 +7,86 @@
     <link rel="icon" href="logo/1sitelogo.png" type="image/png">
     <style>
 
+        .form-popup {
+    display: none;
+    background-color: #090909;
+    padding: 40px 20px;
+    margin: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    width: 90%;
+    max-width: 500px;
+}
+
+.form-popup h2 {
+    color: #76c7c0;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+.form-popup label {
+    display: block;
+    margin-top: 20px;
+    font-size: 1.1em;
+    color: #76c7c0;
+}
+
+.form-popup input,
+.form-popup textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: none;
+    background-color: #1f1f1f;
+    color: #bbbbbb;
+    font-size: 1em;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.form-popup input:focus,
+.form-popup textarea:focus {
+    background-color: #2d5b59;
+    color: #ffffff;
+    outline: none;
+}
+
+.form-popup button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #76c7c0;
+    color: #121212;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.form-popup button:hover {
+    background-color: #2d5b59;
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+.form-popup button#closeForm {
+    background-color: #1f1f1f;
+    color: #bbbbbb;
+}
+
+.form-popup button#closeForm:hover {
+    background-color: #2d5b59;
+    color: #ffffff;
+}
+
     .trending-terms {
     background-color: #0a0a0a;
     padding: 40px 20px;
@@ -562,6 +642,35 @@
                 oninput="performSearch()"
             />
         </div>
+
+        <div class="add-expression">
+            <p>Не нашли нужное слово? Добавьте его на сайт!</p>
+            <button id="openForm">Добавить выражение</button>
+        </div>
+
+        <div id="formPopup" class="form-popup">
+    <form id="expressionForm" action="thankyou.html" method="post">
+        <h2>Добавить выражение</h2>
+
+        <label for="nickname">Ваш никнейм:</label>
+        <input type="text" id="nickname" name="nickname" placeholder="Введите ваш никнейм" required>
+
+        <label for="email">Почта:</label>
+        <input type="email" id="email" name="email" placeholder="Введите ваш email" required>
+
+        <label for="slang">Сленговое выражение:</label>
+        <input type="text" id="slang" name="slang" placeholder="Добавьте слово" required>
+
+        <label for="example">Пример использования:</label>
+        <textarea id="example" name="example" placeholder="Пример, как слово используется" required></textarea>
+
+        <label for="context">Контекст:</label>
+        <textarea id="context" name="context" placeholder="Объясните, в каком контексте используется слово" required></textarea>
+
+        <button type="submit">Отправить</button>
+        <button type="button" id="closeForm">Отмена</button>
+    </form>
+</div>
         
         <section class="slang">
             <h2>Список сленгов</h2>
@@ -699,6 +808,13 @@ function filterByCategory(category) {
             `;
         });
     }
+    document.getElementById('openForm').addEventListener('click', function () {
+        document.getElementById('formPopup').style.display = 'block';
+    });
+    
+    document.getElementById('closeForm').addEventListener('click', function () {
+        document.getElementById('formPopup').style.display = 'none';
+    });
 
     // Поиск по данным
     function performSearch() {
