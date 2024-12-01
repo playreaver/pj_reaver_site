@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Викторина | Slangify</title>
+    <title>Slangify — Статистика</title>
+    <link rel="icon" href="logo/1sitelogo.png" type="image/png">
     <style>
+        /* Основные стили взяты из вашего шаблона */
         body {
             background-color: #121212;
             color: #f1f1f1;
@@ -28,107 +30,113 @@
             color: #76c7c0;
         }
 
-        .nav {
-            display: flex;
-            gap: 15px;
-        }
-
         .nav a {
             text-decoration: none;
             color: #f1f1f1;
             font-size: 1em;
             padding: 8px 16px;
-            border: 2px solid transparent;
-            border-radius: 4px;
-            transition: all 0.3s ease;
+            transition: background-color 0.3s ease;
         }
 
         .nav a:hover {
-            color: #121212;
             background-color: #76c7c0;
-            border: 2px solid #76c7c0;
+            color: #121212;
         }
 
-        .quiz-container {
-            padding: 40px;
+        .stats-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #1f1f1f;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .stats-title {
+            font-size: 2em;
+            color: #76c7c0;
             text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .quiz-question {
-            font-size: 1.5em;
             margin-bottom: 20px;
         }
 
-        .quiz-options {
-            margin: 20px 0;
+        .stats-block {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
         }
 
-        .quiz-option {
-            background-color: #76c7c0;
-            color: #121212;
-            border: none;
-            padding: 10px 20px;
-            font-size: 1em;
-            cursor: pointer;
-            margin: 10px 0;
-            border-radius: 4px;
-            transition: all 0.3s ease;
+        .stat {
+            flex: 1 1 calc(33.333% - 20px);
+            background-color: #292929;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
         }
 
-        .quiz-option:hover {
-            background-color: #5fa79b;
+        .stat:hover {
+            transform: translateY(-10px);
         }
 
-        .quiz-result {
-            font-size: 1.5em;
+        .stat-title {
+            font-size: 1.2em;
             color: #76c7c0;
-            display: none;
-            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #f1f1f1;
+        }
+
+        @media (max-width: 768px) {
+            .stat {
+                flex: 1 1 100%;
+            }
         }
     </style>
 </head>
 <body>
+    <header>
+        <div class="header-title">Slangify</div>
+        <nav class="nav">
+            <a href="index.html">Главная</a>
+            <a href="library.html">Библиотека</a>
+            <a href="victorina.html">Статистика</a>
+        </nav>
+    </header>
 
-<header>
-    <div class="header-title">Slangify — Викторина</div>
-    <nav class="nav">
-        <a href="index.html">Главная</a>
-        <a href="slang.html">Сленг</a>
-        <a href="examples.html">Примеры</a>
-        <a href="context.html">Контекст</a>
-    </nav>
-</header>
-
-<div class="quiz-container">
-    <div class="quiz-question">Какое значение у слова "лулз"?</div>
-
-    <div class="quiz-options">
-        <button class="quiz-option" onclick="checkAnswer(1)">Смех или прикол</button>
-        <button class="quiz-option" onclick="checkAnswer(2)">Важная информация</button>
-        <button class="quiz-option" onclick="checkAnswer(3)">Деньги</button>
-    </div>
-
-    <div class="quiz-result" id="result"></div>
-</div>
-
-<script>
-    function checkAnswer(selected) {
-        let result = document.getElementById("result");
-
-        // Проверяем правильность ответа
-        if (selected === 1) {
-            result.innerHTML = "Правильно! 'Лулз' означает смех или прикол.";
-            result.style.color = "green";
-        } else {
-            result.innerHTML = "Неправильно. Попробуйте снова!";
-            result.style.color = "red";
-        }
-
-        result.style.display = "block";
-    }
-</script>
-
+    <main class="stats-container">
+        <h1 class="stats-title">Сводка по использованию сленга</h1>
+        <div class="stats-block">
+            <div class="stat">
+                <h2 class="stat-title">Общее количество терминов</h2>
+                <p class="stat-value">124</p>
+            </div>
+            <div class="stat">
+                <h2 class="stat-title">Популярный сленг</h2>
+                <p class="stat-value">"Чилить"</p>
+            </div>
+            <div class="stat">
+                <h2 class="stat-title">Новых терминов в этом месяце</h2>
+                <p class="stat-value">15</p>
+            </div>
+            <div class="stat">
+                <h2 class="stat-title">Частота обновления</h2>
+                <p class="stat-value">Каждые 2 недели</p>
+            </div>
+            <div class="stat">
+                <h2 class="stat-title">Количество пользователей</h2>
+                <p class="stat-value">3500+</p>
+            </div>
+            <div class="stat">
+                <h2 class="stat-title">Самая редкая фраза</h2>
+                <p class="stat-value">"Зафорсить тему"</p>
+            </div>
+        </div>
+    </main>
 </body>
 </html>
