@@ -855,32 +855,29 @@ function displayData(data) {
         return;
     }
 
-    data.forEach(item => {
-        // Сленги
-        slangList.innerHTML += `
-            <div class="slang-item">
-                <h3>${item.title}</h3>
-                <p>${item.description}</p>
-                <button class="fav-btn" data-title="${item.title}">В избранное</button>
-            </div>
-        `;
-        // Примеры
-        examplesList.innerHTML += `
-            <div class="example-item">
-                <p><strong>${item.title}:</strong> "${item.example}"</p>
-            </div>
-        `;
-        // Контексты
-        contextList.innerHTML += `
-            <div class="context-item">
-                <p><strong>${item.title}:</strong> ${item.context}</p>
-            </div>
-        `;
-    });
-
-    // После отрисовки данных добавляем обработчики кнопок "В избранное"
-    setupFavoriteButtons();
-}
+data.forEach(item => {
+    // Сленги
+    slangList.innerHTML += `
+        <div class="slang-item">
+            <h3>${item.title}</h3>
+            <p>${item.description}</p>
+            <button class="fav-btn" data-slang='${JSON.stringify(item)}'>В избранное</button>
+        </div>
+    `;
+    // Примеры
+    examplesList.innerHTML += `
+        <div class="example-item">
+            <p><strong>${item.title}:</strong> "${item.example}"</p>
+        </div>
+    `;
+    // Контексты
+    contextList.innerHTML += `
+        <div class="context-item">
+            <p><strong>${item.title}:</strong> ${item.context}</p>
+        </div>
+    `;
+});
+setupFavoriteButtons(); // Обновляем обработчики кнопок
 
 // Загружаем избранное из localStorage
 function loadFavorites() {
@@ -898,10 +895,10 @@ function setupFavoriteButtons() {
     const favButtons = document.querySelectorAll('.fav-btn');
 
     favButtons.forEach(btn => {
-        const title = btn.getAttribute('data-title');
+        const slangItem = JSON.parse(btn.getAttribute('data-slang'));
 
         // Проверяем, есть ли элемент в избранном
-        if (favorites.includes(title)) {
+        if (favorites.some(fav => fav.title === slangItem.title)) {
             btn.classList.add('added');
             btn.textContent = 'Добавлено';
         }
@@ -910,14 +907,14 @@ function setupFavoriteButtons() {
         btn.addEventListener('click', () => {
             let currentFavorites = loadFavorites();
 
-            if (currentFavorites.includes(title)) {
+            if (currentFavorites.some(fav => fav.title === slangItem.title)) {
                 // Удалить из избранного
-                currentFavorites = currentFavorites.filter(fav => fav !== title);
+                currentFavorites = currentFavorites.filter(fav => fav.title !== slangItem.title);
                 btn.classList.remove('added');
                 btn.textContent = 'В избранное';
             } else {
                 // Добавить в избранное
-                currentFavorites.push(title);
+                currentFavorites.push(slangItem);
                 btn.classList.add('added');
                 btn.textContent = 'Добавлено';
             }
@@ -938,11 +935,13 @@ function displayFavorites() {
     if (favorites.length === 0) {
         favoritesList.innerHTML = '<p>Пока нет избранных элементов.</p>';
     } else {
-        favorites.forEach(title => {
-            const item = document.createElement('div');
-            item.classList.add('favorite-item');
-            item.textContent = title;
-            favoritesList.appendChild(item);
+        favorites.forEach(item => {
+            favoritesList.innerHTML += `
+                <div class="favorite-item">
+                    <h3>${item.title}</h3>
+                    <p>${item.description}</p>
+                </div>
+            `;
         });
     }
 }
