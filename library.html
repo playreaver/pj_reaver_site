@@ -861,7 +861,7 @@ data.forEach(item => {
         <div class="slang-item">
             <h3>${item.title}</h3>
             <p>${item.description}</p>
-            <button class="fav-btn" data-slang='${JSON.stringify(item)}'>В избранное</button>
+            <button class="fav-btn" data-slang="${encodeURIComponent(JSON.stringify(item))}">В избранное</button>
         </div>
     `;
     // Примеры
