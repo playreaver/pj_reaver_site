@@ -316,6 +316,37 @@ button.add-to-favorites:disabled {
         border-radius: 12px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Тень для iframe */
     }
+    
+        .music-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px; /* Расстояние между кнопками */
+            margin-top: 20px;
+        }
+    
+        .music-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: #fff;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+    
+        .yandex-music {
+            background-color: #ffa000; /* Цвет Яндекс.Музыки */
+        }
+    
+        .vk-music {
+            background-color: #4680c2; /* Цвет VK */
+        }
+    
+        .music-button:hover {
+            transform: scale(1.05); /* Лёгкий эффект увеличения при наведении */
+            filter: brightness(1.2); /* Осветление цвета */
+        }
 
         .radar-trends {
     background-color: #090909;
@@ -774,7 +805,17 @@ button.add-to-favorites:disabled {
 
         <div class="modern-listening">
             <h2>Послушаем современное?</h2>
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2qG3yoLJ86Fjv4yWT9riki?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <p>Музыка, которая задаёт тренды и передаёт атмосферу нашего времени. Погнали в вайб!</p>
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2qG3yoLJ86Fjv4yWT9riki?utm_source=generator" 
+                    width="100%" height="352" frameBorder="0" allowfullscreen="" 
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
+            </iframe>
+            
+            <!-- Кнопки -->
+            <div class="music-buttons">
+                <a href="https://music.yandex.ru/home" class="music-button yandex-music" target="_blank">Открыть в Яндекс.Музыке</a>
+                <a href="https://vk.com/music" class="music-button vk-music" target="_blank">Открыть в VK</a>
+            </div>
         </div>
 
                               <!-- Поисковое поле -->
