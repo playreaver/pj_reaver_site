@@ -125,35 +125,59 @@
     </div>
 
     <script>
-        const questions = document.querySelectorAll('.question');
-        const resultContainer = document.getElementById('result');
-        const resultText = document.getElementById('result-text');
-        let currentQuestionIndex = 0;
-        let answers = [];
+    const questions = document.querySelectorAll('.question');
+    const resultContainer = document.getElementById('result');
+    const resultText = document.getElementById('result-text');
+    let currentQuestionIndex = 0;
+    let answers = { A: 0, B: 0, C: 0, D: 0 }; // Счётчик для каждого типа
 
-        // Обработчик клика по ответу
-        document.querySelectorAll('.answer-button').forEach(button => {
-            button.addEventListener('click', () => {
-                answers.push(button.dataset.answer);
-                questions[currentQuestionIndex].style.display = 'none';
+    // Обработчик клика по ответу
+    document.querySelectorAll('.answer-button').forEach(button => {
+        button.addEventListener('click', () => {
+            const answer = button.dataset.answer;
+            // Увеличиваем счётчик для выбранного ответа
+            answers[answer] += 1;
 
-                // Показать следующий вопрос или результат
-                currentQuestionIndex++;
-                if (currentQuestionIndex < questions.length) {
-                    questions[currentQuestionIndex].style.display = 'block';
-                } else {
-                    showResult();
-                }
-            });
+            questions[currentQuestionIndex].style.display = 'none';
+
+            // Показать следующий вопрос или результат
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                questions[currentQuestionIndex].style.display = 'block';
+            } else {
+                showResult();
+            }
         });
+    });
 
-        // Показать результат
-        function showResult() {
-            let result = 'Ты придерживаешься классического языка!'; // Пример результата
-            // Можно добавить логику анализа ответов
-            resultText.textContent = result;
-            resultContainer.style.display = 'block';
+    // Показать результат
+    function showResult() {
+        // Находим стиль с максимальным количеством баллов
+        const maxScore = Math.max(...Object.values(answers));
+        const bestStyle = Object.keys(answers).find(key => answers[key] === maxScore);
+
+        // Генерируем текст результата
+        let result = '';
+        switch (bestStyle) {
+            case 'A':
+                result = 'Ты придерживаешься классики: уверенный, понятный и прямой стиль.';
+                break;
+            case 'B':
+                result = 'Ты фанат уличного вайба: дерзко, энергично и с харизмой!';
+                break;
+            case 'C':
+                result = 'Геймер в душе! Твой стиль — "имба, гг, флекс".';
+                break;
+            case 'D':
+                result = 'Ты на волне современных трендов. Всегда в центре внимания!';
+                break;
+            default:
+                result = 'Ты уникальный микс всех стилей!';
         }
+
+        resultText.textContent = result;
+        resultContainer.style.display = 'block';
+    }
     </script>
 </body>
 </html>
