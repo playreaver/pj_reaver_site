@@ -124,7 +124,7 @@
         </div>
     </div>
 
-    <script>
+<script>
     const questions = document.querySelectorAll('.question');
     const resultContainer = document.getElementById('result');
     const resultText = document.getElementById('result-text');
@@ -152,32 +152,35 @@
 
     // Показать результат
     function showResult() {
-        // Находим стиль с максимальным количеством баллов
+        // Проверяем, если вообще есть ответы
         const maxScore = Math.max(...Object.values(answers));
-        const bestStyle = Object.keys(answers).find(key => answers[key] === maxScore);
+        const bestStyles = Object.keys(answers).filter(key => answers[key] === maxScore);
 
-        // Генерируем текст результата
         let result = '';
-        switch (bestStyle) {
-            case 'A':
-                result = 'Ты придерживаешься классики: уверенный, понятный и прямой стиль.';
-                break;
-            case 'B':
-                result = 'Ты фанат уличного вайба: дерзко, энергично и с харизмой!';
-                break;
-            case 'C':
-                result = 'Геймер в душе! Твой стиль — "имба, гг, флекс".';
-                break;
-            case 'D':
-                result = 'Ты на волне современных трендов. Всегда в центре внимания!';
-                break;
-            default:
-                result = 'Ты уникальный микс всех стилей!';
+        if (bestStyles.length === 1) {
+            // Если один стиль лидирует
+            switch (bestStyles[0]) {
+                case 'A':
+                    result = 'Ты придерживаешься классики: уверенный, понятный и прямой стиль.';
+                    break;
+                case 'B':
+                    result = 'Ты фанат уличного вайба: дерзко, энергично и с харизмой!';
+                    break;
+                case 'C':
+                    result = 'Геймер в душе! Твой стиль — "имба, гг, флекс".';
+                    break;
+                case 'D':
+                    result = 'Ты на волне современных трендов. Всегда в центре внимания!';
+                    break;
+            }
+        } else {
+            // Если несколько стилей имеют одинаковые баллы
+            result = 'Ты уникальный микс всех стилей! В тебе сочетается всё: классика, уличный вайб, геймерский и современные тренды.';
         }
 
         resultText.textContent = result;
         resultContainer.style.display = 'block';
     }
-    </script>
+</script>
 </body>
 </html>
