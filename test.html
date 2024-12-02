@@ -129,32 +129,12 @@
     const resultContainer = document.getElementById('result');
     const resultText = document.getElementById('result-text');
     let currentQuestionIndex = 0;
-    let answers = { A: 0, B: 0, C: 0, D: 0 }; // Счётчик для каждого типа
+    let answers = { A: 0, B: 0, C: 0, D: 0 }; // Счётчики для каждого стиля
 
-    // Обработчик клика по ответу
-    document.querySelectorAll('.answer-button').forEach(button => {
-        button.addEventListener('click', () => {
-            const answer = button.dataset.answer;
-            // Увеличиваем счётчик для выбранного ответа
-            answers[answer] += 1;
-
-            questions[currentQuestionIndex].style.display = 'none';
-
-            // Показать следующий вопрос или результат
-            currentQuestionIndex++;
-            if (currentQuestionIndex < questions.length) {
-                questions[currentQuestionIndex].style.display = 'block';
-            } else {
-                showResult();
-            }
-        });
-    });
-
-    // Показать результат
+    // Функция для отображения результата
     function showResult() {
-        // Проверяем, если вообще есть ответы
-        const maxScore = Math.max(...Object.values(answers));
-        const bestStyles = Object.keys(answers).filter(key => answers[key] === maxScore);
+        const maxScore = Math.max(...Object.values(answers)); // Находим максимальный балл
+        const bestStyles = Object.keys(answers).filter(key => answers[key] === maxScore); // Находим все стили с максимальным баллом
 
         let result = '';
         if (bestStyles.length === 1) {
@@ -178,9 +158,27 @@
             result = 'Ты уникальный микс всех стилей! В тебе сочетается всё: классика, уличный вайб, геймерский и современные тренды.';
         }
 
-        resultText.textContent = result;
-        resultContainer.style.display = 'block';
+        resultText.textContent = result; // Выводим текст результата
+        resultContainer.style.display = 'block'; // Показываем блок с результатом
     }
+
+    // Обработчик клика по ответу
+    document.querySelectorAll('.answer-button').forEach(button => {
+        button.addEventListener('click', () => {
+            const answer = button.dataset.answer;
+            answers[answer] += 1; // Увеличиваем счётчик для выбранного ответа
+
+            questions[currentQuestionIndex].style.display = 'none'; // Прячем текущий вопрос
+
+            // Показать следующий вопрос или результат
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                questions[currentQuestionIndex].style.display = 'block'; // Показываем следующий вопрос
+            } else {
+                showResult(); // Показать результат, если вопросы закончились
+            }
+        });
+    });
 </script>
 </body>
 </html>
