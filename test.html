@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Какой ты сленг?</title>
+    <style>
+        body {
+            background-color: #090909; /* Темный фон */
+            color: #fff; /* Белый текст */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .test-header {
+            text-align: center;
+            background-color: #1a1a1a; /* Темнее для контраста */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+        }
+
+        .test-header h1 {
+            color: #76c7c0; /* Акцентный цвет */
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        .question {
+            margin-bottom: 30px;
+        }
+
+        .question h2 {
+            color: #76c7c0; /* Акцентный цвет */
+            margin-bottom: 15px;
+        }
+
+        .answers {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .answer-button {
+            background-color: #1a1a1a; /* Фон кнопки */
+            color: #fff;
+            border: 2px solid #76c7c0; /* Обводка в акцентном цвете */
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .answer-button:hover {
+            background-color: #76c7c0; /* Акцентный цвет при наведении */
+            color: #090909; /* Темный текст */
+            transform: scale(1.05); /* Легкое увеличение */
+        }
+
+        .result {
+            display: none; /* Скрыт по умолчанию */
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .result h2 {
+            color: #76c7c0;
+        }
+
+        .result p {
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="test-header">
+            <h1>Какой ты сленг?</h1>
+        </div>
+        
+        <div id="questions">
+            <!-- Вопрос 1 -->
+            <div class="question" data-question="1">
+                <h2>1. Как ты приветствуешь друзей?</h2>
+                <div class="answers">
+                    <div class="answer-button" data-answer="a">Привет, как дела?</div>
+                    <div class="answer-button" data-answer="b">Здарова, братан!</div>
+                    <div class="answer-button" data-answer="c">Чё кого, чел?</div>
+                    <div class="answer-button" data-answer="d">Эй, йоу!</div>
+                </div>
+            </div>
+
+            <!-- Вопрос 2 -->
+            <div class="question" data-question="2" style="display: none;">
+                <h2>2. Как ты опишешь что-то классное?</h2>
+                <div class="answers">
+                    <div class="answer-button" data-answer="a">Круто!</div>
+                    <div class="answer-button" data-answer="b">Топово!</div>
+                    <div class="answer-button" data-answer="c">Это имба!</div>
+                    <div class="answer-button" data-answer="d">Просто next level!</div>
+                </div>
+            </div>
+
+            <!-- Добавить остальные вопросы по аналогии -->
+        </div>
+
+        <div id="result" class="result">
+            <h2>Твой результат:</h2>
+            <p id="result-text">Ты пока не прошел тест. Отвечай на вопросы, чтобы узнать результат!</p>
+        </div>
+    </div>
+
+    <script>
+        const questions = document.querySelectorAll('.question');
+        const resultContainer = document.getElementById('result');
+        const resultText = document.getElementById('result-text');
+        let currentQuestionIndex = 0;
+        let answers = [];
+
+        // Обработчик клика по ответу
+        document.querySelectorAll('.answer-button').forEach(button => {
+            button.addEventListener('click', () => {
+                answers.push(button.dataset.answer);
+                questions[currentQuestionIndex].style.display = 'none';
+
+                // Показать следующий вопрос или результат
+                currentQuestionIndex++;
+                if (currentQuestionIndex < questions.length) {
+                    questions[currentQuestionIndex].style.display = 'block';
+                } else {
+                    showResult();
+                }
+            });
+        });
+
+        // Показать результат
+        function showResult() {
+            let result = 'Ты придерживаешься классического языка!'; // Пример результата
+            // Можно добавить логику анализа ответов
+            resultText.textContent = result;
+            resultContainer.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
