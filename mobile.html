@@ -112,24 +112,27 @@
     }
 
     /* Контейнер для изображения */
-    .image-container {
-        width: 100%;
-        max-width: 400px;
-        margin-bottom: 20px;
-    }
-
-    .image-container img {
-        width: 100%;
-        border-radius: 12px;
-        object-fit: cover;
-    }
-
-    /* Блок описания */
+    /* Центрирование описания */
     .description {
         font-size: 1.1em;
         line-height: 1.6;
         color: #cccccc;
-        margin-bottom: 20px;
+        margin: 20px 0; /* Отступы сверху и снизу */
+        text-align: center; /* Центрирование текста */
+    }
+
+    /* Контейнер для изображения */
+    .image-container {
+        width: 100%;
+        max-width: 400px;
+        margin: 10px auto; /* Отступы сверху и снизу, выравнивание по центру */
+    }
+
+    .image-container img {
+        width: calc(100% - 20px); /* Ширина с учетом отступов */
+        border-radius: 12px;
+        object-fit: cover;
+        margin: 0 10px; /* Отступы по бокам */
     }
 
     /* Блоки с заголовками и описаниями */
