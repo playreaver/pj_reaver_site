@@ -7,6 +7,77 @@
     <link rel="icon" href="logo/1sitelogo.png" type="image/png">
 <style>
     /* Базовые стили */
+    .block p {
+        font-size: 0.95em;
+        line-height: 1.5;
+        color: #e0e0e0;
+    }
+
+    .quiz-button a {
+        display: inline-block;
+        background-color: #76c7c0;
+        color: #121212;
+        text-decoration: none;
+        font-size: 1.1em;
+        padding: 10px 20px;
+        margin: 10px;
+        border-radius: 8px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+.quiz-button a:hover {
+    background-color: #5ab0a6;
+    transform: scale(1.05);
+}
+
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #121212;
+    padding: 20px;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mobile-menu.active {
+    display: flex;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9em;
+    color: #cccccc;
+}
+
+.footer a {
+    color: #76c7c0;
+    text-decoration: none;
+    margin: 5px;
+}
+
+.footer a:hover {
+    color: #5ab0a6;
+}
+
+    .social-icons img {
+        width: 24px;
+        height: 24px;
+        margin: 5px;
+        filter: invert(1); /* Чтобы иконки смотрелись на тёмном фоне */
+        transition: transform 0.3s ease;
+    }
+    
+    .social-icons img:hover {
+        transform: scale(1.2);
+    }
+    
     body {
         background-color: #121212;
         color: #f1f1f1;
