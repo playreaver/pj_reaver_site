@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Скачивание приложения</title>
-    <link rel="icon" href="logo/1sitelogo.png" type="image/png">
     <style>
         body {
             background-color: #121212;
@@ -38,14 +37,8 @@
         }
 
         @keyframes slideDownFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .theme-toggle {
@@ -89,34 +82,49 @@
             border: 2px solid #76c7c0;
         }
 
-        .main { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; padding: 40px 20px; margin: 0 auto; width: 100%; }
-
-        .slogan { font-size: 2.5em; font-weight: bold; line-height: 1.2; max-width: 50%; opacity: 0; transform: translateY(30px); animation: fadeInUp 1.5s ease-out forwards; animation-delay: 0.5s; }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            padding: 40px 20px;
+            margin: 0 auto;
+            width: 100%;
         }
 
-        .image-container { max-width: 50%; text-align: right; }
+        .slogan {
+            font-size: 2.5em;
+            font-weight: bold;
+            line-height: 1.2;
+            max-width: 50%;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.5s ease-out forwards;
+            animation-delay: 0.5s;
+        }
 
-        .image-container img { max-width: 100%; border-radius: 12px; transform: scale(0.8); opacity: 0; animation: scaleUp 1.5s ease-out forwards; animation-delay: 0.5s; }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .image-container {
+            max-width: 50%;
+            text-align: right;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            border-radius: 12px;
+            transform: scale(0.8);
+            opacity: 0;
+            animation: scaleUp 1.5s ease-out forwards;
+            animation-delay: 0.5s;
+        }
 
         @keyframes scaleUp {
-            from {
-                transform: scale(0.8);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
 
         .description {
@@ -131,12 +139,8 @@
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .blocks-container {
@@ -155,54 +159,99 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
             transition: transform 0.3s ease;
             opacity: 0;
+            margin: 5px; /* Уменьшены отступы */
             animation: fadeInBlock 0.8s ease-out forwards;
         }
 
         @keyframes fadeInBlock {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
+        .block:hover {
+            transform: scale(1.05);
+        }
+
+        .download-btn {
+            display: inline-block;
+            background-color: #76c7c0;
+            color: #121212;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            text-decoration: none;
+            text-align: center;
+            margin-top: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background-color: #121212;
+            color: #76c7c0;
+            transform: scale(1.05);
+        }
+
+        /* Стили для мобильных устройств */
+        @media (max-width: 768px) {
+            .main {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .slogan {
+                font-size: 1.8em;
+                max-width: 90%;
+            }
+
+            .image-container {
+                max-width: 90%;
+                text-align: center;
+            }
+
+            .blocks-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .block {
+                width: 80%;
+                margin-bottom: 20px;
+            }
+
+            .download-btn {
+                width: 80%;
+                font-size: 1.1em;
+            }
+        }
     </style>
 </head>
 <body>
-    <header>
-        <div class="header-title">Скачивание Приложения</div>
-        <nav class="nav">
-            <a href="#">Главная</a>
-            <a href="#">Приложение</a>
-            <a href="#">Контакты</a>
-        </nav>
-    </header>
 
-    <div class="main">
-        <div class="slogan">Сайт — ваш старт,<br>Приложение — идеальный финиш!</div>
-        <div class="image-container">
-            <img src="image.jpg" alt="Приложение">
-        </div>
-    </div>
+<header>
+    <div class="header-title">Сайт с приложением</div>
+    <div class="theme-toggle" onclick="document.body.classList.toggle('light-mode')">🌙</div>
+</header>
 
-    <div class="description">
-        Скачать приложение можно прямо с нашего сайта. Просто нажмите кнопку ниже и начните использование прямо сейчас!
+<div class="main">
+    <div class="slogan">Сайт — ваш старт, Приложение — идеальный финиш!</div>
+    <div class="image-container">
+        <img src="https://via.placeholder.com/500" alt="Изображение">
     </div>
+</div>
 
-    <div class="blocks-container">
-        <div class="block">
-            <h3>Шаг 1</h3>
-            <p>Перейдите по ссылке для скачивания.</p>
-        </div>
-        <div class="block">
-            <h3>Шаг 2</h3>
-            <p>Установите приложение на ваше устройство.</p>
-        </div>
-        <div class="block">
-            <h3>Шаг 3</h3>
-            <p>Начните пользоваться нашим сервисом!</p>
-        </div>
-    </div>
+<div class="description">
+    Приложение, которое упростит вашу жизнь. Скачайте его прямо сейчас!
+</div>
+
+<div class="blocks-container">
+    <div class="block">Блок 1</div>
+    <div class="block">Блок 2</div>
+    <div class="block">Блок 3</div>
+    <div class="block">Блок 4</div>
+</div>
+
+<a href="path/to/your/app" class="download-btn">Скачать приложение</a>
+
 </body>
 </html>
