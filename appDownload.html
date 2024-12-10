@@ -173,24 +173,27 @@
             transform: scale(1.05);
         }
 
-        .download-btn {
-            display: inline-block;
-            background-color: #76c7c0;
-            color: #121212;
-            padding: 15px 30px;
-            border-radius: 5px;
-            font-size: 1.2em;
-            text-decoration: none;
-            text-align: center;
-            margin-top: 40px;
-            transition: all 0.3s ease;
-        }
+.download-btn {
+    display: inline-block;
+    background-color: #76c7c0;
+    color: #121212;
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 40px;
+    transition: all 0.3s ease;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
 
-        .download-btn:hover {
-            background-color: #121212;
-            color: #76c7c0;
-            transform: scale(1.05);
-        }
+.download-btn:hover {
+    background-color: #121212;
+    color: #76c7c0;
+    transform: scale(1.05) translateX(-50%);
+}
 
         /* Стили для мобильных устройств */
         @media (max-width: 768px) {
