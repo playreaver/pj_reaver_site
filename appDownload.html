@@ -195,6 +195,17 @@
     transform: scale(1.05) translateX(-50%);
 }
 
+.block-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.block-description {
+    font-size: 1em;
+    color: #cccccc;
+}
+
         /* Стили для мобильных устройств */
         @media (max-width: 768px) {
             .main {
@@ -248,14 +259,26 @@
     Приложение, которое упростит вашу жизнь. Скачайте его прямо сейчас!
 </div>
 
-<div class="blocks-container">
-    <div class="block">Блок 1</div>
-    <div class="block">Блок 2</div>
-    <div class="block">Блок 3</div>
-    <div class="block">Блок 4</div>
-</div>
-
 <a href="path/to/your/app" class="download-btn">Скачать приложение</a>
+    
+<div class="blocks-container">
+    <div class="block">
+        <h2 class="block-title">Заголовок 1</h2>
+        <p class="block-description">Описание для блока 1. Здесь можно разместить дополнительную информацию о содержимом блока.</p>
+    </div>
+    <div class="block">
+        <h2 class="block-title">Заголовок 2</h2>
+        <p class="block-description">Описание для блока 2. Этот блок содержит описание второй части вашего контента.</p>
+    </div>
+    <div class="block">
+        <h2 class="block-title">Заголовок 3</h2>
+        <p class="block-description">Описание для блока 3. Добавьте сюда текст, который будет пояснять этот блок.</p>
+    </div>
+    <div class="block">
+        <h2 class="block-title">Заголовок 4</h2>
+        <p class="block-description">Описание для блока 4. Это может быть финальный блок с важной информацией.</p>
+    </div>
+</div>
 
 </body>
 </html>
