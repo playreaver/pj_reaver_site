@@ -131,6 +131,9 @@
         .steps-container {
             margin-bottom: 20px;
             padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Центрирование */
         }
         
         .step {
@@ -139,21 +142,45 @@
             padding: 20px;
             border-radius: 10px;
             text-align: left;
-            box-shadow: none;
             margin-bottom: 20px;
             opacity: 1;
+            max-width: 800px; /* Ограничиваем ширину для удобства восприятия */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Легкая тень для глубины */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .step:hover {
+            transform: translateY(-10px); /* Эффект подъема при наведении */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); /* Усиление тени */
         }
         
         .step-title {
-            font-size: 1.5em;
+            font-size: 2em; /* Увеличиваем размер заголовка */
             font-weight: bold;
             margin-bottom: 10px;
+            color: #32cd32; /* Яркий цвет заголовка */
+            text-transform: uppercase; /* Сделаем заголовок все большими буквами */
+            letter-spacing: 2px; /* Пробел между буквами */
         }
         
         .step-description {
-            font-size: 1em;
+            font-size: 1.2em; /* Чуть больше размер шрифта для текста */
             color: #cccccc;
+            line-height: 1.6;
         }
+        
+        .step-description strong {
+            color: #32cd32; /* Выделяем жирным нужные слова */
+        }
+        
+        .step-description span {
+            color: #32cd32; /* Цвет для выделенного текста */
+        }
+        
+        .step-description em {
+            color: #ffa500; /* Цвет для выделенного курсивом текста */
+        }
+
         
         @keyframes fadeInStep {
             0% {
@@ -308,7 +335,7 @@
 <div class="steps-container">
     <div class="step step-why">
         <h2 class="step-title">Почему мы уверены, что вам понравится?</h2>
-        <p class="step-description">Это приложение — <strong>воплощение удобства</strong>. Никаких лишних хлопот с обновлениями — <span style="color: #32cd32;">всё происходит автоматически!</span> Полная синхронизация с нашим сайтом гарантирует, что вы всегда будете <em>на волне новинок</em>.</p>
+        <p class="step-description">Это приложение — <strong>воплощение удобства</strong>. Никаких лишних хлопот с обновлениями — <span>всё происходит автоматически!</span> Полная синхронизация с нашим сайтом гарантирует, что вы всегда будете <em>на волне новинок</em>.</p>
     </div>
     <div class="step step-compatibility">
         <h2 class="step-title">Идеальная совместимость</h2>
@@ -316,7 +343,7 @@
     </div>
     <div class="step step-privacy">
         <h2 class="step-title">Мы ценим вашу приватность</h2>
-        <p class="step-description">Приложение полностью автономно — <span style="color: #32cd32;">никакого сбора данных</span>, только локальная работа на вашем устройстве. Более того, его <strong>открытый исходный код</strong> — это наша гарантия <em>прозрачности</em> и честности. Спокойствие — в ваших руках!</p>
+        <p class="step-description">Приложение полностью автономно — <span>никакого сбора данных</span>, только локальная работа на вашем устройстве. Более того, его <strong>открытый исходный код</strong> — это наша гарантия <em>прозрачности</em> и честности. Спокойствие — в ваших руках!</p>
     </div>
 </div>
 
