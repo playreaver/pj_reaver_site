@@ -130,13 +130,20 @@
 
         .description {
             text-align: center;
-            padding: 10px;
-            font-size: 1.1em;
-            line-height: 1.6;
-            color: #cccccc;
+            padding: 20px;
+            font-size: 1.2em;
+            line-height: 1.8;
+            max-width: 600px; /* Ограничим ширину для читаемости */
+            margin: 0 auto;
+            background: linear-gradient(90deg, #76c7c0, #4ca1af);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: #cccccc; /* Резервный цвет, если браузер не поддерживает градиенты */
+            border-radius: 10px;
             opacity: 0;
             animation: fadeIn 2s ease-out forwards;
             animation-delay: 1s;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         @keyframes fadeIn {
