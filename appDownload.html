@@ -129,28 +129,19 @@
         }
 
         .steps-container {
-            display: flex;
-            justify-content: space-between;
-            gap: 10px; /* Отступы между блоками */
-            flex-wrap: wrap; /* Обеспечивает перенос блоков на следующую строку, если нужно */
-            justify-content: center; /* Центрирование блоков */
             margin-bottom: 20px;
             padding: 20px;
         }
         
         .step {
-            background-color: #1f1f1f;
+            background-color: transparent;
             color: #f1f1f1;
             padding: 20px;
             border-radius: 10px;
-            width: 30%; /* Блоки занимают 30% ширины контейнера */
-            box-sizing: border-box; /* Учитывает padding в ширину */
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease;
-            opacity: 0;
-            margin-bottom: 20px; /* Отступ снизу для каждого блока */
-            animation: fadeInStep 0.8s ease-out forwards;
+            text-align: left;
+            box-shadow: none;
+            margin-bottom: 20px;
+            opacity: 1;
         }
         
         .step-title {
@@ -329,7 +320,6 @@
     </div>
 </div>
 
-    
 <div class="blocks-container">
     <div class="block">
         <h2 class="block-title">Шаг 1: Скачайте APK файл</h2>
