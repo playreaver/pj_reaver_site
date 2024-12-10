@@ -129,20 +129,29 @@
         }
 
         .description {
-            text-align: center;
-            padding: 20px;
-            font-size: 1.2em;
-            line-height: 1.8;
-            margin: 0 auto;
-            background: linear-gradient(90deg, #76c7c0, #4ca1af);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            color: #cccccc; /* Резервный цвет, если браузер не поддерживает градиенты */
-            border-radius: 10px;
-            opacity: 0;
-            animation: fadeIn 2s ease-out forwards;
-            animation-delay: 1s;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            background-color: #1f1f1f; /* Тёмный фон блока */
+            color: #cccccc; /* Серый цвет текста */
+            padding: 20px; /* Пространство внутри блока */
+            border-radius: 10px; /* Закруглённые края */
+            width: auto; /* Растягиваем блок по содержимому */
+            text-align: center; /* Выравниваем текст по центру */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Тень для глубины */
+            transition: transform 0.3s ease, opacity 0.3s ease; /* Плавность эффектов */
+            opacity: 0; /* Исходная прозрачность для анимации */
+            animation: fadeIn 0.8s ease-out forwards; /* Анимация появления */
+            margin: 10px auto; /* Отступы вокруг и центрирование блока */
+        }
+        
+        /* Анимация для плавного появления */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px); /* Лёгкий эффект подъёма */
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         @keyframes fadeIn {
