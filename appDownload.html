@@ -128,25 +128,56 @@
             to { transform: scale(1); opacity: 1; }
         }
 
-        .description {
-            display: flex; /* Включаем горизонтальное выравнивание */
-            flex-wrap: wrap; /* Позволяем блокам переноситься на следующую строку, если не хватает места */
-            justify-content: space-between; /* Равномерное распределение блоков */
-            gap: 10px; /* Отступы между блоками */
-            padding: 20px; /* Внутренние отступы для общей области */
+        .steps-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px; /* Отступы между блоками */
+            flex-wrap: wrap; /* Обеспечивает перенос блоков на следующую строку, если нужно */
+            justify-content: center; /* Центрирование блоков */
+            padding: 20px;
         }
         
-        .blockdesc {
-            background-color: #1f1f1f; /* Тёмный фон блока */
-            color: #cccccc; /* Серый цвет текста */
-            padding: 20px; /* Внутренние отступы */
-            border-radius: 10px; /* Закруглённые края */
-            width: calc(33% - 20px); /* Ширина блока с учётом отступов */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Тень для глубины */
-            text-align: center; /* Выравнивание текста */
-            transition: transform 0.3s ease, opacity 0.3s ease; /* Плавность эффектов */
-            opacity: 0; /* Исходная прозрачность для анимации */
-            animation: fadeIn 0.8s ease-out forwards; /* Анимация появления */
+        .step {
+            background-color: #1f1f1f;
+            color: #f1f1f1;
+            padding: 20px;
+            border-radius: 10px;
+            width: 30%; /* Блоки занимают 30% ширины контейнера */
+            box-sizing: border-box; /* Учитывает padding в ширину */
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+            opacity: 0;
+            margin-bottom: 20px; /* Отступ снизу для каждого блока */
+            animation: fadeInStep 0.8s ease-out forwards;
+        }
+        
+        .step-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .step-description {
+            font-size: 1em;
+            color: #cccccc;
+        }
+        
+        @keyframes fadeInStep {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .step {
+                width: 90%; /* На мобильных устройствах блоки занимают 90% ширины */
+            }
         }
         
         /* Анимация для плавного появления */
@@ -277,18 +308,18 @@
     </div>
 </div>
 
-<div class="blocks-container">
-    <div class="block">
-        <h2 class="block-title">Почему мы уверены, что вам понравится?</h2>
-        <p class="block-description">Это приложение — <strong>воплощение удобства</strong>. Никаких лишних хлопот с обновлениями — <span style="color: #32cd32;">всё происходит автоматически!</span> Полная синхронизация с нашим сайтом гарантирует, что вы всегда будете <em>на волне новинок</em>.</p>
+<div class="steps-container">
+    <div class="step step-why">
+        <h2 class="step-title">Почему мы уверены, что вам понравится?</h2>
+        <p class="step-description">Это приложение — <strong>воплощение удобства</strong>. Никаких лишних хлопот с обновлениями — <span style="color: #32cd32;">всё происходит автоматически!</span> Полная синхронизация с нашим сайтом гарантирует, что вы всегда будете <em>на волне новинок</em>.</p>
     </div>
-    <div class="block">
-        <h2 class="block-title">Идеальная совместимость</h2>
-        <p class="block-description">Работает на любом устройстве с <strong>Android 5.1 и выше</strong>. Легкость, безопасность и никаких компромиссов.</p>
+    <div class="step step-compatibility">
+        <h2 class="step-title">Идеальная совместимость</h2>
+        <p class="step-description">Работает на любом устройстве с <strong>Android 5.1 и выше</strong>. Легкость, безопасность и никаких компромиссов.</p>
     </div>
-    <div class="block">
-        <h2 class="block-title">Мы ценим вашу приватность</h2>
-        <p class="block-description">Приложение полностью автономно — <span style="color: #32cd32;">никакого сбора данных</span>, только локальная работа на вашем устройстве. Более того, его <strong>открытый исходный код</strong> — это наша гарантия <em>прозрачности</em> и честности. Спокойствие — в ваших руках!</p>
+    <div class="step step-privacy">
+        <h2 class="step-title">Мы ценим вашу приватность</h2>
+        <p class="step-description">Приложение полностью автономно — <span style="color: #32cd32;">никакого сбора данных</span>, только локальная работа на вашем устройстве. Более того, его <strong>открытый исходный код</strong> — это наша гарантия <em>прозрачности</em> и честности. Спокойствие — в ваших руках!</p>
     </div>
 </div>
 
